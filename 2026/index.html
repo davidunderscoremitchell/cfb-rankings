@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2026 CFB Power Rankings</title><style>
+:root{--bg:#fff;--fg:#1c2330;--muted:#667085;--line:#e3e7ee;--card:#f6f8fb;
+--top:#fff7dc;--accent:#1f5fbf;--up:#13803b;--down:#c0362c}
+@media (prefers-color-scheme:dark){:root{--bg:#12161d;--fg:#e6e9ef;--muted:#98a2b3;
+--line:#2a3140;--card:#1a202b;--top:#2c2814;--accent:#7fb0ff;--up:#4cc27a;--down:#ff7b72}}
+*{box-sizing:border-box}
+body{margin:0;padding:16px;background:var(--bg);color:var(--fg);
+font:15px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+main{max-width:1000px;margin:0 auto}
+a{color:var(--accent)}
+h1{font-size:1.5rem;margin:.2em 0}
+h2{font-size:1.15rem;margin:1.6em 0 .5em}
+.muted{color:var(--muted);font-size:.9rem}
+nav{display:flex;gap:14px;flex-wrap:wrap;margin:.6em 0}
+.box{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:6px 14px;margin:12px 0}
+.wrap{overflow-x:auto}
+table{border-collapse:collapse;width:100%}
+th,td{padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap}
+th{cursor:pointer;user-select:none;background:var(--card)}
+.num{text-align:right}
+tr.top25{background:var(--top)}
+tr.team{cursor:pointer}
+tr.team:hover{outline:1px solid var(--accent)}
+.up{color:var(--up)}.down{color:var(--down)}
+h2 small{font-weight:normal;color:var(--muted);font-size:.85rem}
+tr.conf{cursor:pointer}
+tr.conf:hover{outline:1px solid var(--accent)}
+table.bk{width:auto;min-width:200px}
+table.bk th,table.bk td{padding:2px 12px}
+table.bk tr.fcsrow td{border-top:3px solid var(--fg)}
+th.sortable.active{color:var(--accent)}
+.panel{position:sticky;left:0;width:calc(100vw - 56px);max-width:960px}
+.panel h3{font-size:1rem;margin:1em 0 .2em}
+.panel .wrap table{width:auto;min-width:60%}
+.panel td,.panel th{padding:3px 8px}
+.rb{position:relative;height:90px;margin:6px 8px 4px;max-width:480px}
+.rb-bar{position:absolute;left:0;right:0;top:20px;height:8px;border-radius:4px;background:var(--line)}
+.rb-rng{position:absolute;top:20px;height:8px;background:var(--accent);opacity:.55}
+.rb-mk{position:absolute;top:14px;width:2px;height:20px;margin-left:-1px;background:var(--fg)}
+.rb-mk.pal{background:var(--accent)}
+.rb-l{position:absolute;font-size:.78rem;line-height:1.2;white-space:nowrap;color:var(--fg)}
+.rb-l.pal{color:var(--accent);font-weight:600}
+.rb-l.res{top:0}.rb-l.pal{top:36px}.rb-l.hi{top:52px;color:var(--muted)}
+.rb-l.l{transform:none}.rb-l.c{transform:translateX(-50%)}.rb-l.r{transform:translateX(-100%)}
+.rb-end{position:absolute;top:72px;font-size:.7rem;color:var(--muted)}
+article h2{margin-top:1.8em}
+article ul,article ol{padding-left:1.3em}
+article table{width:auto}article td{white-space:normal}
+.ex{max-width:520px;width:100%;height:auto;display:block;margin:8px 0}
+.ex .ar{fill:var(--line)}.ex .sel{fill:var(--accent);opacity:.45}
+.ex .ln{fill:none;stroke:var(--fg);stroke-width:2}
+.ex .ax{stroke:var(--muted);stroke-width:1}
+.ex .pm{stroke:var(--accent);stroke-width:2;stroke-dasharray:4 3}.ex .rm{stroke:var(--fg);stroke-width:2}
+.ex text{font-size:13px;fill:var(--muted)}.ex .tf{fill:var(--fg)}.ex .ta{fill:var(--accent);font-weight:600}
+a.tl{text-decoration:underline dotted}
+@keyframes flash{from{background:var(--accent)}to{background:transparent}}
+tr.flash>td{animation:flash 1.8s ease-out}
+tr.detail>td{background:var(--card);padding:8px 12px;white-space:normal}
+tr.detail table{width:auto;min-width:60%}
+tr.detail th{cursor:default}
+select{font:inherit;padding:4px;background:var(--bg);color:var(--fg);border:1px solid var(--line);border-radius:6px}
+@media(max-width:600px){body{padding:10px;font-size:14px}th,td{padding:5px 5px}}
+</style></head><body><main>
+
+<h1>2026 CFB Power Rankings</h1>
+<div class="muted">Generated 2026-11-18 · Main ranking: PAL (Résumé, Average and Strength also shown)</div>
+<p><a href="how_it_works.html">How the rankings work &rarr;</a></p>
+<div class="wrap"><table style="width:auto"><thead><tr><th>Week</th><th>#1 by PAL</th><th class="num">PAL</th></tr></thead><tbody>
+<tr><td><a href="week_01.html">Week 1</a></td>
+<td>Memphis</td><td class="num">1.1-0.9</td></tr><tr><td><a href="week_02.html">Week 2</a></td>
+<td>Tulsa</td><td class="num">1.1-0.9</td></tr><tr><td><a href="week_03.html">Week 3</a></td>
+<td>Ole Miss</td><td class="num">2.1-0.9</td></tr><tr><td><a href="week_04.html">Week 4</a></td>
+<td>Texas</td><td class="num">2.9-1.1</td></tr><tr><td><a href="week_05.html">Week 5</a></td>
+<td>Alabama</td><td class="num">3.6-1.4</td></tr><tr><td><a href="week_06.html">Week 6</a></td>
+<td>Indiana</td><td class="num">4.5-1.5</td></tr><tr><td><a href="week_07.html">Week 7</a></td>
+<td>BYU</td><td class="num">4.7-1.3</td></tr><tr><td><a href="week_08.html">Week 8</a></td>
+<td>BYU</td><td class="num">5.1-1.9</td></tr><tr><td><a href="week_09.html">Week 9</a></td>
+<td>Miami</td><td class="num">6.2-1.8</td></tr><tr><td><a href="week_10.html">Week 10</a></td>
+<td>Alabama</td><td class="num">6.8-2.2</td></tr><tr><td><a href="week_11.html">Week 11</a></td>
+<td>Utah</td><td class="num">8.3-1.7</td></tr><tr><td><a href="week_12.html">Week 12</a></td>
+<td>Utah</td><td class="num">8.3-1.7</td></tr>
+</tbody></table></div>
+
+</main></body></html>

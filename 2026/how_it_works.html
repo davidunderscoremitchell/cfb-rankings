@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How the rankings work</title><style>
+:root{--bg:#fff;--fg:#1c2330;--muted:#667085;--line:#e3e7ee;--card:#f6f8fb;
+--top:#fff7dc;--accent:#1f5fbf;--up:#13803b;--down:#c0362c}
+@media (prefers-color-scheme:dark){:root{--bg:#12161d;--fg:#e6e9ef;--muted:#98a2b3;
+--line:#2a3140;--card:#1a202b;--top:#2c2814;--accent:#7fb0ff;--up:#4cc27a;--down:#ff7b72}}
+*{box-sizing:border-box}
+body{margin:0;padding:16px;background:var(--bg);color:var(--fg);
+font:15px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+main{max-width:1000px;margin:0 auto}
+a{color:var(--accent)}
+h1{font-size:1.5rem;margin:.2em 0}
+h2{font-size:1.15rem;margin:1.6em 0 .5em}
+.muted{color:var(--muted);font-size:.9rem}
+nav{display:flex;gap:14px;flex-wrap:wrap;margin:.6em 0}
+.box{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:6px 14px;margin:12px 0}
+.wrap{overflow-x:auto}
+table{border-collapse:collapse;width:100%}
+th,td{padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap}
+th{cursor:pointer;user-select:none;background:var(--card)}
+.num{text-align:right}
+tr.top25{background:var(--top)}
+tr.team{cursor:pointer}
+tr.team:hover{outline:1px solid var(--accent)}
+.up{color:var(--up)}.down{color:var(--down)}
+h2 small{font-weight:normal;color:var(--muted);font-size:.85rem}
+tr.conf{cursor:pointer}
+tr.conf:hover{outline:1px solid var(--accent)}
+table.bk{width:auto;min-width:200px}
+table.bk th,table.bk td{padding:2px 12px}
+table.bk tr.fcsrow td{border-top:3px solid var(--fg)}
+th.sortable.active{color:var(--accent)}
+.panel{position:sticky;left:0;width:calc(100vw - 56px);max-width:960px}
+.panel h3{font-size:1rem;margin:1em 0 .2em}
+.panel .wrap table{width:auto;min-width:60%}
+.panel td,.panel th{padding:3px 8px}
+.rb{position:relative;height:90px;margin:6px 8px 4px;max-width:480px}
+.rb-bar{position:absolute;left:0;right:0;top:20px;height:8px;border-radius:4px;background:var(--line)}
+.rb-rng{position:absolute;top:20px;height:8px;background:var(--accent);opacity:.55}
+.rb-mk{position:absolute;top:14px;width:2px;height:20px;margin-left:-1px;background:var(--fg)}
+.rb-mk.pal{background:var(--accent)}
+.rb-l{position:absolute;font-size:.78rem;line-height:1.2;white-space:nowrap;color:var(--fg)}
+.rb-l.pal{color:var(--accent);font-weight:600}
+.rb-l.res{top:0}.rb-l.pal{top:36px}.rb-l.hi{top:52px;color:var(--muted)}
+.rb-l.l{transform:none}.rb-l.c{transform:translateX(-50%)}.rb-l.r{transform:translateX(-100%)}
+.rb-end{position:absolute;top:72px;font-size:.7rem;color:var(--muted)}
+article h2{margin-top:1.8em}
+article ul,article ol{padding-left:1.3em}
+article table{width:auto}article td{white-space:normal}
+.ex{max-width:520px;width:100%;height:auto;display:block;margin:8px 0}
+.ex .ar{fill:var(--line)}.ex .sel{fill:var(--accent);opacity:.45}
+.ex .ln{fill:none;stroke:var(--fg);stroke-width:2}
+.ex .ax{stroke:var(--muted);stroke-width:1}
+.ex .pm{stroke:var(--accent);stroke-width:2;stroke-dasharray:4 3}.ex .rm{stroke:var(--fg);stroke-width:2}
+.ex text{font-size:13px;fill:var(--muted)}.ex .tf{fill:var(--fg)}.ex .ta{fill:var(--accent);font-weight:600}
+a.tl{text-decoration:underline dotted}
+@keyframes flash{from{background:var(--accent)}to{background:transparent}}
+tr.flash>td{animation:flash 1.8s ease-out}
+tr.detail>td{background:var(--card);padding:8px 12px;white-space:normal}
+tr.detail table{width:auto;min-width:60%}
+tr.detail th{cursor:default}
+select{font:inherit;padding:4px;background:var(--bg);color:var(--fg);border:1px solid var(--line);border-radius:6px}
+@media(max-width:600px){body{padding:10px;font-size:14px}th,td{padding:5px 5px}}
+</style></head><body><main>
+
+<nav><a href="index.html">&larr; All weeks</a></nav>
+<article>
+<h1>How the rankings work</h1>
+
+<h2>The big picture</h2>
+<p>These rankings reward what teams actually did on the field: wins and losses against their real schedule, with every opponent judged by a margin-based Strength rating. Records alone ignore who you played, and Strength alone measures how you played rather than what you achieved; PAL and Résumé combine the two. We assign each team the theoretical record that best explains its results, which fits the team better than its actual record does.</p>
+<p>Every team gets four numbers, built in this order:</p>
+<ol>
+<li><b>Strength</b>: how well a team plays, judged with margins of victory. Its main job is to judge how good each <em>opponent</em> is.</li>
+<li><b>Résumé</b>: the theoretical record that best explains the team's results, given only who it beat and lost to.</li>
+<li><b>PAL ("proven at least")</b>: the low end of the range of theoretical records that fit the team's results. This is the headline ranking.</li>
+<li><b>Average</b>: halfway between Résumé and PAL.</li>
+</ol>
+<p>Inside the math, every number is on a 0&ndash;12 scale, "wins in a 12-game season" (6.0 = an average FBS team). On the site, Résumé, PAL and Average are shown over the games a team has actually played, so they line up with its real record. Ranking always uses the underlying rate, so playing an extra game never helps a team.</p>
+
+<h2>Step 1: The result table (the foundation)</h2>
+<p>Everything rests on one table built from history: about 7,800 FBS-vs-FBS games from 2015&ndash;2025 (2020 left out), regular season and bowls. For each past game we know:</p>
+<ul>
+<li>the gap between the two teams, measured by their actual season records (leaving out the game itself, so it doesn't count toward explaining itself);</li>
+<li>where it was played (home, away, neutral);</li>
+<li>the exact result: won by 7, lost by 3, won in overtime&hellip; Only the regulation margin counts. A game tied after four quarters is an overtime win or loss.</li>
+</ul>
+<p>From that comes a table that answers: "When one team is this much better than its opponent, at this site, how often does each exact result happen?" The raw counts are smoothed so rare results (say, winning by 41) don't get a zero. Home field comes straight from the data: about 1.5 games of record. A scale factor, tuned so the spread of ratings matches the spread of real records, links rating gaps to the table. No bell curve or formula is assumed: the table is what actually happened.</p>
+
+<h2>Step 2: Strength (margins count)</h2>
+<p>Question: what rating makes this team's actual results most likely? Try every rating from 0 to 12. For each, look up the chance of each of the team's exact results in the table and multiply them together. The rating with the highest combined chance is the team's Strength. Beating a weak team by 3 is unlikely for an elite team and pulls the rating down. Losing to a great team by 3 is quite likely even for a very good team and barely hurts. The team detail panel shows this game by game: actual margin vs. the margin expected for a team of that Strength.</p>
+<p>Everyone is solved together, because a team's Strength depends on its opponents', which depend on theirs, and so on. Start every team at its win% &times; 12. Each team picks its best rating against the current opponent ratings. Shift everyone so the average team is 6.0, keeping ratings between 0 and 12. Repeat until nothing moves more than 0.01. Because of this, non-conference games tie the conferences together, so no separate conference adjustment is needed. FCS games are not used for Strength. A few dominant teams can reach the 12.0 ceiling; ties there are broken by the low end of their Strength range.</p>
+
+<h2>Step 3: Résumé (only wins and losses count)</h2>
+<p>Question: given who this team beat and lost to, what theoretical record best explains them? Opponents are held at their Strength, and the team's own margins are ignored. Each game is just a win, loss, overtime win or overtime loss. Then the same search runs over ratings 0&ndash;12.</p>
+<ul>
+<li>Beating a strong team is strong evidence you're good, so Résumé rises a lot.</li>
+<li>Losing to a strong team is something good teams do, so it costs little.</li>
+<li>Losing to a weak team is rare for a good team, so it costs a lot.</li>
+<li>Overtime is close to a coin flip, so an OT win proves less than a regulation win and an OT loss costs less.</li>
+<li>Home field still counts: a road win proves a little more.</li>
+</ul>
+<p>Sometimes the most likely rating is the very top of the scale. An 8-2 team with strong wins and two close losses to good teams can show an unbeaten Résumé, because "elite team that lost two close ones" fits its results best. PAL separates those teams.</p>
+
+<h2>Step 4: PAL ("proven at least"), the headline</h2>
+<p>A team's results fit a whole range of theoretical records, not just one. The plausible range is every rating whose chance of producing the team's results is at least about 15% as large as the best rating's chance; statisticians call this a 95% likelihood interval. PAL is the low end of that 95% range: the team is probably not worse than this. The high end is "proven at most": the team is probably not better than this.</p>
+<figure style="margin:12px 0"><svg class="ex" viewBox="0 0 520 190" role="img" aria-label="Example likelihood curve for a made-up 12-game team"><defs><clipPath id="exc"><rect x="247.7" y="0" width="223.9" height="190"/></clipPath></defs><path class="ar" d="M14.0 160.0 L16.5 160.0 L18.9 160.0 L21.4 160.0 L23.8 160.0 L26.3 160.0 L28.8 160.0 L31.2 160.0 L33.7 160.0 L36.1 160.0 L38.6 160.0 L41.1 160.0 L43.5 160.0 L46.0 160.0 L48.4 160.0 L50.9 160.0 L53.4 160.0 L55.8 160.0 L58.3 160.0 L60.7 160.0 L63.2 160.0 L65.7 160.0 L68.1 160.0 L70.6 160.0 L73.0 160.0 L75.5 160.0 L78.0 160.0 L80.4 160.0 L82.9 160.0 L85.3 160.0 L87.8 160.0 L90.3 160.0 L92.7 160.0 L95.2 160.0 L97.6 160.0 L100.1 160.0 L102.6 160.0 L105.0 160.0 L107.5 160.0 L109.9 160.0 L112.4 160.0 L114.9 160.0 L117.3 160.0 L119.8 160.0 L122.2 159.9 L124.7 159.9 L127.2 159.9 L129.6 159.9 L132.1 159.9 L134.5 159.9 L137.0 159.8 L139.5 159.8 L141.9 159.8 L144.4 159.7 L146.8 159.7 L149.3 159.7 L151.8 159.6 L154.2 159.6 L156.7 159.5 L159.1 159.4 L161.6 159.3 L164.1 159.2 L166.5 159.1 L169.0 159.0 L171.4 158.9 L173.9 158.8 L176.4 158.6 L178.8 158.5 L181.3 158.3 L183.7 158.1 L186.2 157.9 L188.7 157.6 L191.1 157.4 L193.6 157.1 L196.0 156.8 L198.5 156.5 L201.0 156.1 L203.4 155.7 L205.9 155.3 L208.3 154.9 L210.8 154.4 L213.3 153.9 L215.7 153.4 L218.2 152.8 L220.6 152.2 L223.1 151.5 L225.6 150.8 L228.0 150.1 L230.5 149.3 L232.9 148.4 L235.4 147.6 L237.9 146.6 L240.3 145.6 L242.8 144.6 L245.2 143.5 L247.7 142.4 L250.2 141.2 L252.6 139.9 L255.1 138.6 L257.5 137.3 L260.0 135.9 L262.5 134.4 L264.9 132.8 L267.4 131.3 L269.8 129.6 L272.3 127.9 L274.8 126.1 L277.2 124.3 L279.7 122.4 L282.1 120.5 L284.6 118.5 L287.1 116.5 L289.5 114.4 L292.0 112.2 L294.4 110.1 L296.9 107.8 L299.4 105.6 L301.8 103.3 L304.3 101.0 L306.7 98.6 L309.2 96.2 L311.7 93.8 L314.1 91.4 L316.6 89.0 L319.0 86.6 L321.5 84.1 L324.0 81.7 L326.4 79.3 L328.9 76.9 L331.3 74.5 L333.8 72.2 L336.3 69.9 L338.7 67.7 L341.2 65.5 L343.6 63.3 L346.1 61.3 L348.6 59.3 L351.0 57.4 L353.5 55.6 L355.9 53.9 L358.4 52.3 L360.9 50.8 L363.3 49.4 L365.8 48.2 L368.2 47.1 L370.7 46.2 L373.2 45.4 L375.6 44.8 L378.1 44.4 L380.5 44.1 L383.0 44.0 L385.5 44.1 L387.9 44.4 L390.4 44.9 L392.8 45.5 L395.3 46.4 L397.8 47.5 L400.2 48.8 L402.7 50.3 L405.1 51.9 L407.6 53.8 L410.1 55.9 L412.5 58.2 L415.0 60.7 L417.4 63.3 L419.9 66.2 L422.4 69.2 L424.8 72.4 L427.3 75.7 L429.7 79.1 L432.2 82.7 L434.7 86.4 L437.1 90.2 L439.6 94.0 L442.0 98.0 L444.5 101.9 L447.0 105.9 L449.4 109.9 L451.9 113.9 L454.3 117.8 L456.8 121.7 L459.3 125.5 L461.7 129.2 L464.2 132.7 L466.6 136.1 L469.1 139.3 L471.6 142.4 L474.0 145.2 L476.5 147.8 L478.9 150.1 L481.4 152.2 L483.9 154.0 L486.3 155.6 L488.8 156.9 L491.2 158.0 L493.7 158.8 L496.2 159.3 L498.6 159.7 L501.1 159.9 L503.5 160.0 L506.0 160.0 L506.0 160.0 L14.0 160.0 Z"/><path class="sel" clip-path="url(#exc)" d="M14.0 160.0 L16.5 160.0 L18.9 160.0 L21.4 160.0 L23.8 160.0 L26.3 160.0 L28.8 160.0 L31.2 160.0 L33.7 160.0 L36.1 160.0 L38.6 160.0 L41.1 160.0 L43.5 160.0 L46.0 160.0 L48.4 160.0 L50.9 160.0 L53.4 160.0 L55.8 160.0 L58.3 160.0 L60.7 160.0 L63.2 160.0 L65.7 160.0 L68.1 160.0 L70.6 160.0 L73.0 160.0 L75.5 160.0 L78.0 160.0 L80.4 160.0 L82.9 160.0 L85.3 160.0 L87.8 160.0 L90.3 160.0 L92.7 160.0 L95.2 160.0 L97.6 160.0 L100.1 160.0 L102.6 160.0 L105.0 160.0 L107.5 160.0 L109.9 160.0 L112.4 160.0 L114.9 160.0 L117.3 160.0 L119.8 160.0 L122.2 159.9 L124.7 159.9 L127.2 159.9 L129.6 159.9 L132.1 159.9 L134.5 159.9 L137.0 159.8 L139.5 159.8 L141.9 159.8 L144.4 159.7 L146.8 159.7 L149.3 159.7 L151.8 159.6 L154.2 159.6 L156.7 159.5 L159.1 159.4 L161.6 159.3 L164.1 159.2 L166.5 159.1 L169.0 159.0 L171.4 158.9 L173.9 158.8 L176.4 158.6 L178.8 158.5 L181.3 158.3 L183.7 158.1 L186.2 157.9 L188.7 157.6 L191.1 157.4 L193.6 157.1 L196.0 156.8 L198.5 156.5 L201.0 156.1 L203.4 155.7 L205.9 155.3 L208.3 154.9 L210.8 154.4 L213.3 153.9 L215.7 153.4 L218.2 152.8 L220.6 152.2 L223.1 151.5 L225.6 150.8 L228.0 150.1 L230.5 149.3 L232.9 148.4 L235.4 147.6 L237.9 146.6 L240.3 145.6 L242.8 144.6 L245.2 143.5 L247.7 142.4 L250.2 141.2 L252.6 139.9 L255.1 138.6 L257.5 137.3 L260.0 135.9 L262.5 134.4 L264.9 132.8 L267.4 131.3 L269.8 129.6 L272.3 127.9 L274.8 126.1 L277.2 124.3 L279.7 122.4 L282.1 120.5 L284.6 118.5 L287.1 116.5 L289.5 114.4 L292.0 112.2 L294.4 110.1 L296.9 107.8 L299.4 105.6 L301.8 103.3 L304.3 101.0 L306.7 98.6 L309.2 96.2 L311.7 93.8 L314.1 91.4 L316.6 89.0 L319.0 86.6 L321.5 84.1 L324.0 81.7 L326.4 79.3 L328.9 76.9 L331.3 74.5 L333.8 72.2 L336.3 69.9 L338.7 67.7 L341.2 65.5 L343.6 63.3 L346.1 61.3 L348.6 59.3 L351.0 57.4 L353.5 55.6 L355.9 53.9 L358.4 52.3 L360.9 50.8 L363.3 49.4 L365.8 48.2 L368.2 47.1 L370.7 46.2 L373.2 45.4 L375.6 44.8 L378.1 44.4 L380.5 44.1 L383.0 44.0 L385.5 44.1 L387.9 44.4 L390.4 44.9 L392.8 45.5 L395.3 46.4 L397.8 47.5 L400.2 48.8 L402.7 50.3 L405.1 51.9 L407.6 53.8 L410.1 55.9 L412.5 58.2 L415.0 60.7 L417.4 63.3 L419.9 66.2 L422.4 69.2 L424.8 72.4 L427.3 75.7 L429.7 79.1 L432.2 82.7 L434.7 86.4 L437.1 90.2 L439.6 94.0 L442.0 98.0 L444.5 101.9 L447.0 105.9 L449.4 109.9 L451.9 113.9 L454.3 117.8 L456.8 121.7 L459.3 125.5 L461.7 129.2 L464.2 132.7 L466.6 136.1 L469.1 139.3 L471.6 142.4 L474.0 145.2 L476.5 147.8 L478.9 150.1 L481.4 152.2 L483.9 154.0 L486.3 155.6 L488.8 156.9 L491.2 158.0 L493.7 158.8 L496.2 159.3 L498.6 159.7 L501.1 159.9 L503.5 160.0 L506.0 160.0 L506.0 160.0 L14.0 160.0 Z"/><path class="ln" d="M14.0 160.0 L16.5 160.0 L18.9 160.0 L21.4 160.0 L23.8 160.0 L26.3 160.0 L28.8 160.0 L31.2 160.0 L33.7 160.0 L36.1 160.0 L38.6 160.0 L41.1 160.0 L43.5 160.0 L46.0 160.0 L48.4 160.0 L50.9 160.0 L53.4 160.0 L55.8 160.0 L58.3 160.0 L60.7 160.0 L63.2 160.0 L65.7 160.0 L68.1 160.0 L70.6 160.0 L73.0 160.0 L75.5 160.0 L78.0 160.0 L80.4 160.0 L82.9 160.0 L85.3 160.0 L87.8 160.0 L90.3 160.0 L92.7 160.0 L95.2 160.0 L97.6 160.0 L100.1 160.0 L102.6 160.0 L105.0 160.0 L107.5 160.0 L109.9 160.0 L112.4 160.0 L114.9 160.0 L117.3 160.0 L119.8 160.0 L122.2 159.9 L124.7 159.9 L127.2 159.9 L129.6 159.9 L132.1 159.9 L134.5 159.9 L137.0 159.8 L139.5 159.8 L141.9 159.8 L144.4 159.7 L146.8 159.7 L149.3 159.7 L151.8 159.6 L154.2 159.6 L156.7 159.5 L159.1 159.4 L161.6 159.3 L164.1 159.2 L166.5 159.1 L169.0 159.0 L171.4 158.9 L173.9 158.8 L176.4 158.6 L178.8 158.5 L181.3 158.3 L183.7 158.1 L186.2 157.9 L188.7 157.6 L191.1 157.4 L193.6 157.1 L196.0 156.8 L198.5 156.5 L201.0 156.1 L203.4 155.7 L205.9 155.3 L208.3 154.9 L210.8 154.4 L213.3 153.9 L215.7 153.4 L218.2 152.8 L220.6 152.2 L223.1 151.5 L225.6 150.8 L228.0 150.1 L230.5 149.3 L232.9 148.4 L235.4 147.6 L237.9 146.6 L240.3 145.6 L242.8 144.6 L245.2 143.5 L247.7 142.4 L250.2 141.2 L252.6 139.9 L255.1 138.6 L257.5 137.3 L260.0 135.9 L262.5 134.4 L264.9 132.8 L267.4 131.3 L269.8 129.6 L272.3 127.9 L274.8 126.1 L277.2 124.3 L279.7 122.4 L282.1 120.5 L284.6 118.5 L287.1 116.5 L289.5 114.4 L292.0 112.2 L294.4 110.1 L296.9 107.8 L299.4 105.6 L301.8 103.3 L304.3 101.0 L306.7 98.6 L309.2 96.2 L311.7 93.8 L314.1 91.4 L316.6 89.0 L319.0 86.6 L321.5 84.1 L324.0 81.7 L326.4 79.3 L328.9 76.9 L331.3 74.5 L333.8 72.2 L336.3 69.9 L338.7 67.7 L341.2 65.5 L343.6 63.3 L346.1 61.3 L348.6 59.3 L351.0 57.4 L353.5 55.6 L355.9 53.9 L358.4 52.3 L360.9 50.8 L363.3 49.4 L365.8 48.2 L368.2 47.1 L370.7 46.2 L373.2 45.4 L375.6 44.8 L378.1 44.4 L380.5 44.1 L383.0 44.0 L385.5 44.1 L387.9 44.4 L390.4 44.9 L392.8 45.5 L395.3 46.4 L397.8 47.5 L400.2 48.8 L402.7 50.3 L405.1 51.9 L407.6 53.8 L410.1 55.9 L412.5 58.2 L415.0 60.7 L417.4 63.3 L419.9 66.2 L422.4 69.2 L424.8 72.4 L427.3 75.7 L429.7 79.1 L432.2 82.7 L434.7 86.4 L437.1 90.2 L439.6 94.0 L442.0 98.0 L444.5 101.9 L447.0 105.9 L449.4 109.9 L451.9 113.9 L454.3 117.8 L456.8 121.7 L459.3 125.5 L461.7 129.2 L464.2 132.7 L466.6 136.1 L469.1 139.3 L471.6 142.4 L474.0 145.2 L476.5 147.8 L478.9 150.1 L481.4 152.2 L483.9 154.0 L486.3 155.6 L488.8 156.9 L491.2 158.0 L493.7 158.8 L496.2 159.3 L498.6 159.7 L501.1 159.9 L503.5 160.0 L506.0 160.0"/><line class="ax" x1="14.0" x2="506.0" y1="160.0" y2="160.0"/><line class="ax" x1="14.0" x2="14.0" y1="160.0" y2="164.0"/><text x="14.0" y="175.0" text-anchor="middle">0</text><line class="ax" x1="55.0" x2="55.0" y1="160.0" y2="164.0"/><text x="55.0" y="175.0" text-anchor="middle">1</text><line class="ax" x1="96.0" x2="96.0" y1="160.0" y2="164.0"/><text x="96.0" y="175.0" text-anchor="middle">2</text><line class="ax" x1="137.0" x2="137.0" y1="160.0" y2="164.0"/><text x="137.0" y="175.0" text-anchor="middle">3</text><line class="ax" x1="178.0" x2="178.0" y1="160.0" y2="164.0"/><text x="178.0" y="175.0" text-anchor="middle">4</text><line class="ax" x1="219.0" x2="219.0" y1="160.0" y2="164.0"/><text x="219.0" y="175.0" text-anchor="middle">5</text><line class="ax" x1="260.0" x2="260.0" y1="160.0" y2="164.0"/><text x="260.0" y="175.0" text-anchor="middle">6</text><line class="ax" x1="301.0" x2="301.0" y1="160.0" y2="164.0"/><text x="301.0" y="175.0" text-anchor="middle">7</text><line class="ax" x1="342.0" x2="342.0" y1="160.0" y2="164.0"/><text x="342.0" y="175.0" text-anchor="middle">8</text><line class="ax" x1="383.0" x2="383.0" y1="160.0" y2="164.0"/><text x="383.0" y="175.0" text-anchor="middle">9</text><line class="ax" x1="424.0" x2="424.0" y1="160.0" y2="164.0"/><text x="424.0" y="175.0" text-anchor="middle">10</text><line class="ax" x1="465.0" x2="465.0" y1="160.0" y2="164.0"/><text x="465.0" y="175.0" text-anchor="middle">11</text><line class="ax" x1="506.0" x2="506.0" y1="160.0" y2="164.0"/><text x="506.0" y="175.0" text-anchor="middle">12</text><line class="pm" x1="247.7" x2="247.7" y1="36" y2="160.0"/><line class="rm" x1="383.0" x2="383.0" y1="36" y2="160.0"/><line class="pm" x1="471.6" x2="471.6" y1="36" y2="160.0"/><text class="ta" x="243.7" y="32" text-anchor="end">PAL (proven at least)</text><text class="tf" x="377.0" y="16" text-anchor="end">Résumé (most likely)</text><text class="tf" x="467.6" y="32" text-anchor="end">Proven at most</text><text x="260.0" y="187" text-anchor="middle">possible theoretical record: wins in 12 games</text></svg><figcaption class="muted">Example only: a made-up 12-game team that went 9-3. The line shows how likely each possible theoretical record is; the shaded part is the 95% range, from PAL (5.7-6.3) to proven at most (11.2-0.8).</figcaption></figure>
+<p>Why PAL rewards consistency: a team with many solid results has a narrow range, because the evidence agrees, so its PAL sits close to its Résumé. A team with one big upset and otherwise ordinary results may have a high Résumé, but its range is wide, since one result doesn't rule out the team being average, so its PAL stays lower. Early in the season every range is wide and many teams have a PAL of 0. Ties are broken by Résumé, then the high end of the range.</p>
+
+<h2>Step 5: Average</h2>
+<p>Average is halfway between Résumé and PAL, shown on the same scale so it's easy to read and compare. The ranking behind it is really a head-to-head rule: when comparing two teams, the one with the higher Résumé stays ahead unless the other team's PAL lead is bigger than its Résumé lead. Ordering by the average gives exactly that result; the average is just the readable way to show it. Ties go to Résumé, then the high end of the range.</p>
+
+<h2>FCS games</h2>
+<p>All FCS opponents are pooled into one opponent called "FCS", rated by the same Résumé-style search from every FBS-vs-FCS result this season. It sits far below the weakest FBS team. Beating an FCS team barely moves Résumé or PAL; losing to one costs a lot. FCS games count only in Résumé and PAL, never in Strength. Games against Division II and below count in records but not in the math.</p>
+
+<h2>Reading the site</h2>
+<ul>
+<li>The table loads sorted by PAL. Click the PAL, Résumé, Average, Strength or Overall header to sort best to worst, and click again for worst to best. Sorting by Overall ranks teams by plain record (win percentage, then wins, then PAL rank). Rank, Change and the top-25 shading follow the active ranking.</li>
+<li>Click a team to see its Résumé games (results with each opponent's Strength and PAL rank), its range, and its Strength games (actual vs. expected margin). Click an opponent to jump to it.</li>
+<li>Conferences are ordered by the average PAL rank of their teams, with their out-of-conference records alongside. Click a conference for its record against each other conference and against FCS.</li>
+<li>Each week's page uses only games through that week.</li>
+</ul>
+
+<h2>Design choices at a glance</h2>
+<div class="wrap"><table><thead><tr><th>Choice</th><th>Why</th></tr></thead><tbody>
+<tr><td>Built from a historical result table, not a formula</td><td>Follow the data</td></tr>
+<tr><td>Margins count for Strength only</td><td>Margins are the best evidence of how good an opponent is</td></tr>
+<tr><td>Résumé ignores a team's own margins</td><td>It measures what was proven, not how</td></tr>
+<tr><td>PAL is the headline</td><td>It rewards consistency over one-off results</td></tr>
+<tr><td>No head-to-head rule</td><td>The whole body of work decides</td></tr>
+<tr><td>No conference adjustment</td><td>Solving everyone together plus non-conference games handles it</td></tr>
+<tr><td>FCS pooled into one weak opponent</td><td>FCS wins shouldn't move a team much; losses should hurt</td></tr>
+<tr><td>Overtime is about 50/50</td><td>Regulation ended even</td></tr>
+</tbody></table></div>
+</article>
+
+</main></body></html>
