@@ -30,7 +30,6 @@ tr.conf{cursor:pointer}
 tr.conf:hover{outline:1px solid var(--accent)}
 table.bk{width:auto;min-width:200px}
 table.bk th,table.bk td{padding:2px 12px}
-table.bk tr.fcsrow td{border-top:3px solid var(--fg)}
 th.sortable.active{color:var(--accent)}
 .panel{position:sticky;left:0;width:calc(100vw - 56px);max-width:960px}
 .panel h3{font-size:1rem;margin:1em 0 .2em}
@@ -61,12 +60,13 @@ tr.flash>td{animation:flash 1.8s ease-out}
 tr.detail>td{background:var(--card);padding:8px 12px;white-space:normal}
 tr.detail table{width:auto;min-width:60%}
 tr.detail th{cursor:default}
+#collapse{font:inherit;padding:4px 10px;margin-left:8px;cursor:pointer;background:var(--bg);color:var(--fg);border:1px solid var(--line);border-radius:6px}
 select{font:inherit;padding:4px;background:var(--bg);color:var(--fg);border:1px solid var(--line);border-radius:6px}
 @media(max-width:600px){body{padding:10px;font-size:14px}th,td{padding:5px 5px}}
 </style></head><body><main>
 
 <h1>2026 CFB Power Rankings — through Week 1</h1>
-<div class="muted">Generated 2026-11-18</div>
+<div class="muted">Generated 2026-11-19</div>
 <nav>
 
 <a href="index.html">All weeks</a>
@@ -76,1267 +76,1267 @@ select{font:inherit;padding:4px;background:var(--bg);color:var(--fg);border:1px 
 </nav>
 
 <div class="box">
-<p><b>PAL</b> (proven at least) is the main ranking: the low end of the range of theoretical records that fit a team's results.</p>
-<p><b>Résumé</b> is the theoretical record that best explains the team's results, given only who it beat and lost to.</p>
-<p><b>Average</b> is halfway between Résumé and PAL.</p>
-<p><b>Strength</b> is how well a team plays, judged with margins of victory, and it is used to rate opponents.</p>
-<p>The <b>Overall</b> column can be sorted too, for plain records (win percentage, then wins, then PAL).</p>
-<p>These rankings reward what teams actually did on the field: wins and losses against their real schedule, with every opponent judged by a margin-based Strength rating. Records alone ignore who you played, and Strength alone measures how you played rather than what you achieved; PAL and Résumé combine the two.</p>
-<p class="muted">Résumé, PAL and Average are shown over the games each team has played; Strength is out of 12. <a href="how_it_works.html">How the rankings work &rarr;</a></p>
+<p>The Mitchell Metrics reward what teams have actually done on the field: wins and losses against their real schedule, with every opponent judged by a performance-based Strength rating. The rankings are calculated using three key numbers:</p>
+<p><b>Strength</b> is a measure of how well a team plays. It is calculated using margin of victory and statistical analysis from thousands of previous games to answer the question: <i>How hard is this team to beat?</i></p>
+<p><b>Résumé</b> is the theoretical record that best explains a team's results. Measured against the team's Strength-adjusted opponents, it answers the question: <i>What record would we expect this team to have?</i></p>
+<p><b>PAL</b> is the low end of the Résumé's 95% likelihood interval. It favors consistent results and makes the statement: <i>This team has "proven at least" this good.</i> PAL is the headline ranking of the Mitchell Metrics.</p>
+<p>A record-based ranking ignores opponent quality. A strength-based ranking measures performance over outcomes. The Mitchell Metrics take both into consideration to create a balanced assessment of what each team has achieved on the field.</p>
+<p class="muted">Résumé, PAL, and Strength are calculated as a winning percentage and displayed as a record: Résumé and PAL are adjusted by games played, and Strength is adjusted for a full 12-game season. <a href="how_it_works.html">How the rankings work &rarr;</a></p>
 </div>
 
 <p><label>Conference:
 <select id="conf"><option value="">All</option>
 <option>ACC</option><option>American Athletic</option><option>Big 12</option><option>Big Ten</option><option>Conference USA</option><option>FBS Independents</option><option>Mid-American</option><option>Mountain West</option><option>Pac-12</option><option>SEC</option><option>Sun Belt</option></select></label>
-<span class="muted">Click PAL, Résumé, Average, Strength or Overall to sort; click again to reverse. Rank and Change follow the chosen column.</span></p>
+<button type="button" id="collapse">Collapse all teams</button>
+<span class="muted">Click PAL, Résumé, Strength or Overall to sort; click again to reverse. Rank and Change follow the chosen column. Click Change to sort by biggest riser to biggest faller in the chosen ranking.</span></p>
 
 <div class="wrap"><table id="main"><thead><tr>
-<th id="rkh">Rank</th><th>Change</th><th>Team</th><th>Conf</th><th class="sortable" data-f="rec">Overall<span class="arr"></span></th>
+<th id="rkh">Rank</th><th class="sortable" data-f="chg">Change<span class="arr"></span></th><th>Team</th><th>Conf</th><th class="sortable" data-f="rec">Overall<span class="arr"></span></th>
 <th class="num sortable" data-f="pal">PAL<span class="arr"></span></th><th class="num sortable" data-f="res">Résumé<span class="arr"></span></th>
-<th class="num sortable" data-f="avg">Average<span class="arr"></span></th><th class="num sortable" data-f="str">Strength<span class="arr"></span></th>
+<th class="num sortable" data-f="str">Strength<span class="arr"></span></th>
 </tr></thead><tbody>
 
 <tr class="team" id="team-memphis" data-slug="memphis" data-conf="American Athletic"
- data-pal="1" data-res="1" data-avg="1" data-str="2" data-rec="1"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="1" data-res="1" data-str="2" data-rec="1"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Memphis</td><td>AAC</td>
 <td>2-0</td>
 <td class="num">1.1-0.9</td><td class="num">2.0-0.0</td>
-<td class="num">1.5-0.5</td><td class="num">10.4-1.6</td></tr>
+<td class="num">10.4-1.6</td></tr>
 
 <tr class="team" id="team-usc" data-slug="usc" data-conf="Big Ten"
- data-pal="2" data-res="2" data-avg="2" data-str="1" data-rec="2"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="2" data-res="2" data-str="1" data-rec="2"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>USC</td><td>Big Ten</td>
 <td>2-0</td>
 <td class="num">0.8-1.2</td><td class="num">2.0-0.0</td>
-<td class="num">1.4-0.6</td><td class="num">10.7-1.3</td></tr>
+<td class="num">10.7-1.3</td></tr>
 
 <tr class="team" id="team-smu" data-slug="smu" data-conf="ACC"
- data-pal="3" data-res="3" data-avg="3" data-str="3" data-rec="4"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="3" data-res="3" data-str="3" data-rec="4"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>SMU</td><td>ACC</td>
 <td>1-0</td>
 <td class="num">0.4-0.6</td><td class="num">1.0-0.0</td>
-<td class="num">0.7-0.3</td><td class="num">10.4-1.6</td></tr>
+<td class="num">10.4-1.6</td></tr>
 
 <tr class="team" id="team-colorado" data-slug="colorado" data-conf="Big 12"
- data-pal="4" data-res="4" data-avg="4" data-str="36" data-rec="5"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="4" data-res="4" data-str="36" data-rec="5"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Colorado</td><td>Big 12</td>
 <td>1-0</td>
 <td class="num">0.3-0.7</td><td class="num">1.0-0.0</td>
-<td class="num">0.6-0.4</td><td class="num">7.0-5.0</td></tr>
+<td class="num">7.0-5.0</td></tr>
 
 <tr class="team" id="team-ole-miss" data-slug="ole-miss" data-conf="SEC"
- data-pal="5" data-res="5" data-avg="5" data-str="40" data-rec="6"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="5" data-res="5" data-str="40" data-rec="6"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Ole Miss</td><td>SEC</td>
 <td>1-0</td>
 <td class="num">0.2-0.8</td><td class="num">1.0-0.0</td>
-<td class="num">0.6-0.4</td><td class="num">6.5-5.5</td></tr>
+<td class="num">6.5-5.5</td></tr>
 
 <tr class="team" id="team-auburn" data-slug="auburn" data-conf="SEC"
- data-pal="6" data-res="6" data-avg="6" data-str="45" data-rec="7"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="6" data-res="6" data-str="45" data-rec="7"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Auburn</td><td>SEC</td>
 <td>1-0</td>
 <td class="num">0.2-0.8</td><td class="num">1.0-0.0</td>
-<td class="num">0.6-0.4</td><td class="num">6.4-5.6</td></tr>
+<td class="num">6.4-5.6</td></tr>
 
 <tr class="team" id="team-michigan" data-slug="michigan" data-conf="Big Ten"
- data-pal="7" data-res="7" data-avg="7" data-str="54" data-rec="8"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="7" data-res="7" data-str="54" data-rec="8"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Michigan</td><td>Big Ten</td>
 <td>1-0</td>
 <td class="num">0.1-0.9</td><td class="num">1.0-0.0</td>
-<td class="num">0.6-0.4</td><td class="num">6.1-5.9</td></tr>
+<td class="num">6.1-5.9</td></tr>
 
 <tr class="team" id="team-north-carolina" data-slug="north-carolina" data-conf="ACC"
- data-pal="8" data-res="8" data-avg="8" data-str="28" data-rec="9"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="8" data-res="8" data-str="28" data-rec="9"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>North Carolina</td><td>ACC</td>
 <td>1-0</td>
 <td class="num">0.1-0.9</td><td class="num">1.0-0.0</td>
-<td class="num">0.6-0.4</td><td class="num">7.5-4.5</td></tr>
+<td class="num">7.5-4.5</td></tr>
 
 <tr class="team" id="team-massachusetts" data-slug="massachusetts" data-conf="Mid-American"
- data-pal="9" data-res="19" data-avg="15" data-str="21" data-rec="10"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="9" data-res="19" data-str="21" data-rec="10"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Massachusetts</td><td>MAC</td>
 <td>1-0</td>
 <td class="num">0.1-0.9</td><td class="num">0.9-0.1</td>
-<td class="num">0.5-0.5</td><td class="num">8.5-3.5</td></tr>
+<td class="num">8.5-3.5</td></tr>
 
 <tr class="team" id="team-troy" data-slug="troy" data-conf="Sun Belt"
- data-pal="10" data-res="9" data-avg="9" data-str="42" data-rec="11"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="10" data-res="9" data-str="42" data-rec="11"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Troy</td><td>SBC</td>
 <td>1-0</td>
 <td class="num">0.1-0.9</td><td class="num">1.0-0.0</td>
-<td class="num">0.6-0.4</td><td class="num">6.5-5.5</td></tr>
+<td class="num">6.5-5.5</td></tr>
 
 <tr class="team" id="team-ucla" data-slug="ucla" data-conf="Big Ten"
- data-pal="11" data-res="26" data-avg="16" data-str="16" data-rec="12"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="11" data-res="26" data-str="16" data-rec="12"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>UCLA</td><td>Big Ten</td>
 <td>1-0</td>
 <td class="num">0.1-0.9</td><td class="num">0.9-0.1</td>
-<td class="num">0.5-0.5</td><td class="num">9.0-3.0</td></tr>
+<td class="num">9.0-3.0</td></tr>
 
 <tr class="team" id="team-miami" data-slug="miami" data-conf="ACC"
- data-pal="12" data-res="27" data-avg="20" data-str="4" data-rec="13"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="12" data-res="27" data-str="4" data-rec="13"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Miami</td><td>ACC</td>
 <td>1-0</td>
 <td class="num">0.1-0.9</td><td class="num">0.8-0.2</td>
-<td class="num">0.5-0.5</td><td class="num">10.2-1.8</td></tr>
+<td class="num">10.2-1.8</td></tr>
 
 <tr class="team" id="team-james-madison" data-slug="james-madison" data-conf="Sun Belt"
- data-pal="13" data-res="10" data-avg="10" data-str="31" data-rec="14"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="13" data-res="10" data-str="31" data-rec="14"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>James Madison</td><td>SBC</td>
 <td>1-0</td>
 <td class="num">0.1-0.9</td><td class="num">1.0-0.0</td>
-<td class="num">0.5-0.5</td><td class="num">7.3-4.7</td></tr>
+<td class="num">7.3-4.7</td></tr>
 
 <tr class="team" id="team-oregon" data-slug="oregon" data-conf="Big Ten"
- data-pal="14" data-res="11" data-avg="11" data-str="32" data-rec="15"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="14" data-res="11" data-str="32" data-rec="15"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Oregon</td><td>Big Ten</td>
 <td>1-0</td>
 <td class="num">0.1-0.9</td><td class="num">1.0-0.0</td>
-<td class="num">0.5-0.5</td><td class="num">7.3-4.7</td></tr>
+<td class="num">7.3-4.7</td></tr>
 
 <tr class="team" id="team-west-virginia" data-slug="west-virginia" data-conf="Big 12"
- data-pal="15" data-res="12" data-avg="12" data-str="33" data-rec="16"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="15" data-res="12" data-str="33" data-rec="16"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>West Virginia</td><td>Big 12</td>
 <td>1-0</td>
 <td class="num">0.1-0.9</td><td class="num">1.0-0.0</td>
-<td class="num">0.5-0.5</td><td class="num">7.3-4.7</td></tr>
+<td class="num">7.3-4.7</td></tr>
 
 <tr class="team" id="team-michigan-state" data-slug="michigan-state" data-conf="Big Ten"
- data-pal="16" data-res="13" data-avg="13" data-str="34" data-rec="17"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="16" data-res="13" data-str="34" data-rec="17"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Michigan State</td><td>Big Ten</td>
 <td>1-0</td>
 <td class="num">0.0-0.9</td><td class="num">1.0-0.0</td>
-<td class="num">0.5-0.5</td><td class="num">7.3-4.7</td></tr>
+<td class="num">7.3-4.7</td></tr>
 
 <tr class="team" id="team-south-florida" data-slug="south-florida" data-conf="American Athletic"
- data-pal="17" data-res="14" data-avg="14" data-str="35" data-rec="18"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="17" data-res="14" data-str="35" data-rec="18"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>South Florida</td><td>AAC</td>
 <td>1-0</td>
 <td class="num">0.0-0.9</td><td class="num">1.0-0.0</td>
-<td class="num">0.5-0.5</td><td class="num">7.3-4.7</td></tr>
+<td class="num">7.3-4.7</td></tr>
 
 <tr class="team" id="team-san-jose-state" data-slug="san-jose-state" data-conf="Mountain West"
- data-pal="18" data-res="37" data-avg="37" data-str="38" data-rec="86"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="18" data-res="37" data-str="38" data-rec="86"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>San José State</td><td>MWC</td>
 <td>1-1</td>
 <td class="num">0.1-1.9</td><td class="num">1.3-0.7</td>
-<td class="num">0.7-1.3</td><td class="num">6.5-5.5</td></tr>
+<td class="num">6.5-5.5</td></tr>
 
 <tr class="team" id="team-duke" data-slug="duke" data-conf="ACC"
- data-pal="19" data-res="15" data-avg="17" data-str="22" data-rec="19"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="19" data-res="15" data-str="22" data-rec="19"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Duke</td><td>ACC</td>
 <td>1-0</td>
 <td class="num">0.0-1.0</td><td class="num">0.9-0.1</td>
-<td class="num">0.5-0.5</td><td class="num">8.3-3.7</td></tr>
+<td class="num">8.3-3.7</td></tr>
 
 <tr class="team" id="team-tulsa" data-slug="tulsa" data-conf="American Athletic"
- data-pal="20" data-res="16" data-avg="18" data-str="23" data-rec="20"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="20" data-res="16" data-str="23" data-rec="20"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Tulsa</td><td>AAC</td>
 <td>1-0</td>
 <td class="num">0.0-1.0</td><td class="num">0.9-0.1</td>
-<td class="num">0.5-0.5</td><td class="num">8.3-3.7</td></tr>
+<td class="num">8.3-3.7</td></tr>
 
 <tr class="team" id="team-washington" data-slug="washington" data-conf="Big Ten"
- data-pal="21" data-res="17" data-avg="19" data-str="24" data-rec="21"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="21" data-res="17" data-str="24" data-rec="21"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Washington</td><td>Big Ten</td>
 <td>1-0</td>
 <td class="num">0.0-1.0</td><td class="num">0.9-0.1</td>
-<td class="num">0.5-0.5</td><td class="num">8.3-3.7</td></tr>
+<td class="num">8.3-3.7</td></tr>
 
 <tr class="team" id="team-houston" data-slug="houston" data-conf="Big 12"
- data-pal="22" data-res="18" data-avg="21" data-str="25" data-rec="22"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="22" data-res="18" data-str="25" data-rec="22"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Houston</td><td>Big 12</td>
 <td>1-0</td>
 <td class="num">0.0-1.0</td><td class="num">0.9-0.1</td>
-<td class="num">0.5-0.5</td><td class="num">8.1-3.9</td></tr>
+<td class="num">8.1-3.9</td></tr>
 
 <tr class="team" id="team-iowa" data-slug="iowa" data-conf="Big Ten"
- data-pal="23" data-res="20" data-avg="22" data-str="15" data-rec="23"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="23" data-res="20" data-str="15" data-rec="23"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Iowa</td><td>Big Ten</td>
 <td>1-0</td>
 <td class="num">0.0-1.0</td><td class="num">0.9-0.1</td>
-<td class="num">0.5-0.6</td><td class="num">9.1-2.9</td></tr>
+<td class="num">9.1-2.9</td></tr>
 
 <tr class="team" id="team-nevada" data-slug="nevada" data-conf="Mountain West"
- data-pal="24" data-res="21" data-avg="23" data-str="20" data-rec="24"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="24" data-res="21" data-str="20" data-rec="24"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Nevada</td><td>MWC</td>
 <td>1-0</td>
 <td class="num">0.0-1.0</td><td class="num">0.9-0.1</td>
-<td class="num">0.5-0.6</td><td class="num">8.7-3.3</td></tr>
+<td class="num">8.7-3.3</td></tr>
 
 <tr class="team" id="team-new-mexico" data-slug="new-mexico" data-conf="Mountain West"
- data-pal="25" data-res="22" data-avg="24" data-str="14" data-rec="25"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="25" data-res="22" data-str="14" data-rec="25"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>New Mexico</td><td>MWC</td>
 <td>1-0</td>
 <td class="num">0.0-1.0</td><td class="num">0.9-0.1</td>
-<td class="num">0.4-0.6</td><td class="num">9.1-2.9</td></tr>
+<td class="num">9.1-2.9</td></tr>
 
 <tr class="team" id="team-cincinnati" data-slug="cincinnati" data-conf="Big 12"
- data-pal="26" data-res="23" data-avg="25" data-str="18" data-rec="26"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="26" data-res="23" data-str="18" data-rec="26"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Cincinnati</td><td>Big 12</td>
 <td>1-0</td>
 <td class="num">0.0-1.0</td><td class="num">0.9-0.1</td>
-<td class="num">0.4-0.6</td><td class="num">8.8-3.2</td></tr>
+<td class="num">8.8-3.2</td></tr>
 
 <tr class="team" id="team-illinois" data-slug="illinois" data-conf="Big Ten"
- data-pal="27" data-res="24" data-avg="26" data-str="19" data-rec="27"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="27" data-res="24" data-str="19" data-rec="27"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Illinois</td><td>Big Ten</td>
 <td>1-0</td>
 <td class="num">0.0-1.0</td><td class="num">0.9-0.1</td>
-<td class="num">0.4-0.6</td><td class="num">8.8-3.2</td></tr>
+<td class="num">8.8-3.2</td></tr>
 
 <tr class="team" id="team-nebraska" data-slug="nebraska" data-conf="Big Ten"
- data-pal="28" data-res="25" data-avg="27" data-str="17" data-rec="28"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="28" data-res="25" data-str="17" data-rec="28"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Nebraska</td><td>Big Ten</td>
 <td>1-0</td>
 <td class="num">0.0-1.0</td><td class="num">0.9-0.1</td>
-<td class="num">0.4-0.6</td><td class="num">8.8-3.2</td></tr>
+<td class="num">8.8-3.2</td></tr>
 
 <tr class="team" id="team-colorado-state" data-slug="colorado-state" data-conf="Pac-12"
- data-pal="29" data-res="28" data-avg="28" data-str="12" data-rec="29"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="29" data-res="28" data-str="12" data-rec="29"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Colorado State</td><td>Pac-12</td>
 <td>1-0</td>
 <td class="num">0.0-1.0</td><td class="num">0.8-0.2</td>
-<td class="num">0.4-0.6</td><td class="num">9.2-2.8</td></tr>
+<td class="num">9.2-2.8</td></tr>
 
 <tr class="team" id="team-wake-forest" data-slug="wake-forest" data-conf="ACC"
- data-pal="30" data-res="29" data-avg="29" data-str="13" data-rec="30"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="30" data-res="29" data-str="13" data-rec="30"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Wake Forest</td><td>ACC</td>
 <td>1-0</td>
 <td class="num">0.0-1.0</td><td class="num">0.8-0.2</td>
-<td class="num">0.4-0.6</td><td class="num">9.2-2.8</td></tr>
+<td class="num">9.2-2.8</td></tr>
 
 <tr class="team" id="team-alabama" data-slug="alabama" data-conf="SEC"
- data-pal="31" data-res="30" data-avg="30" data-str="11" data-rec="31"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="31" data-res="30" data-str="11" data-rec="31"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Alabama</td><td>SEC</td>
 <td>1-0</td>
 <td class="num">0.0-1.0</td><td class="num">0.8-0.2</td>
-<td class="num">0.4-0.6</td><td class="num">9.3-2.7</td></tr>
+<td class="num">9.3-2.7</td></tr>
 
 <tr class="team" id="team-ohio-state" data-slug="ohio-state" data-conf="Big Ten"
- data-pal="32" data-res="31" data-avg="31" data-str="7" data-rec="32"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="32" data-res="31" data-str="7" data-rec="32"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Ohio State</td><td>Big Ten</td>
 <td>1-0</td>
 <td class="num">0.0-1.0</td><td class="num">0.8-0.2</td>
-<td class="num">0.4-0.6</td><td class="num">9.6-2.4</td></tr>
+<td class="num">9.6-2.4</td></tr>
 
 <tr class="team" id="team-oklahoma" data-slug="oklahoma" data-conf="SEC"
- data-pal="33" data-res="32" data-avg="32" data-str="9" data-rec="33"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="33" data-res="32" data-str="9" data-rec="33"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Oklahoma</td><td>SEC</td>
 <td>1-0</td>
 <td class="num">0.0-1.0</td><td class="num">0.8-0.2</td>
-<td class="num">0.4-0.6</td><td class="num">9.5-2.5</td></tr>
+<td class="num">9.5-2.5</td></tr>
 
 <tr class="team" id="team-north-dakota-state" data-slug="north-dakota-state" data-conf="Mountain West"
- data-pal="34" data-res="33" data-avg="33" data-str="5" data-rec="3"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="34" data-res="33" data-str="5" data-rec="3"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>North Dakota State</td><td>MWC</td>
 <td>2-0</td>
 <td class="num">0.0-2.0</td><td class="num">1.6-0.4</td>
-<td class="num">0.8-1.2</td><td class="num">9.6-2.4</td></tr>
+<td class="num">9.6-2.4</td></tr>
 
 <tr class="team" id="team-virginia" data-slug="virginia" data-conf="ACC"
- data-pal="35" data-res="34" data-avg="34" data-str="6" data-rec="34"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="35" data-res="34" data-str="6" data-rec="34"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Virginia</td><td>ACC</td>
 <td>1-0</td>
 <td class="num">0.0-1.0</td><td class="num">0.8-0.2</td>
-<td class="num">0.4-0.6</td><td class="num">9.6-2.4</td></tr>
+<td class="num">9.6-2.4</td></tr>
 
 <tr class="team" id="team-lsu" data-slug="lsu" data-conf="SEC"
- data-pal="36" data-res="35" data-avg="35" data-str="8" data-rec="35"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="36" data-res="35" data-str="8" data-rec="35"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>LSU</td><td>SEC</td>
 <td>1-0</td>
 <td class="num">0.0-1.0</td><td class="num">0.8-0.2</td>
-<td class="num">0.4-0.6</td><td class="num">9.5-2.5</td></tr>
+<td class="num">9.5-2.5</td></tr>
 
 <tr class="team" id="team-texas" data-slug="texas" data-conf="SEC"
- data-pal="37" data-res="36" data-avg="36" data-str="10" data-rec="36"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="37" data-res="36" data-str="10" data-rec="36"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Texas</td><td>SEC</td>
 <td>1-0</td>
 <td class="num">0.0-1.0</td><td class="num">0.8-0.2</td>
-<td class="num">0.4-0.6</td><td class="num">9.5-2.5</td></tr>
+<td class="num">9.5-2.5</td></tr>
 
 <tr class="team" id="team-notre-dame" data-slug="notre-dame" data-conf="FBS Independents"
- data-pal="38" data-res="38" data-avg="38" data-str="44" data-rec="37"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="38" data-res="38" data-str="44" data-rec="37"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Notre Dame</td><td>Indep.</td>
 <td>1-0</td>
 <td class="num">0.0-1.0</td><td class="num">0.5-0.5</td>
-<td class="num">0.3-0.7</td><td class="num">6.4-5.6</td></tr>
+<td class="num">6.4-5.6</td></tr>
 
 <tr class="team" id="team-unlv" data-slug="unlv" data-conf="Mountain West"
- data-pal="39" data-res="39" data-avg="39" data-str="27" data-rec="87"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="39" data-res="39" data-str="27" data-rec="87"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>UNLV</td><td>MWC</td>
 <td>1-1</td>
 <td class="num">0.0-2.0</td><td class="num">1.1-0.9</td>
-<td class="num">0.5-1.5</td><td class="num">8.1-3.9</td></tr>
+<td class="num">8.1-3.9</td></tr>
 
 <tr class="team" id="team-florida" data-slug="florida" data-conf="SEC"
- data-pal="40" data-res="40" data-avg="40" data-str="46" data-rec="38"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="40" data-res="40" data-str="46" data-rec="38"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Florida</td><td>SEC</td>
 <td>1-0</td>
 <td class="num">0.0-1.0</td><td class="num">0.5-0.5</td>
-<td class="num">0.3-0.7</td><td class="num">6.2-5.8</td></tr>
+<td class="num">6.2-5.8</td></tr>
 
 <tr class="team" id="team-penn-state" data-slug="penn-state" data-conf="Big Ten"
- data-pal="41" data-res="41" data-avg="41" data-str="47" data-rec="39"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="41" data-res="41" data-str="47" data-rec="39"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Penn State</td><td>Big Ten</td>
 <td>1-0</td>
 <td class="num">0.0-1.0</td><td class="num">0.5-0.5</td>
-<td class="num">0.3-0.7</td><td class="num">6.2-5.8</td></tr>
+<td class="num">6.2-5.8</td></tr>
 
 <tr class="team" id="team-pittsburgh" data-slug="pittsburgh" data-conf="ACC"
- data-pal="42" data-res="42" data-avg="42" data-str="48" data-rec="40"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="42" data-res="42" data-str="48" data-rec="40"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Pittsburgh</td><td>ACC</td>
 <td>1-0</td>
 <td class="num">0.0-1.0</td><td class="num">0.5-0.5</td>
-<td class="num">0.3-0.7</td><td class="num">6.2-5.8</td></tr>
+<td class="num">6.2-5.8</td></tr>
 
 <tr class="team" id="team-indiana" data-slug="indiana" data-conf="Big Ten"
- data-pal="43" data-res="43" data-avg="43" data-str="52" data-rec="41"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="43" data-res="43" data-str="52" data-rec="41"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Indiana</td><td>Big Ten</td>
 <td>1-0</td>
 <td class="num">0.0-1.0</td><td class="num">0.5-0.5</td>
-<td class="num">0.3-0.7</td><td class="num">6.2-5.8</td></tr>
+<td class="num">6.2-5.8</td></tr>
 
 <tr class="team" id="team-mississippi-state" data-slug="mississippi-state" data-conf="SEC"
- data-pal="44" data-res="44" data-avg="44" data-str="50" data-rec="42"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="44" data-res="44" data-str="50" data-rec="42"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Mississippi State</td><td>SEC</td>
 <td>1-0</td>
 <td class="num">0.0-1.0</td><td class="num">0.5-0.5</td>
-<td class="num">0.3-0.7</td><td class="num">6.2-5.8</td></tr>
+<td class="num">6.2-5.8</td></tr>
 
 <tr class="team" id="team-south-carolina" data-slug="south-carolina" data-conf="SEC"
- data-pal="45" data-res="45" data-avg="45" data-str="49" data-rec="43"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="45" data-res="45" data-str="49" data-rec="43"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>South Carolina</td><td>SEC</td>
 <td>1-0</td>
 <td class="num">0.0-1.0</td><td class="num">0.5-0.5</td>
-<td class="num">0.3-0.7</td><td class="num">6.2-5.8</td></tr>
+<td class="num">6.2-5.8</td></tr>
 
 <tr class="team" id="team-texas-a-m" data-slug="texas-a-m" data-conf="SEC"
- data-pal="46" data-res="46" data-avg="46" data-str="51" data-rec="44"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="46" data-res="46" data-str="51" data-rec="44"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Texas A&amp;M</td><td>SEC</td>
 <td>1-0</td>
 <td class="num">0.0-1.0</td><td class="num">0.5-0.5</td>
-<td class="num">0.3-0.7</td><td class="num">6.2-5.8</td></tr>
+<td class="num">6.2-5.8</td></tr>
 
 <tr class="team" id="team-florida-state" data-slug="florida-state" data-conf="ACC"
- data-pal="47" data-res="47" data-avg="47" data-str="26" data-rec="88"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="47" data-res="47" data-str="26" data-rec="88"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Florida State</td><td>ACC</td>
 <td>1-1</td>
 <td class="num">0.0-2.0</td><td class="num">1.0-1.0</td>
-<td class="num">0.5-1.5</td><td class="num">8.1-3.9</td></tr>
+<td class="num">8.1-3.9</td></tr>
 
 <tr class="team" id="team-stanford" data-slug="stanford" data-conf="ACC"
- data-pal="48" data-res="48" data-avg="48" data-str="120" data-rec="89"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="48" data-res="48" data-str="120" data-rec="89"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Stanford</td><td>ACC</td>
 <td>1-1</td>
 <td class="num">0.0-2.0</td><td class="num">0.9-1.1</td>
-<td class="num">0.4-1.6</td><td class="num">3.8-8.2</td></tr>
+<td class="num">3.8-8.2</td></tr>
 
 <tr class="team" id="team-eastern-michigan" data-slug="eastern-michigan" data-conf="Mid-American"
- data-pal="49" data-res="49" data-avg="49" data-str="114" data-rec="90"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="49" data-res="49" data-str="114" data-rec="90"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Eastern Michigan</td><td>MAC</td>
 <td>1-1</td>
 <td class="num">0.0-2.0</td><td class="num">0.7-1.3</td>
-<td class="num">0.3-1.7</td><td class="num">4.2-7.8</td></tr>
+<td class="num">4.2-7.8</td></tr>
 
 <tr class="team" id="team-clemson" data-slug="clemson" data-conf="ACC"
- data-pal="50" data-res="50" data-avg="50" data-str="125" data-rec="94"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="50" data-res="50" data-str="125" data-rec="94"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Clemson</td><td>ACC</td>
 <td>0-1</td>
 <td class="num">0.0-1.0</td><td class="num">0.3-0.7</td>
-<td class="num">0.1-0.9</td><td class="num">3.5-8.5</td></tr>
+<td class="num">3.5-8.5</td></tr>
 
 <tr class="team" id="team-utep" data-slug="utep" data-conf="Mountain West"
- data-pal="51" data-res="51" data-avg="51" data-str="122" data-rec="95"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="51" data-res="51" data-str="122" data-rec="95"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>UTEP</td><td>MWC</td>
 <td>0-1</td>
 <td class="num">0.0-1.0</td><td class="num">0.3-0.7</td>
-<td class="num">0.1-0.9</td><td class="num">3.6-8.4</td></tr>
+<td class="num">3.6-8.4</td></tr>
 
 <tr class="team" id="team-ball-state" data-slug="ball-state" data-conf="Mid-American"
- data-pal="52" data-res="52" data-avg="52" data-str="126" data-rec="96"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="52" data-res="52" data-str="126" data-rec="96"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Ball State</td><td>MAC</td>
 <td>0-1</td>
 <td class="num">0.0-1.0</td><td class="num">0.3-0.7</td>
-<td class="num">0.1-0.9</td><td class="num">3.4-8.6</td></tr>
+<td class="num">3.4-8.6</td></tr>
 
 <tr class="team" id="team-akron" data-slug="akron" data-conf="Mid-American"
- data-pal="53" data-res="53" data-avg="53" data-str="118" data-rec="97"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="53" data-res="53" data-str="118" data-rec="97"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Akron</td><td>MAC</td>
 <td>0-1</td>
 <td class="num">0.0-1.0</td><td class="num">0.2-0.8</td>
-<td class="num">0.1-0.9</td><td class="num">3.9-8.1</td></tr>
+<td class="num">3.9-8.1</td></tr>
 
 <tr class="team" id="team-wyoming" data-slug="wyoming" data-conf="Mountain West"
- data-pal="54" data-res="54" data-avg="54" data-str="119" data-rec="98"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="54" data-res="54" data-str="119" data-rec="98"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Wyoming</td><td>MWC</td>
 <td>0-1</td>
 <td class="num">0.0-1.0</td><td class="num">0.2-0.8</td>
-<td class="num">0.1-0.9</td><td class="num">3.9-8.1</td></tr>
+<td class="num">3.9-8.1</td></tr>
 
 <tr class="team" id="team-boston-college" data-slug="boston-college" data-conf="ACC"
- data-pal="55" data-res="55" data-avg="55" data-str="111" data-rec="99"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="55" data-res="55" data-str="111" data-rec="99"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Boston College</td><td>ACC</td>
 <td>0-1</td>
 <td class="num">0.0-1.0</td><td class="num">0.2-0.8</td>
-<td class="num">0.1-0.9</td><td class="num">4.3-7.7</td></tr>
+<td class="num">4.3-7.7</td></tr>
 
 <tr class="team" id="team-ohio" data-slug="ohio" data-conf="Mid-American"
- data-pal="56" data-res="56" data-avg="56" data-str="113" data-rec="100"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="56" data-res="56" data-str="113" data-rec="100"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Ohio</td><td>MAC</td>
 <td>0-1</td>
 <td class="num">0.0-1.0</td><td class="num">0.2-0.8</td>
-<td class="num">0.1-0.9</td><td class="num">4.3-7.7</td></tr>
+<td class="num">4.3-7.7</td></tr>
 
 <tr class="team" id="team-uab" data-slug="uab" data-conf="American Athletic"
- data-pal="57" data-res="57" data-avg="57" data-str="112" data-rec="101"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="57" data-res="57" data-str="112" data-rec="101"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>UAB</td><td>AAC</td>
 <td>0-1</td>
 <td class="num">0.0-1.0</td><td class="num">0.2-0.8</td>
-<td class="num">0.1-0.9</td><td class="num">4.3-7.7</td></tr>
+<td class="num">4.3-7.7</td></tr>
 
 <tr class="team" id="team-air-force" data-slug="air-force" data-conf="Mountain West"
- data-pal="58" data-res="58" data-avg="58" data-str="55" data-rec="45"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="58" data-res="58" data-str="55" data-rec="45"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Air Force</td><td>MWC</td>
 <td>1-0</td>
 <td class="num">0.0-1.0</td><td class="num">0.0-1.0</td>
-<td class="num">0.0-1.0</td><td class="num">6.0-6.0</td></tr>
+<td class="num">6.0-6.0</td></tr>
 
 <tr class="team" id="team-app-state" data-slug="app-state" data-conf="Sun Belt"
- data-pal="59" data-res="59" data-avg="59" data-str="56" data-rec="46"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="59" data-res="59" data-str="56" data-rec="46"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>App State</td><td>SBC</td>
 <td>1-0</td>
 <td class="num">0.0-1.0</td><td class="num">0.0-1.0</td>
-<td class="num">0.0-1.0</td><td class="num">6.0-6.0</td></tr>
+<td class="num">6.0-6.0</td></tr>
 
 <tr class="team" id="team-arizona" data-slug="arizona" data-conf="Big 12"
- data-pal="60" data-res="60" data-avg="60" data-str="57" data-rec="47"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="60" data-res="60" data-str="57" data-rec="47"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Arizona</td><td>Big 12</td>
 <td>1-0</td>
 <td class="num">0.0-1.0</td><td class="num">0.0-1.0</td>
-<td class="num">0.0-1.0</td><td class="num">6.0-6.0</td></tr>
+<td class="num">6.0-6.0</td></tr>
 
 <tr class="team" id="team-arizona-state" data-slug="arizona-state" data-conf="Big 12"
- data-pal="61" data-res="61" data-avg="61" data-str="58" data-rec="48"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="61" data-res="61" data-str="58" data-rec="48"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Arizona State</td><td>Big 12</td>
 <td>1-0</td>
 <td class="num">0.0-1.0</td><td class="num">0.0-1.0</td>
-<td class="num">0.0-1.0</td><td class="num">6.0-6.0</td></tr>
+<td class="num">6.0-6.0</td></tr>
 
 <tr class="team" id="team-arkansas" data-slug="arkansas" data-conf="SEC"
- data-pal="62" data-res="62" data-avg="62" data-str="59" data-rec="49"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="62" data-res="62" data-str="59" data-rec="49"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Arkansas</td><td>SEC</td>
 <td>1-0</td>
 <td class="num">0.0-1.0</td><td class="num">0.0-1.0</td>
-<td class="num">0.0-1.0</td><td class="num">6.0-6.0</td></tr>
+<td class="num">6.0-6.0</td></tr>
 
 <tr class="team" id="team-arkansas-state" data-slug="arkansas-state" data-conf="Sun Belt"
- data-pal="63" data-res="63" data-avg="63" data-str="30" data-rec="102"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="63" data-res="63" data-str="30" data-rec="102"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Arkansas State</td><td>SBC</td>
 <td>0-1</td>
 <td class="num">0.0-1.0</td><td class="num">0.0-1.0</td>
-<td class="num">0.0-1.0</td><td class="num">7.4-4.6</td></tr>
+<td class="num">7.4-4.6</td></tr>
 
 <tr class="team" id="team-army" data-slug="army" data-conf="American Athletic"
- data-pal="64" data-res="64" data-avg="64" data-str="60" data-rec="50"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="64" data-res="64" data-str="60" data-rec="50"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Army</td><td>AAC</td>
 <td>1-0</td>
 <td class="num">0.0-1.0</td><td class="num">0.0-1.0</td>
-<td class="num">0.0-1.0</td><td class="num">6.0-6.0</td></tr>
+<td class="num">6.0-6.0</td></tr>
 
 <tr class="team" id="team-boise-state" data-slug="boise-state" data-conf="Pac-12"
- data-pal="65" data-res="65" data-avg="65" data-str="99" data-rec="103"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="65" data-res="65" data-str="99" data-rec="103"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Boise State</td><td>Pac-12</td>
 <td>0-1</td>
 <td class="num">0.0-1.0</td><td class="num">0.0-1.0</td>
-<td class="num">0.0-1.0</td><td class="num">5.9-6.1</td></tr>
+<td class="num">5.9-6.1</td></tr>
 
 <tr class="team" id="team-bowling-green" data-slug="bowling-green" data-conf="Mid-American"
- data-pal="66" data-res="66" data-avg="66" data-str="61" data-rec="104"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="66" data-res="66" data-str="61" data-rec="104"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Bowling Green</td><td>MAC</td>
 <td>0-1</td>
 <td class="num">0.0-1.0</td><td class="num">0.0-1.0</td>
-<td class="num">0.0-1.0</td><td class="num">6.0-6.0</td></tr>
+<td class="num">6.0-6.0</td></tr>
 
 <tr class="team" id="team-buffalo" data-slug="buffalo" data-conf="Mid-American"
- data-pal="67" data-res="67" data-avg="67" data-str="62" data-rec="51"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="67" data-res="67" data-str="62" data-rec="51"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Buffalo</td><td>MAC</td>
 <td>1-0</td>
 <td class="num">0.0-1.0</td><td class="num">0.0-1.0</td>
-<td class="num">0.0-1.0</td><td class="num">6.0-6.0</td></tr>
+<td class="num">6.0-6.0</td></tr>
 
 <tr class="team" id="team-byu" data-slug="byu" data-conf="Big 12"
- data-pal="68" data-res="68" data-avg="68" data-str="63" data-rec="52"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="68" data-res="68" data-str="63" data-rec="52"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>BYU</td><td>Big 12</td>
 <td>1-0</td>
 <td class="num">0.0-1.0</td><td class="num">0.0-1.0</td>
-<td class="num">0.0-1.0</td><td class="num">6.0-6.0</td></tr>
+<td class="num">6.0-6.0</td></tr>
 
 <tr class="team" id="team-central-michigan" data-slug="central-michigan" data-conf="Mid-American"
- data-pal="69" data-res="69" data-avg="69" data-str="117" data-rec="105"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="69" data-res="69" data-str="117" data-rec="105"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Central Michigan</td><td>MAC</td>
 <td>0-1</td>
 <td class="num">0.0-1.0</td><td class="num">0.0-1.0</td>
-<td class="num">0.0-1.0</td><td class="num">4.0-8.0</td></tr>
+<td class="num">4.0-8.0</td></tr>
 
 <tr class="team" id="team-charlotte" data-slug="charlotte" data-conf="American Athletic"
- data-pal="70" data-res="70" data-avg="70" data-str="64" data-rec="106"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="70" data-res="70" data-str="64" data-rec="106"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Charlotte</td><td>AAC</td>
 <td>0-1</td>
 <td class="num">0.0-1.0</td><td class="num">0.0-1.0</td>
-<td class="num">0.0-1.0</td><td class="num">6.0-6.0</td></tr>
+<td class="num">6.0-6.0</td></tr>
 
 <tr class="team" id="team-coastal-carolina" data-slug="coastal-carolina" data-conf="Sun Belt"
- data-pal="71" data-res="71" data-avg="71" data-str="100" data-rec="107"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="71" data-res="71" data-str="100" data-rec="107"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Coastal Carolina</td><td>SBC</td>
 <td>0-1</td>
 <td class="num">0.0-1.0</td><td class="num">0.0-1.0</td>
-<td class="num">0.0-1.0</td><td class="num">5.9-6.1</td></tr>
+<td class="num">5.9-6.1</td></tr>
 
 <tr class="team" id="team-delaware" data-slug="delaware" data-conf="Conference USA"
- data-pal="72" data-res="72" data-avg="72" data-str="65" data-rec="53"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="72" data-res="72" data-str="65" data-rec="53"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Delaware</td><td>C-USA</td>
 <td>1-0</td>
 <td class="num">0.0-1.0</td><td class="num">0.0-1.0</td>
-<td class="num">0.0-1.0</td><td class="num">6.0-6.0</td></tr>
+<td class="num">6.0-6.0</td></tr>
 
 <tr class="team" id="team-east-carolina" data-slug="east-carolina" data-conf="American Athletic"
- data-pal="73" data-res="73" data-avg="73" data-str="121" data-rec="108"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="73" data-res="73" data-str="121" data-rec="108"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>East Carolina</td><td>AAC</td>
 <td>0-1</td>
 <td class="num">0.0-1.0</td><td class="num">0.0-1.0</td>
-<td class="num">0.0-1.0</td><td class="num">3.8-8.2</td></tr>
+<td class="num">3.8-8.2</td></tr>
 
 <tr class="team" id="team-florida-international" data-slug="florida-international" data-conf="Conference USA"
- data-pal="74" data-res="74" data-avg="74" data-str="103" data-rec="109"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="74" data-res="74" data-str="103" data-rec="109"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Florida International</td><td>C-USA</td>
 <td>0-1</td>
 <td class="num">0.0-1.0</td><td class="num">0.0-1.0</td>
-<td class="num">0.0-1.0</td><td class="num">5.6-6.4</td></tr>
+<td class="num">5.6-6.4</td></tr>
 
 <tr class="team" id="team-fresno-state" data-slug="fresno-state" data-conf="Pac-12"
- data-pal="75" data-res="75" data-avg="75" data-str="29" data-rec="110"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="75" data-res="75" data-str="29" data-rec="110"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Fresno State</td><td>Pac-12</td>
 <td>0-1</td>
 <td class="num">0.0-1.0</td><td class="num">0.0-1.0</td>
-<td class="num">0.0-1.0</td><td class="num">7.4-4.6</td></tr>
+<td class="num">7.4-4.6</td></tr>
 
 <tr class="team" id="team-georgia" data-slug="georgia" data-conf="SEC"
- data-pal="76" data-res="76" data-avg="76" data-str="66" data-rec="54"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="76" data-res="76" data-str="66" data-rec="54"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Georgia</td><td>SEC</td>
 <td>1-0</td>
 <td class="num">0.0-1.0</td><td class="num">0.0-1.0</td>
-<td class="num">0.0-1.0</td><td class="num">6.0-6.0</td></tr>
+<td class="num">6.0-6.0</td></tr>
 
 <tr class="team" id="team-georgia-southern" data-slug="georgia-southern" data-conf="Sun Belt"
- data-pal="77" data-res="77" data-avg="77" data-str="67" data-rec="55"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="77" data-res="77" data-str="67" data-rec="55"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Georgia Southern</td><td>SBC</td>
 <td>1-0</td>
 <td class="num">0.0-1.0</td><td class="num">0.0-1.0</td>
-<td class="num">0.0-1.0</td><td class="num">6.0-6.0</td></tr>
+<td class="num">6.0-6.0</td></tr>
 
 <tr class="team" id="team-georgia-state" data-slug="georgia-state" data-conf="Sun Belt"
- data-pal="78" data-res="78" data-avg="78" data-str="68" data-rec="56"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="78" data-res="78" data-str="68" data-rec="56"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Georgia State</td><td>SBC</td>
 <td>1-0</td>
 <td class="num">0.0-1.0</td><td class="num">0.0-1.0</td>
-<td class="num">0.0-1.0</td><td class="num">6.0-6.0</td></tr>
+<td class="num">6.0-6.0</td></tr>
 
 <tr class="team" id="team-iowa-state" data-slug="iowa-state" data-conf="Big 12"
- data-pal="79" data-res="79" data-avg="79" data-str="69" data-rec="57"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="79" data-res="79" data-str="69" data-rec="57"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Iowa State</td><td>Big 12</td>
 <td>1-0</td>
 <td class="num">0.0-1.0</td><td class="num">0.0-1.0</td>
-<td class="num">0.0-1.0</td><td class="num">6.0-6.0</td></tr>
+<td class="num">6.0-6.0</td></tr>
 
 <tr class="team" id="team-jacksonville-state" data-slug="jacksonville-state" data-conf="Conference USA"
- data-pal="80" data-res="80" data-avg="80" data-str="123" data-rec="91"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="80" data-res="80" data-str="123" data-rec="91"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Jacksonville State</td><td>C-USA</td>
 <td>1-1</td>
 <td class="num">0.0-2.0</td><td class="num">0.0-2.0</td>
-<td class="num">0.0-2.0</td><td class="num">3.6-8.4</td></tr>
+<td class="num">3.6-8.4</td></tr>
 
 <tr class="team" id="team-kansas" data-slug="kansas" data-conf="Big 12"
- data-pal="81" data-res="81" data-avg="81" data-str="70" data-rec="58"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="81" data-res="81" data-str="70" data-rec="58"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Kansas</td><td>Big 12</td>
 <td>1-0</td>
 <td class="num">0.0-1.0</td><td class="num">0.0-1.0</td>
-<td class="num">0.0-1.0</td><td class="num">6.0-6.0</td></tr>
+<td class="num">6.0-6.0</td></tr>
 
 <tr class="team" id="team-kansas-state" data-slug="kansas-state" data-conf="Big 12"
- data-pal="82" data-res="82" data-avg="82" data-str="71" data-rec="59"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="82" data-res="82" data-str="71" data-rec="59"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Kansas State</td><td>Big 12</td>
 <td>1-0</td>
 <td class="num">0.0-1.0</td><td class="num">0.0-1.0</td>
-<td class="num">0.0-1.0</td><td class="num">6.0-6.0</td></tr>
+<td class="num">6.0-6.0</td></tr>
 
 <tr class="team" id="team-kennesaw-state" data-slug="kennesaw-state" data-conf="Conference USA"
- data-pal="83" data-res="83" data-avg="83" data-str="72" data-rec="60"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="83" data-res="83" data-str="72" data-rec="60"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Kennesaw State</td><td>C-USA</td>
 <td>1-0</td>
 <td class="num">0.0-1.0</td><td class="num">0.0-1.0</td>
-<td class="num">0.0-1.0</td><td class="num">6.0-6.0</td></tr>
+<td class="num">6.0-6.0</td></tr>
 
 <tr class="team" id="team-kentucky" data-slug="kentucky" data-conf="SEC"
- data-pal="84" data-res="84" data-avg="84" data-str="73" data-rec="61"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="84" data-res="84" data-str="73" data-rec="61"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Kentucky</td><td>SEC</td>
 <td>1-0</td>
 <td class="num">0.0-1.0</td><td class="num">0.0-1.0</td>
-<td class="num">0.0-1.0</td><td class="num">6.0-6.0</td></tr>
+<td class="num">6.0-6.0</td></tr>
 
 <tr class="team" id="team-liberty" data-slug="liberty" data-conf="Conference USA"
- data-pal="85" data-res="85" data-avg="85" data-str="101" data-rec="111"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="85" data-res="85" data-str="101" data-rec="111"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Liberty</td><td>C-USA</td>
 <td>0-1</td>
 <td class="num">0.0-1.0</td><td class="num">0.0-1.0</td>
-<td class="num">0.0-1.0</td><td class="num">5.9-6.1</td></tr>
+<td class="num">5.9-6.1</td></tr>
 
 <tr class="team" id="team-louisiana" data-slug="louisiana" data-conf="Sun Belt"
- data-pal="86" data-res="86" data-avg="86" data-str="74" data-rec="62"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="86" data-res="86" data-str="74" data-rec="62"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Louisiana</td><td>SBC</td>
 <td>1-0</td>
 <td class="num">0.0-1.0</td><td class="num">0.0-1.0</td>
-<td class="num">0.0-1.0</td><td class="num">6.0-6.0</td></tr>
+<td class="num">6.0-6.0</td></tr>
 
 <tr class="team" id="team-louisiana-tech" data-slug="louisiana-tech" data-conf="Sun Belt"
- data-pal="87" data-res="87" data-avg="87" data-str="75" data-rec="63"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="87" data-res="87" data-str="75" data-rec="63"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Louisiana Tech</td><td>SBC</td>
 <td>1-0</td>
 <td class="num">0.0-1.0</td><td class="num">0.0-1.0</td>
-<td class="num">0.0-1.0</td><td class="num">6.0-6.0</td></tr>
+<td class="num">6.0-6.0</td></tr>
 
 <tr class="team" id="team-maryland" data-slug="maryland" data-conf="Big Ten"
- data-pal="88" data-res="88" data-avg="88" data-str="76" data-rec="64"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="88" data-res="88" data-str="76" data-rec="64"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Maryland</td><td>Big Ten</td>
 <td>1-0</td>
 <td class="num">0.0-1.0</td><td class="num">0.0-1.0</td>
-<td class="num">0.0-1.0</td><td class="num">6.0-6.0</td></tr>
+<td class="num">6.0-6.0</td></tr>
 
 <tr class="team" id="team-middle-tennessee" data-slug="middle-tennessee" data-conf="Conference USA"
- data-pal="89" data-res="89" data-avg="89" data-str="77" data-rec="65"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="89" data-res="89" data-str="77" data-rec="65"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Middle Tennessee</td><td>C-USA</td>
 <td>1-0</td>
 <td class="num">0.0-1.0</td><td class="num">0.0-1.0</td>
-<td class="num">0.0-1.0</td><td class="num">6.0-6.0</td></tr>
+<td class="num">6.0-6.0</td></tr>
 
 <tr class="team" id="team-minnesota" data-slug="minnesota" data-conf="Big Ten"
- data-pal="90" data-res="90" data-avg="90" data-str="78" data-rec="66"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="90" data-res="90" data-str="78" data-rec="66"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Minnesota</td><td>Big Ten</td>
 <td>1-0</td>
 <td class="num">0.0-1.0</td><td class="num">0.0-1.0</td>
-<td class="num">0.0-1.0</td><td class="num">6.0-6.0</td></tr>
+<td class="num">6.0-6.0</td></tr>
 
 <tr class="team" id="team-missouri" data-slug="missouri" data-conf="SEC"
- data-pal="91" data-res="91" data-avg="91" data-str="79" data-rec="67"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="91" data-res="91" data-str="79" data-rec="67"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Missouri</td><td>SEC</td>
 <td>1-0</td>
 <td class="num">0.0-1.0</td><td class="num">0.0-1.0</td>
-<td class="num">0.0-1.0</td><td class="num">6.0-6.0</td></tr>
+<td class="num">6.0-6.0</td></tr>
 
 <tr class="team" id="team-navy" data-slug="navy" data-conf="American Athletic"
- data-pal="92" data-res="92" data-avg="92" data-str="80" data-rec="68"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="92" data-res="92" data-str="80" data-rec="68"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Navy</td><td>AAC</td>
 <td>1-0</td>
 <td class="num">0.0-1.0</td><td class="num">0.0-1.0</td>
-<td class="num">0.0-1.0</td><td class="num">6.0-6.0</td></tr>
+<td class="num">6.0-6.0</td></tr>
 
 <tr class="team" id="team-nc-state" data-slug="nc-state" data-conf="ACC"
- data-pal="93" data-res="93" data-avg="93" data-str="124" data-rec="112"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="93" data-res="93" data-str="124" data-rec="112"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>NC State</td><td>ACC</td>
 <td>0-1</td>
 <td class="num">0.0-1.0</td><td class="num">0.0-1.0</td>
-<td class="num">0.0-1.0</td><td class="num">3.6-8.4</td></tr>
+<td class="num">3.6-8.4</td></tr>
 
 <tr class="team" id="team-new-mexico-state" data-slug="new-mexico-state" data-conf="Conference USA"
- data-pal="94" data-res="94" data-avg="94" data-str="128" data-rec="92"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="94" data-res="94" data-str="128" data-rec="92"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>New Mexico State</td><td>C-USA</td>
 <td>1-1</td>
 <td class="num">0.0-2.0</td><td class="num">0.0-2.0</td>
-<td class="num">0.0-2.0</td><td class="num">3.1-8.9</td></tr>
+<td class="num">3.1-8.9</td></tr>
 
 <tr class="team" id="team-northern-illinois" data-slug="northern-illinois" data-conf="Mountain West"
- data-pal="95" data-res="95" data-avg="95" data-str="116" data-rec="113"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="95" data-res="95" data-str="116" data-rec="113"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Northern Illinois</td><td>MWC</td>
 <td>0-1</td>
 <td class="num">0.0-1.0</td><td class="num">0.0-1.0</td>
-<td class="num">0.0-1.0</td><td class="num">4.1-7.9</td></tr>
+<td class="num">4.1-7.9</td></tr>
 
 <tr class="team" id="team-northwestern" data-slug="northwestern" data-conf="Big Ten"
- data-pal="96" data-res="96" data-avg="96" data-str="81" data-rec="69"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="96" data-res="96" data-str="81" data-rec="69"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Northwestern</td><td>Big Ten</td>
 <td>1-0</td>
 <td class="num">0.0-1.0</td><td class="num">0.0-1.0</td>
-<td class="num">0.0-1.0</td><td class="num">6.0-6.0</td></tr>
+<td class="num">6.0-6.0</td></tr>
 
 <tr class="team" id="team-oklahoma-state" data-slug="oklahoma-state" data-conf="Big 12"
- data-pal="97" data-res="97" data-avg="97" data-str="105" data-rec="114"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="97" data-res="97" data-str="105" data-rec="114"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Oklahoma State</td><td>Big 12</td>
 <td>0-1</td>
 <td class="num">0.0-1.0</td><td class="num">0.0-1.0</td>
-<td class="num">0.0-1.0</td><td class="num">4.8-7.2</td></tr>
+<td class="num">4.8-7.2</td></tr>
 
 <tr class="team" id="team-old-dominion" data-slug="old-dominion" data-conf="Sun Belt"
- data-pal="98" data-res="98" data-avg="98" data-str="82" data-rec="70"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="98" data-res="98" data-str="82" data-rec="70"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Old Dominion</td><td>SBC</td>
 <td>1-0</td>
 <td class="num">0.0-1.0</td><td class="num">0.0-1.0</td>
-<td class="num">0.0-1.0</td><td class="num">6.0-6.0</td></tr>
+<td class="num">6.0-6.0</td></tr>
 
 <tr class="team" id="team-oregon-state" data-slug="oregon-state" data-conf="Pac-12"
- data-pal="99" data-res="99" data-avg="99" data-str="108" data-rec="115"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="99" data-res="99" data-str="108" data-rec="115"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Oregon State</td><td>Pac-12</td>
 <td>0-1</td>
 <td class="num">0.0-1.0</td><td class="num">0.0-1.0</td>
-<td class="num">0.0-1.0</td><td class="num">4.8-7.2</td></tr>
+<td class="num">4.8-7.2</td></tr>
 
 <tr class="team" id="team-purdue" data-slug="purdue" data-conf="Big Ten"
- data-pal="100" data-res="100" data-avg="100" data-str="83" data-rec="71"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="100" data-res="100" data-str="83" data-rec="71"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Purdue</td><td>Big Ten</td>
 <td>1-0</td>
 <td class="num">0.0-1.0</td><td class="num">0.0-1.0</td>
-<td class="num">0.0-1.0</td><td class="num">6.0-6.0</td></tr>
+<td class="num">6.0-6.0</td></tr>
 
 <tr class="team" id="team-rice" data-slug="rice" data-conf="American Athletic"
- data-pal="101" data-res="101" data-avg="101" data-str="84" data-rec="72"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="101" data-res="101" data-str="84" data-rec="72"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Rice</td><td>AAC</td>
 <td>1-0</td>
 <td class="num">0.0-1.0</td><td class="num">0.0-1.0</td>
-<td class="num">0.0-1.0</td><td class="num">6.0-6.0</td></tr>
+<td class="num">6.0-6.0</td></tr>
 
 <tr class="team" id="team-san-diego-state" data-slug="san-diego-state" data-conf="Pac-12"
- data-pal="102" data-res="102" data-avg="102" data-str="85" data-rec="73"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="102" data-res="102" data-str="85" data-rec="73"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>San Diego State</td><td>Pac-12</td>
 <td>1-0</td>
 <td class="num">0.0-1.0</td><td class="num">0.0-1.0</td>
-<td class="num">0.0-1.0</td><td class="num">6.0-6.0</td></tr>
+<td class="num">6.0-6.0</td></tr>
 
 <tr class="team" id="team-south-alabama" data-slug="south-alabama" data-conf="Sun Belt"
- data-pal="103" data-res="103" data-avg="103" data-str="86" data-rec="74"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="103" data-res="103" data-str="86" data-rec="74"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>South Alabama</td><td>SBC</td>
 <td>1-0</td>
 <td class="num">0.0-1.0</td><td class="num">0.0-1.0</td>
-<td class="num">0.0-1.0</td><td class="num">6.0-6.0</td></tr>
+<td class="num">6.0-6.0</td></tr>
 
 <tr class="team" id="team-southern-miss" data-slug="southern-miss" data-conf="Sun Belt"
- data-pal="104" data-res="104" data-avg="104" data-str="87" data-rec="75"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="104" data-res="104" data-str="87" data-rec="75"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Southern Miss</td><td>SBC</td>
 <td>1-0</td>
 <td class="num">0.0-1.0</td><td class="num">0.0-1.0</td>
-<td class="num">0.0-1.0</td><td class="num">6.0-6.0</td></tr>
+<td class="num">6.0-6.0</td></tr>
 
 <tr class="team" id="team-syracuse" data-slug="syracuse" data-conf="ACC"
- data-pal="105" data-res="105" data-avg="105" data-str="88" data-rec="76"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="105" data-res="105" data-str="88" data-rec="76"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Syracuse</td><td>ACC</td>
 <td>1-0</td>
 <td class="num">0.0-1.0</td><td class="num">0.0-1.0</td>
-<td class="num">0.0-1.0</td><td class="num">6.0-6.0</td></tr>
+<td class="num">6.0-6.0</td></tr>
 
 <tr class="team" id="team-temple" data-slug="temple" data-conf="American Athletic"
- data-pal="106" data-res="106" data-avg="106" data-str="89" data-rec="77"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="106" data-res="106" data-str="89" data-rec="77"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Temple</td><td>AAC</td>
 <td>1-0</td>
 <td class="num">0.0-1.0</td><td class="num">0.0-1.0</td>
-<td class="num">0.0-1.0</td><td class="num">6.0-6.0</td></tr>
+<td class="num">6.0-6.0</td></tr>
 
 <tr class="team" id="team-tennessee" data-slug="tennessee" data-conf="SEC"
- data-pal="107" data-res="107" data-avg="107" data-str="90" data-rec="78"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="107" data-res="107" data-str="90" data-rec="78"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Tennessee</td><td>SEC</td>
 <td>1-0</td>
 <td class="num">0.0-1.0</td><td class="num">0.0-1.0</td>
-<td class="num">0.0-1.0</td><td class="num">6.0-6.0</td></tr>
+<td class="num">6.0-6.0</td></tr>
 
 <tr class="team" id="team-texas-state" data-slug="texas-state" data-conf="Pac-12"
- data-pal="108" data-res="108" data-avg="108" data-str="127" data-rec="116"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="108" data-res="108" data-str="127" data-rec="116"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Texas State</td><td>Pac-12</td>
 <td>0-1</td>
 <td class="num">0.0-1.0</td><td class="num">0.0-1.0</td>
-<td class="num">0.0-1.0</td><td class="num">3.4-8.6</td></tr>
+<td class="num">3.4-8.6</td></tr>
 
 <tr class="team" id="team-texas-tech" data-slug="texas-tech" data-conf="Big 12"
- data-pal="109" data-res="109" data-avg="109" data-str="91" data-rec="79"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="109" data-res="109" data-str="91" data-rec="79"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Texas Tech</td><td>Big 12</td>
 <td>1-0</td>
 <td class="num">0.0-1.0</td><td class="num">0.0-1.0</td>
-<td class="num">0.0-1.0</td><td class="num">6.0-6.0</td></tr>
+<td class="num">6.0-6.0</td></tr>
 
 <tr class="team" id="team-toledo" data-slug="toledo" data-conf="Mid-American"
- data-pal="110" data-res="110" data-avg="110" data-str="104" data-rec="117"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="110" data-res="110" data-str="104" data-rec="117"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Toledo</td><td>MAC</td>
 <td>0-1</td>
 <td class="num">0.0-1.0</td><td class="num">0.0-1.0</td>
-<td class="num">0.0-1.0</td><td class="num">5.6-6.4</td></tr>
+<td class="num">5.6-6.4</td></tr>
 
 <tr class="team" id="team-tulane" data-slug="tulane" data-conf="American Athletic"
- data-pal="111" data-res="111" data-avg="111" data-str="106" data-rec="118"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="111" data-res="111" data-str="106" data-rec="118"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Tulane</td><td>AAC</td>
 <td>0-1</td>
 <td class="num">0.0-1.0</td><td class="num">0.0-1.0</td>
-<td class="num">0.0-1.0</td><td class="num">4.8-7.2</td></tr>
+<td class="num">4.8-7.2</td></tr>
 
 <tr class="team" id="team-ucf" data-slug="ucf" data-conf="Big 12"
- data-pal="112" data-res="112" data-avg="112" data-str="92" data-rec="80"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="112" data-res="112" data-str="92" data-rec="80"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>UCF</td><td>Big 12</td>
 <td>1-0</td>
 <td class="num">0.0-1.0</td><td class="num">0.0-1.0</td>
-<td class="num">0.0-1.0</td><td class="num">6.0-6.0</td></tr>
+<td class="num">6.0-6.0</td></tr>
 
 <tr class="team" id="team-uconn" data-slug="uconn" data-conf="FBS Independents"
- data-pal="113" data-res="113" data-avg="113" data-str="93" data-rec="81"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="113" data-res="113" data-str="93" data-rec="81"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>UConn</td><td>Indep.</td>
 <td>1-0</td>
 <td class="num">0.0-1.0</td><td class="num">0.0-1.0</td>
-<td class="num">0.0-1.0</td><td class="num">6.0-6.0</td></tr>
+<td class="num">6.0-6.0</td></tr>
 
 <tr class="team" id="team-utah" data-slug="utah" data-conf="Big 12"
- data-pal="114" data-res="114" data-avg="114" data-str="94" data-rec="82"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="114" data-res="114" data-str="94" data-rec="82"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Utah</td><td>Big 12</td>
 <td>1-0</td>
 <td class="num">0.0-1.0</td><td class="num">0.0-1.0</td>
-<td class="num">0.0-1.0</td><td class="num">6.0-6.0</td></tr>
+<td class="num">6.0-6.0</td></tr>
 
 <tr class="team" id="team-utah-state" data-slug="utah-state" data-conf="Pac-12"
- data-pal="115" data-res="115" data-avg="115" data-str="95" data-rec="119"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="115" data-res="115" data-str="95" data-rec="119"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Utah State</td><td>Pac-12</td>
 <td>0-1</td>
 <td class="num">0.0-1.0</td><td class="num">0.0-1.0</td>
-<td class="num">0.0-1.0</td><td class="num">6.0-6.0</td></tr>
+<td class="num">6.0-6.0</td></tr>
 
 <tr class="team" id="team-utsa" data-slug="utsa" data-conf="American Athletic"
- data-pal="116" data-res="116" data-avg="116" data-str="96" data-rec="83"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="116" data-res="116" data-str="96" data-rec="83"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>UTSA</td><td>AAC</td>
 <td>1-0</td>
 <td class="num">0.0-1.0</td><td class="num">0.0-1.0</td>
-<td class="num">0.0-1.0</td><td class="num">6.0-6.0</td></tr>
+<td class="num">6.0-6.0</td></tr>
 
 <tr class="team" id="team-vanderbilt" data-slug="vanderbilt" data-conf="SEC"
- data-pal="117" data-res="117" data-avg="117" data-str="97" data-rec="84"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="117" data-res="117" data-str="97" data-rec="84"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Vanderbilt</td><td>SEC</td>
 <td>1-0</td>
 <td class="num">0.0-1.0</td><td class="num">0.0-1.0</td>
-<td class="num">0.0-1.0</td><td class="num">6.0-6.0</td></tr>
+<td class="num">6.0-6.0</td></tr>
 
 <tr class="team" id="team-virginia-tech" data-slug="virginia-tech" data-conf="ACC"
- data-pal="118" data-res="118" data-avg="118" data-str="98" data-rec="85"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="118" data-res="118" data-str="98" data-rec="85"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Virginia Tech</td><td>ACC</td>
 <td>1-0</td>
 <td class="num">0.0-1.0</td><td class="num">0.0-1.0</td>
-<td class="num">0.0-1.0</td><td class="num">6.0-6.0</td></tr>
+<td class="num">6.0-6.0</td></tr>
 
 <tr class="team" id="team-washington-state" data-slug="washington-state" data-conf="Pac-12"
- data-pal="119" data-res="119" data-avg="119" data-str="107" data-rec="120"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="119" data-res="119" data-str="107" data-rec="120"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Washington State</td><td>Pac-12</td>
 <td>0-1</td>
 <td class="num">0.0-1.0</td><td class="num">0.0-1.0</td>
-<td class="num">0.0-1.0</td><td class="num">4.8-7.2</td></tr>
+<td class="num">4.8-7.2</td></tr>
 
 <tr class="team" id="team-western-kentucky" data-slug="western-kentucky" data-conf="Conference USA"
- data-pal="120" data-res="120" data-avg="120" data-str="109" data-rec="121"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="120" data-res="120" data-str="109" data-rec="121"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Western Kentucky</td><td>C-USA</td>
 <td>0-1</td>
 <td class="num">0.0-1.0</td><td class="num">0.0-1.0</td>
-<td class="num">0.0-1.0</td><td class="num">4.5-7.5</td></tr>
+<td class="num">4.5-7.5</td></tr>
 
 <tr class="team" id="team-california" data-slug="california" data-conf="ACC"
- data-pal="121" data-res="121" data-avg="121" data-str="115" data-rec="122"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="121" data-res="121" data-str="115" data-rec="122"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>California</td><td>ACC</td>
 <td>0-1</td>
 <td class="num">0.0-1.0</td><td class="num">0.0-1.0</td>
-<td class="num">0.0-1.0</td><td class="num">4.1-7.9</td></tr>
+<td class="num">4.1-7.9</td></tr>
 
 <tr class="team" id="team-sam-houston" data-slug="sam-houston" data-conf="Conference USA"
- data-pal="122" data-res="122" data-avg="122" data-str="39" data-rec="123"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="122" data-res="122" data-str="39" data-rec="123"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Sam Houston</td><td>C-USA</td>
 <td>0-1</td>
 <td class="num">0.0-1.0</td><td class="num">0.0-1.0</td>
-<td class="num">0.0-1.0</td><td class="num">6.5-5.5</td></tr>
+<td class="num">6.5-5.5</td></tr>
 
 <tr class="team" id="team-tcu" data-slug="tcu" data-conf="Big 12"
- data-pal="123" data-res="123" data-avg="123" data-str="102" data-rec="124"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="123" data-res="123" data-str="102" data-rec="124"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>TCU</td><td>Big 12</td>
 <td>0-1</td>
 <td class="num">0.0-1.0</td><td class="num">0.0-1.0</td>
-<td class="num">0.0-1.0</td><td class="num">5.7-6.3</td></tr>
+<td class="num">5.7-6.3</td></tr>
 
 <tr class="team" id="team-rutgers" data-slug="rutgers" data-conf="Big Ten"
- data-pal="124" data-res="124" data-avg="124" data-str="110" data-rec="125"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="124" data-res="124" data-str="110" data-rec="125"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Rutgers</td><td>Big Ten</td>
 <td>0-1</td>
 <td class="num">0.0-1.0</td><td class="num">0.0-1.0</td>
-<td class="num">0.0-1.0</td><td class="num">4.5-7.5</td></tr>
+<td class="num">4.5-7.5</td></tr>
 
 <tr class="team" id="team-florida-atlantic" data-slug="florida-atlantic" data-conf="American Athletic"
- data-pal="125" data-res="125" data-avg="125" data-str="131" data-rec="126"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="125" data-res="125" data-str="131" data-rec="126"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Florida Atlantic</td><td>AAC</td>
 <td>0-1</td>
 <td class="num">0.0-1.0</td><td class="num">0.0-1.0</td>
-<td class="num">0.0-1.0</td><td class="num">0.0-12.0</td></tr>
+<td class="num">0.0-12.0</td></tr>
 
 <tr class="team" id="team-marshall" data-slug="marshall" data-conf="Sun Belt"
- data-pal="126" data-res="126" data-avg="126" data-str="132" data-rec="127"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="126" data-res="126" data-str="132" data-rec="127"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Marshall</td><td>SBC</td>
 <td>0-1</td>
 <td class="num">0.0-1.0</td><td class="num">0.0-1.0</td>
-<td class="num">0.0-1.0</td><td class="num">0.0-12.0</td></tr>
+<td class="num">0.0-12.0</td></tr>
 
 <tr class="team" id="team-miami-oh" data-slug="miami-oh" data-conf="Mid-American"
- data-pal="127" data-res="127" data-avg="127" data-str="133" data-rec="128"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="127" data-res="127" data-str="133" data-rec="128"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Miami (OH)</td><td>MAC</td>
 <td>0-1</td>
 <td class="num">0.0-1.0</td><td class="num">0.0-1.0</td>
-<td class="num">0.0-1.0</td><td class="num">0.0-12.0</td></tr>
+<td class="num">0.0-12.0</td></tr>
 
 <tr class="team" id="team-kent-state" data-slug="kent-state" data-conf="Mid-American"
- data-pal="128" data-res="128" data-avg="128" data-str="138" data-rec="129"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="128" data-res="128" data-str="138" data-rec="129"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Kent State</td><td>MAC</td>
 <td>0-1</td>
 <td class="num">0.0-1.0</td><td class="num">0.0-1.0</td>
-<td class="num">0.0-1.0</td><td class="num">0.0-12.0</td></tr>
+<td class="num">0.0-12.0</td></tr>
 
 <tr class="team" id="team-missouri-state" data-slug="missouri-state" data-conf="Conference USA"
- data-pal="129" data-res="129" data-avg="129" data-str="136" data-rec="130"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="129" data-res="129" data-str="136" data-rec="130"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Missouri State</td><td>C-USA</td>
 <td>0-1</td>
 <td class="num">0.0-1.0</td><td class="num">0.0-1.0</td>
-<td class="num">0.0-1.0</td><td class="num">0.0-12.0</td></tr>
+<td class="num">0.0-12.0</td></tr>
 
 <tr class="team" id="team-north-texas" data-slug="north-texas" data-conf="American Athletic"
- data-pal="130" data-res="130" data-avg="130" data-str="135" data-rec="131"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="130" data-res="130" data-str="135" data-rec="131"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>North Texas</td><td>AAC</td>
 <td>0-1</td>
 <td class="num">0.0-1.0</td><td class="num">0.0-1.0</td>
-<td class="num">0.0-1.0</td><td class="num">0.0-12.0</td></tr>
+<td class="num">0.0-12.0</td></tr>
 
 <tr class="team" id="team-ul-monroe" data-slug="ul-monroe" data-conf="Sun Belt"
- data-pal="131" data-res="131" data-avg="131" data-str="137" data-rec="132"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="131" data-res="131" data-str="137" data-rec="132"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>UL Monroe</td><td>SBC</td>
 <td>0-1</td>
 <td class="num">0.0-1.0</td><td class="num">0.0-1.0</td>
-<td class="num">0.0-1.0</td><td class="num">0.0-12.0</td></tr>
+<td class="num">0.0-12.0</td></tr>
 
 <tr class="team" id="team-western-michigan" data-slug="western-michigan" data-conf="Mid-American"
- data-pal="132" data-res="132" data-avg="132" data-str="37" data-rec="133"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="132" data-res="132" data-str="37" data-rec="133"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Western Michigan</td><td>MAC</td>
 <td>0-1</td>
 <td class="num">0.0-1.0</td><td class="num">0.0-1.0</td>
-<td class="num">0.0-1.0</td><td class="num">6.9-5.1</td></tr>
+<td class="num">6.9-5.1</td></tr>
 
 <tr class="team" id="team-louisville" data-slug="louisville" data-conf="ACC"
- data-pal="133" data-res="133" data-avg="133" data-str="41" data-rec="134"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="133" data-res="133" data-str="41" data-rec="134"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Louisville</td><td>ACC</td>
 <td>0-1</td>
 <td class="num">0.0-1.0</td><td class="num">0.0-1.0</td>
-<td class="num">0.0-1.0</td><td class="num">6.5-5.5</td></tr>
+<td class="num">6.5-5.5</td></tr>
 
 <tr class="team" id="team-wisconsin" data-slug="wisconsin" data-conf="Big Ten"
- data-pal="134" data-res="134" data-avg="134" data-str="134" data-rec="135"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="134" data-res="134" data-str="134" data-rec="135"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Wisconsin</td><td>Big Ten</td>
 <td>0-1</td>
 <td class="num">0.0-1.0</td><td class="num">0.0-1.0</td>
-<td class="num">0.0-1.0</td><td class="num">0.0-12.0</td></tr>
+<td class="num">0.0-12.0</td></tr>
 
 <tr class="team" id="team-baylor" data-slug="baylor" data-conf="Big 12"
- data-pal="135" data-res="135" data-avg="135" data-str="43" data-rec="136"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="135" data-res="135" data-str="43" data-rec="136"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Baylor</td><td>Big 12</td>
 <td>0-1</td>
 <td class="num">0.0-1.0</td><td class="num">0.0-1.0</td>
-<td class="num">0.0-1.0</td><td class="num">6.5-5.5</td></tr>
+<td class="num">6.5-5.5</td></tr>
 
 <tr class="team" id="team-georgia-tech" data-slug="georgia-tech" data-conf="ACC"
- data-pal="136" data-res="136" data-avg="136" data-str="53" data-rec="137"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="136" data-res="136" data-str="53" data-rec="137"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Georgia Tech</td><td>ACC</td>
 <td>0-1</td>
 <td class="num">0.0-1.0</td><td class="num">0.0-1.0</td>
-<td class="num">0.0-1.0</td><td class="num">6.2-5.8</td></tr>
+<td class="num">6.2-5.8</td></tr>
 
 <tr class="team" id="team-sacramento-state" data-slug="sacramento-state" data-conf="Mid-American"
- data-pal="137" data-res="137" data-avg="137" data-str="129" data-rec="93"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="137" data-res="137" data-str="129" data-rec="93"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Sacramento State</td><td>MAC</td>
 <td>1-1</td>
 <td class="num">0.0-2.0</td><td class="num">0.0-2.0</td>
-<td class="num">0.0-2.0</td><td class="num">3.0-9.0</td></tr>
+<td class="num">3.0-9.0</td></tr>
 
 <tr class="team" id="team-hawai-i" data-slug="hawai-i" data-conf="Mountain West"
- data-pal="138" data-res="138" data-avg="138" data-str="130" data-rec="138"
- data-lpal="" data-lres="" data-lavg="" data-lstr="" data-lrec="">
+ data-pal="138" data-res="138" data-str="130" data-rec="138"
+ data-lpal="" data-lres="" data-lstr="" data-lrec="">
 <td class="rk"></td><td class="mv"></td>
 <td>Hawai&#39;i</td><td>MWC</td>
 <td>0-2</td>
 <td class="num">0.0-2.0</td><td class="num">0.0-2.0</td>
-<td class="num">0.0-2.0</td><td class="num">2.2-9.8</td></tr>
+<td class="num">2.2-9.8</td></tr>
 </tbody></table></div>
 
 <h2 id="conferences">Conferences</h2>
@@ -1349,7 +1349,6 @@ select{font:inherit;padding:4px;background:var(--bg);color:var(--fg);border:1px 
 <td class="num">4-0</td></tr>
 <tr class="detail" style="display:none"><td colspan="7"><table class="bk"><thead><tr><th>vs</th><th class="num">W</th><th class="num">L</th></tr></thead><tbody>
 <tr><td>Mid-American</td><td class="num">4</td><td class="num">1</td></tr><tr><td>Pac-12</td><td class="num">3</td><td class="num">0</td></tr><tr><td>American Athletic</td><td class="num">2</td><td class="num">0</td></tr><tr><td>Mountain West</td><td class="num">2</td><td class="num">0</td></tr><tr><td>ACC</td><td class="num">1</td><td class="num">0</td></tr><tr><td>Indep.</td><td class="num">0</td><td class="num">1</td></tr><tr><td>Sun Belt</td><td class="num">1</td><td class="num">0</td></tr><tr><td>Big 12</td><td class="num">0</td><td class="num">0</td></tr><tr><td>Conference USA</td><td class="num">0</td><td class="num">0</td></tr><tr><td>SEC</td><td class="num">0</td><td class="num">0</td></tr>
-<tr class="fcsrow"><td>FCS</td><td class="num">4</td><td class="num">0</td></tr>
 </tbody></table></td></tr>
 
 <tr class="conf"><td>2</td><td>Mountain West</td><td class="num">10</td>
@@ -1358,7 +1357,6 @@ select{font:inherit;padding:4px;background:var(--bg);color:var(--fg);border:1px 
 <td class="num">2-0</td></tr>
 <tr class="detail" style="display:none"><td colspan="7"><table class="bk"><thead><tr><th>vs</th><th class="num">W</th><th class="num">L</th></tr></thead><tbody>
 <tr><td>Big Ten</td><td class="num">0</td><td class="num">2</td></tr><tr><td>Conference USA</td><td class="num">2</td><td class="num">0</td></tr><tr><td>Mid-American</td><td class="num">2</td><td class="num">0</td></tr><tr><td>ACC</td><td class="num">0</td><td class="num">1</td></tr><tr><td>American Athletic</td><td class="num">0</td><td class="num">1</td></tr><tr><td>Pac-12</td><td class="num">0</td><td class="num">1</td></tr><tr><td>SEC</td><td class="num">0</td><td class="num">1</td></tr><tr><td>Big 12</td><td class="num">0</td><td class="num">0</td></tr><tr><td>Indep.</td><td class="num">0</td><td class="num">0</td></tr><tr><td>Sun Belt</td><td class="num">0</td><td class="num">0</td></tr>
-<tr class="fcsrow"><td>FCS</td><td class="num">2</td><td class="num">0</td></tr>
 </tbody></table></td></tr>
 
 <tr class="conf"><td>3</td><td>SEC</td><td class="num">16</td>
@@ -1367,7 +1365,6 @@ select{font:inherit;padding:4px;background:var(--bg);color:var(--fg);border:1px 
 <td class="num">6-0</td></tr>
 <tr class="detail" style="display:none"><td colspan="7"><table class="bk"><thead><tr><th>vs</th><th class="num">W</th><th class="num">L</th></tr></thead><tbody>
 <tr><td>ACC</td><td class="num">2</td><td class="num">0</td></tr><tr><td>American Athletic</td><td class="num">2</td><td class="num">0</td></tr><tr><td>Big 12</td><td class="num">1</td><td class="num">0</td></tr><tr><td>Conference USA</td><td class="num">1</td><td class="num">0</td></tr><tr><td>Mid-American</td><td class="num">1</td><td class="num">0</td></tr><tr><td>Mountain West</td><td class="num">1</td><td class="num">0</td></tr><tr><td>Pac-12</td><td class="num">1</td><td class="num">0</td></tr><tr><td>Sun Belt</td><td class="num">1</td><td class="num">0</td></tr><tr><td>Big Ten</td><td class="num">0</td><td class="num">0</td></tr><tr><td>Indep.</td><td class="num">0</td><td class="num">0</td></tr>
-<tr class="fcsrow"><td>FCS</td><td class="num">6</td><td class="num">0</td></tr>
 </tbody></table></td></tr>
 
 <tr class="conf"><td>4</td><td>ACC</td><td class="num">17</td>
@@ -1376,7 +1373,6 @@ select{font:inherit;padding:4px;background:var(--bg);color:var(--fg);border:1px 
 <td class="num">2-0</td></tr>
 <tr class="detail" style="display:none"><td colspan="7"><table class="bk"><thead><tr><th>vs</th><th class="num">W</th><th class="num">L</th></tr></thead><tbody>
 <tr><td>Big 12</td><td class="num">1</td><td class="num">2</td></tr><tr><td>Mid-American</td><td class="num">2</td><td class="num">0</td></tr><tr><td>SEC</td><td class="num">0</td><td class="num">2</td></tr><tr><td>American Athletic</td><td class="num">1</td><td class="num">0</td></tr><tr><td>Big Ten</td><td class="num">0</td><td class="num">1</td></tr><tr><td>Conference USA</td><td class="num">1</td><td class="num">0</td></tr><tr><td>Mountain West</td><td class="num">1</td><td class="num">0</td></tr><tr><td>Indep.</td><td class="num">0</td><td class="num">0</td></tr><tr><td>Pac-12</td><td class="num">0</td><td class="num">0</td></tr><tr><td>Sun Belt</td><td class="num">0</td><td class="num">0</td></tr>
-<tr class="fcsrow"><td>FCS</td><td class="num">2</td><td class="num">0</td></tr>
 </tbody></table></td></tr>
 
 <tr class="conf"><td>5</td><td>Big 12</td><td class="num">16</td>
@@ -1385,7 +1381,6 @@ select{font:inherit;padding:4px;background:var(--bg);color:var(--fg);border:1px 
 <td class="num">9-0</td></tr>
 <tr class="detail" style="display:none"><td colspan="7"><table class="bk"><thead><tr><th>vs</th><th class="num">W</th><th class="num">L</th></tr></thead><tbody>
 <tr><td>ACC</td><td class="num">2</td><td class="num">1</td></tr><tr><td>American Athletic</td><td class="num">0</td><td class="num">1</td></tr><tr><td>Pac-12</td><td class="num">1</td><td class="num">0</td></tr><tr><td>SEC</td><td class="num">0</td><td class="num">1</td></tr><tr><td>Sun Belt</td><td class="num">1</td><td class="num">0</td></tr><tr><td>Big Ten</td><td class="num">0</td><td class="num">0</td></tr><tr><td>Conference USA</td><td class="num">0</td><td class="num">0</td></tr><tr><td>Indep.</td><td class="num">0</td><td class="num">0</td></tr><tr><td>Mid-American</td><td class="num">0</td><td class="num">0</td></tr><tr><td>Mountain West</td><td class="num">0</td><td class="num">0</td></tr>
-<tr class="fcsrow"><td>FCS</td><td class="num">9</td><td class="num">0</td></tr>
 </tbody></table></td></tr>
 
 <tr class="conf"><td>6</td><td>American Athletic</td><td class="num">14</td>
@@ -1394,7 +1389,6 @@ select{font:inherit;padding:4px;background:var(--bg);color:var(--fg);border:1px 
 <td class="num">5-1</td></tr>
 <tr class="detail" style="display:none"><td colspan="7"><table class="bk"><thead><tr><th>vs</th><th class="num">W</th><th class="num">L</th></tr></thead><tbody>
 <tr><td>Big Ten</td><td class="num">0</td><td class="num">2</td></tr><tr><td>SEC</td><td class="num">0</td><td class="num">2</td></tr><tr><td>ACC</td><td class="num">0</td><td class="num">1</td></tr><tr><td>Big 12</td><td class="num">1</td><td class="num">0</td></tr><tr><td>Conference USA</td><td class="num">1</td><td class="num">0</td></tr><tr><td>Mountain West</td><td class="num">1</td><td class="num">0</td></tr><tr><td>Sun Belt</td><td class="num">1</td><td class="num">0</td></tr><tr><td>Indep.</td><td class="num">0</td><td class="num">0</td></tr><tr><td>Mid-American</td><td class="num">0</td><td class="num">0</td></tr><tr><td>Pac-12</td><td class="num">0</td><td class="num">0</td></tr>
-<tr class="fcsrow"><td>FCS</td><td class="num">5</td><td class="num">1</td></tr>
 </tbody></table></td></tr>
 
 <tr class="conf"><td>7</td><td>Sun Belt</td><td class="num">14</td>
@@ -1403,7 +1397,6 @@ select{font:inherit;padding:4px;background:var(--bg);color:var(--fg);border:1px 
 <td class="num">8-0</td></tr>
 <tr class="detail" style="display:none"><td colspan="7"><table class="bk"><thead><tr><th>vs</th><th class="num">W</th><th class="num">L</th></tr></thead><tbody>
 <tr><td>Conference USA</td><td class="num">2</td><td class="num">0</td></tr><tr><td>American Athletic</td><td class="num">0</td><td class="num">1</td></tr><tr><td>Big 12</td><td class="num">0</td><td class="num">1</td></tr><tr><td>Big Ten</td><td class="num">0</td><td class="num">1</td></tr><tr><td>SEC</td><td class="num">0</td><td class="num">1</td></tr><tr><td>ACC</td><td class="num">0</td><td class="num">0</td></tr><tr><td>Indep.</td><td class="num">0</td><td class="num">0</td></tr><tr><td>Mid-American</td><td class="num">0</td><td class="num">0</td></tr><tr><td>Mountain West</td><td class="num">0</td><td class="num">0</td></tr><tr><td>Pac-12</td><td class="num">0</td><td class="num">0</td></tr>
-<tr class="fcsrow"><td>FCS</td><td class="num">8</td><td class="num">0</td></tr>
 </tbody></table></td></tr>
 
 <tr class="conf"><td>8</td><td>Mid-American</td><td class="num">13</td>
@@ -1412,7 +1405,6 @@ select{font:inherit;padding:4px;background:var(--bg);color:var(--fg);border:1px 
 <td class="num">2-1</td></tr>
 <tr class="detail" style="display:none"><td colspan="7"><table class="bk"><thead><tr><th>vs</th><th class="num">W</th><th class="num">L</th></tr></thead><tbody>
 <tr><td>Big Ten</td><td class="num">1</td><td class="num">4</td></tr><tr><td>ACC</td><td class="num">0</td><td class="num">2</td></tr><tr><td>Mountain West</td><td class="num">0</td><td class="num">2</td></tr><tr><td>SEC</td><td class="num">0</td><td class="num">1</td></tr><tr><td>American Athletic</td><td class="num">0</td><td class="num">0</td></tr><tr><td>Big 12</td><td class="num">0</td><td class="num">0</td></tr><tr><td>Conference USA</td><td class="num">0</td><td class="num">0</td></tr><tr><td>Indep.</td><td class="num">0</td><td class="num">0</td></tr><tr><td>Pac-12</td><td class="num">0</td><td class="num">0</td></tr><tr><td>Sun Belt</td><td class="num">0</td><td class="num">0</td></tr>
-<tr class="fcsrow"><td>FCS</td><td class="num">2</td><td class="num">1</td></tr>
 </tbody></table></td></tr>
 
 <tr class="conf"><td>9</td><td>Pac-12</td><td class="num">8</td>
@@ -1421,7 +1413,6 @@ select{font:inherit;padding:4px;background:var(--bg);color:var(--fg);border:1px 
 <td class="num">1-1</td></tr>
 <tr class="detail" style="display:none"><td colspan="7"><table class="bk"><thead><tr><th>vs</th><th class="num">W</th><th class="num">L</th></tr></thead><tbody>
 <tr><td>Big Ten</td><td class="num">0</td><td class="num">3</td></tr><tr><td>Big 12</td><td class="num">0</td><td class="num">1</td></tr><tr><td>Mountain West</td><td class="num">1</td><td class="num">0</td></tr><tr><td>SEC</td><td class="num">0</td><td class="num">1</td></tr><tr><td>ACC</td><td class="num">0</td><td class="num">0</td></tr><tr><td>American Athletic</td><td class="num">0</td><td class="num">0</td></tr><tr><td>Conference USA</td><td class="num">0</td><td class="num">0</td></tr><tr><td>Indep.</td><td class="num">0</td><td class="num">0</td></tr><tr><td>Mid-American</td><td class="num">0</td><td class="num">0</td></tr><tr><td>Sun Belt</td><td class="num">0</td><td class="num">0</td></tr>
-<tr class="fcsrow"><td>FCS</td><td class="num">1</td><td class="num">1</td></tr>
 </tbody></table></td></tr>
 
 <tr class="conf"><td>10</td><td>Conference USA</td><td class="num">10</td>
@@ -1430,11 +1421,10 @@ select{font:inherit;padding:4px;background:var(--bg);color:var(--fg);border:1px 
 <td class="num">5-0</td></tr>
 <tr class="detail" style="display:none"><td colspan="7"><table class="bk"><thead><tr><th>vs</th><th class="num">W</th><th class="num">L</th></tr></thead><tbody>
 <tr><td>Mountain West</td><td class="num">0</td><td class="num">2</td></tr><tr><td>Sun Belt</td><td class="num">0</td><td class="num">2</td></tr><tr><td>ACC</td><td class="num">0</td><td class="num">1</td></tr><tr><td>American Athletic</td><td class="num">0</td><td class="num">1</td></tr><tr><td>SEC</td><td class="num">0</td><td class="num">1</td></tr><tr><td>Big 12</td><td class="num">0</td><td class="num">0</td></tr><tr><td>Big Ten</td><td class="num">0</td><td class="num">0</td></tr><tr><td>Indep.</td><td class="num">0</td><td class="num">0</td></tr><tr><td>Mid-American</td><td class="num">0</td><td class="num">0</td></tr><tr><td>Pac-12</td><td class="num">0</td><td class="num">0</td></tr>
-<tr class="fcsrow"><td>FCS</td><td class="num">5</td><td class="num">0</td></tr>
 </tbody></table></td></tr>
 </tbody></table></div>
 
-<script id="data" type="application/json">{"memphis":{"n":"Memphis","s":10.42,"rp":1,"G":2,"res":12.0,"pal":6.37,"hi":12.0,"sg":[[1,"unlv","UNLV","away",27,21,6,8.06,6.9,-0.9],[1,"arkansas-state","Arkansas State","home",42,24,18,7.4,18.4,-0.4]],"rg":[[1,"unlv","UNLV","W",8.06,39],[1,"arkansas-state","Arkansas State","W",7.4,63]]},"usc":{"n":"USC","s":10.72,"rp":2,"G":2,"res":12.0,"pal":4.98,"hi":12.0,"sg":[[1,"san-jose-state","San José State","home",42,26,16,6.54,23.0,-7.0],[1,"fresno-state","Fresno State","home",39,0,39,7.43,19.5,19.5]],"rg":[[1,"san-jose-state","San José State","W",6.54,18],[1,"fresno-state","Fresno State","W",7.43,75]]},"smu":{"n":"SMU","s":10.38,"rp":3,"G":1,"res":12.0,"pal":4.74,"hi":12.0,"sg":[[1,"florida-state","Florida State","away",27,24,3,8.07,6.7,-3.7]],"rg":[[1,"florida-state","Florida State","W",8.07,47]]},"colorado":{"n":"Colorado","s":6.97,"rp":4,"G":1,"res":12.0,"pal":3.15,"hi":12.0,"sg":[[1,"georgia-tech","Georgia Tech","away",14,13,1,6.17,-0.6,1.6]],"rg":[[1,"georgia-tech","Georgia Tech","W",6.17,136]]},"ole-miss":{"n":"Ole Miss","s":6.49,"rp":5,"G":1,"res":12.0,"pal":2.39,"hi":12.0,"sg":[[1,"louisville","Louisville","neutral",41,38,3,6.49,0.0,3.0]],"rg":[[1,"louisville","Louisville","W",6.49,133]]},"auburn":{"n":"Auburn","s":6.42,"rp":6,"G":1,"res":12.0,"pal":2.36,"hi":12.0,"sg":[[1,"baylor","Baylor","neutral",17,16,1,6.45,-0.1,1.1]],"rg":[[1,"baylor","Baylor","W",6.45,135]]},"michigan":{"n":"Michigan","s":6.12,"rp":7,"G":1,"res":12.0,"pal":1.76,"hi":12.0,"sg":[[1,"western-michigan","Western Michigan","home",13,12,1,6.87,0.8,0.2]],"rg":[[1,"western-michigan","Western Michigan","W",6.87,132]]},"north-carolina":{"n":"North Carolina","s":7.46,"rp":8,"G":1,"res":12.0,"pal":1.69,"hi":12.0,"sg":[[1,"tcu","TCU","neutral",15,10,5,5.67,8.5,-3.5]],"rg":[[1,"tcu","TCU","W",5.67,123]]},"massachusetts":{"n":"Massachusetts","s":8.49,"rp":9,"G":1,"res":10.82,"pal":1.54,"hi":12.0,"sg":[[1,"rutgers","Rutgers","away",37,21,16,4.48,14.5,1.5]],"rg":[[1,"rutgers","Rutgers","W",4.48,124]]},"troy":{"n":"Troy","s":6.47,"rp":10,"G":1,"res":12.0,"pal":1.42,"hi":12.0,"sg":[[1,"sam-houston","Sam Houston","home",24,21,3,6.5,4.3,-1.3]],"rg":[[1,"sam-houston","Sam Houston","W",6.5,122]]},"ucla":{"n":"UCLA","s":8.97,"rp":11,"G":1,"res":10.44,"pal":1.16,"hi":12.0,"sg":[[1,"california","California","away",45,24,21,4.1,17.9,3.1]],"rg":[[1,"california","California","W",4.1,121]]},"miami":{"n":"Miami","s":10.23,"rp":12,"G":1,"res":10.17,"pal":0.89,"hi":12.0,"sg":[[1,"stanford","Stanford","away",45,6,39,3.83,24.8,14.2]],"rg":[[1,"stanford","Stanford","W",3.83,48]]},"james-madison":{"n":"James Madison","s":7.28,"rp":13,"G":1,"res":12.0,"pal":0.84,"hi":12.0,"sg":[[1,"liberty","Liberty","home",20,13,7,5.87,11.0,-4.0]],"rg":[[1,"liberty","Liberty","W",5.87,85]]},"oregon":{"n":"Oregon","s":7.28,"rp":14,"G":1,"res":12.0,"pal":0.84,"hi":12.0,"sg":[[1,"boise-state","Boise State","home",34,27,7,5.87,11.0,-4.0]],"rg":[[1,"boise-state","Boise State","W",5.87,65]]},"west-virginia":{"n":"West Virginia","s":7.28,"rp":15,"G":1,"res":12.0,"pal":0.84,"hi":12.0,"sg":[[1,"coastal-carolina","Coastal Carolina","home",31,24,7,5.87,11.0,-4.0]],"rg":[[1,"coastal-carolina","Coastal Carolina","W",5.87,71]]},"michigan-state":{"n":"Michigan State","s":7.26,"rp":16,"G":1,"res":11.87,"pal":0.6,"hi":12.0,"sg":[[1,"toledo","Toledo","home",30,20,10,5.62,12.0,-2.0]],"rg":[[1,"toledo","Toledo","W",5.62,110]]},"south-florida":{"n":"South Florida","s":7.26,"rp":17,"G":1,"res":11.87,"pal":0.6,"hi":12.0,"sg":[[1,"florida-international","Florida International","home",19,9,10,5.62,12.0,-2.0]],"rg":[[1,"florida-international","Florida International","W",5.62,74]]},"san-jose-state":{"n":"San José State","s":6.54,"rp":18,"G":2,"res":8.01,"pal":0.5,"hi":12.0,"sg":[[1,"usc","USC","away",26,42,-16,10.72,-23.0,7.0],[1,"eastern-michigan","Eastern Michigan","away",27,21,6,4.18,7.0,-1.0]],"rg":[[1,"usc","USC","L",10.72,2],[1,"eastern-michigan","Eastern Michigan","W",4.18,49]]},"duke":{"n":"Duke","s":8.29,"rp":19,"G":1,"res":11.2,"pal":0.0,"hi":12.0,"sg":[[1,"tulane","Tulane","home",17,3,14,4.84,20.2,-6.2]],"rg":[[1,"tulane","Tulane","W",4.84,111]]},"tulsa":{"n":"Tulsa","s":8.29,"rp":20,"G":1,"res":11.2,"pal":0.0,"hi":12.0,"sg":[[1,"oklahoma-state","Oklahoma State","home",24,10,14,4.84,20.2,-6.2]],"rg":[[1,"oklahoma-state","Oklahoma State","W",4.84,97]]},"washington":{"n":"Washington","s":8.29,"rp":21,"G":1,"res":11.2,"pal":0.0,"hi":12.0,"sg":[[1,"washington-state","Washington State","home",24,10,14,4.84,20.2,-6.2]],"rg":[[1,"washington-state","Washington State","W",4.84,119]]},"houston":{"n":"Houston","s":8.11,"rp":22,"G":1,"res":11.0,"pal":0.0,"hi":12.0,"sg":[[1,"oregon-state","Oregon State","home",33,20,13,4.77,19.7,-6.7]],"rg":[[1,"oregon-state","Oregon State","W",4.77,99]]},"iowa":{"n":"Iowa","s":9.08,"rp":23,"G":1,"res":10.8,"pal":0.0,"hi":12.0,"sg":[[1,"northern-illinois","Northern Illinois","home",40,0,40,4.06,26.6,13.4]],"rg":[[1,"northern-illinois","Northern Illinois","W",4.06,95]]},"nevada":{"n":"Nevada","s":8.66,"rp":24,"G":1,"res":10.8,"pal":0.0,"hi":12.0,"sg":[[1,"western-kentucky","Western Kentucky","home",49,14,35,4.49,23.0,12.0]],"rg":[[1,"western-kentucky","Western Kentucky","W",4.49,120]]},"new-mexico":{"n":"New Mexico","s":9.15,"rp":25,"G":1,"res":10.7,"pal":0.0,"hi":12.0,"sg":[[1,"central-michigan","Central Michigan","home",38,7,31,3.96,27.4,3.6]],"rg":[[1,"central-michigan","Central Michigan","W",3.96,69]]},"cincinnati":{"n":"Cincinnati","s":8.8,"rp":26,"G":1,"res":10.57,"pal":0.0,"hi":12.0,"sg":[[1,"boston-college","Boston College","home",34,15,19,4.34,24.2,-5.2]],"rg":[[1,"boston-college","Boston College","W",4.34,55]]},"illinois":{"n":"Illinois","s":8.8,"rp":27,"G":1,"res":10.57,"pal":0.0,"hi":12.0,"sg":[[1,"uab","UAB","home",42,23,19,4.34,24.2,-5.2]],"rg":[[1,"uab","UAB","W",4.34,57]]},"nebraska":{"n":"Nebraska","s":8.8,"rp":28,"G":1,"res":10.57,"pal":0.0,"hi":12.0,"sg":[[1,"ohio","Ohio","home",49,21,28,4.34,24.2,3.8]],"rg":[[1,"ohio","Ohio","W",4.34,56]]},"colorado-state":{"n":"Colorado State","s":9.24,"rp":29,"G":1,"res":10.08,"pal":0.0,"hi":12.0,"sg":[[1,"wyoming","Wyoming","home",35,13,22,3.85,28.5,-6.5]],"rg":[[1,"wyoming","Wyoming","W",3.85,54]]},"wake-forest":{"n":"Wake Forest","s":9.24,"rp":30,"G":1,"res":10.08,"pal":0.0,"hi":12.0,"sg":[[1,"akron","Akron","home",38,16,22,3.85,28.5,-6.5]],"rg":[[1,"akron","Akron","W",3.85,53]]},"alabama":{"n":"Alabama","s":9.32,"rp":31,"G":1,"res":10.07,"pal":0.0,"hi":12.0,"sg":[[1,"east-carolina","East Carolina","home",48,10,38,3.77,29.3,8.7]],"rg":[[1,"east-carolina","East Carolina","W",3.77,73]]},"ohio-state":{"n":"Ohio State","s":9.57,"rp":32,"G":1,"res":9.86,"pal":0.0,"hi":12.0,"sg":[[1,"ball-state","Ball State","home",56,3,53,3.44,32.3,20.7]],"rg":[[1,"ball-state","Ball State","W",3.44,52]]},"oklahoma":{"n":"Oklahoma","s":9.54,"rp":33,"G":1,"res":9.83,"pal":0.0,"hi":12.0,"sg":[[1,"utep","UTEP","home",51,0,51,3.6,31.3,19.7]],"rg":[[1,"utep","UTEP","W",3.6,51]]},"north-dakota-state":{"n":"North Dakota State","s":9.59,"rp":34,"G":2,"res":9.8,"pal":0.0,"hi":12.0,"sg":[[1,"jacksonville-state","Jacksonville State","home",33,7,26,3.57,31.7,-5.7]],"rg":[[1,"jacksonville-state","Jacksonville State","W",3.57,80],[1,"","Fordham (FCS)","W",-12.0,null]]},"virginia":{"n":"Virginia","s":9.59,"rp":35,"G":1,"res":9.8,"pal":0.0,"hi":12.0,"sg":[[1,"nc-state","NC State","home",34,8,26,3.57,31.7,-5.7]],"rg":[[1,"nc-state","NC State","W",3.57,93]]},"lsu":{"n":"LSU","s":9.54,"rp":36,"G":1,"res":9.69,"pal":0.0,"hi":12.0,"sg":[[1,"clemson","Clemson","home",51,10,41,3.46,32.0,9.0]],"rg":[[1,"clemson","Clemson","W",3.46,50]]},"texas":{"n":"Texas","s":9.5,"rp":37,"G":1,"res":9.62,"pal":0.0,"hi":12.0,"sg":[[1,"texas-state","Texas State","home",59,7,52,3.39,32.2,19.8]],"rg":[[1,"texas-state","Texas State","W",3.39,108]]},"notre-dame":{"n":"Notre Dame","s":6.43,"rp":38,"G":1,"res":6.36,"pal":0.0,"hi":12.0,"sg":[[1,"wisconsin","Wisconsin","neutral",41,13,28,0.02,28.8,-0.8]],"rg":[[1,"wisconsin","Wisconsin","W",0.02,134]]},"unlv":{"n":"UNLV","s":8.06,"rp":39,"G":2,"res":6.31,"pal":0.0,"hi":12.0,"sg":[[1,"memphis","Memphis","home",21,27,-6,10.42,-6.9,0.9],[1,"hawai-i","Hawai'i","away",21,6,15,2.19,22.4,-7.4]],"rg":[[1,"memphis","Memphis","L",10.42,1],[1,"hawai-i","Hawai'i","W",2.19,138]]},"florida":{"n":"Florida","s":6.24,"rp":40,"G":1,"res":6.25,"pal":0.0,"hi":12.0,"sg":[[1,"florida-atlantic","Florida Atlantic","home",66,21,45,0.02,32.8,12.2]],"rg":[[1,"florida-atlantic","Florida Atlantic","W",0.02,125]]},"penn-state":{"n":"Penn State","s":6.24,"rp":41,"G":1,"res":6.25,"pal":0.0,"hi":12.0,"sg":[[1,"marshall","Marshall","home",45,0,45,0.02,32.8,12.2]],"rg":[[1,"marshall","Marshall","W",0.02,126]]},"pittsburgh":{"n":"Pittsburgh","s":6.24,"rp":42,"G":1,"res":6.25,"pal":0.0,"hi":12.0,"sg":[[1,"miami-oh","Miami (OH)","home",59,14,45,0.02,32.8,12.2]],"rg":[[1,"miami-oh","Miami (OH)","W",0.02,127]]},"indiana":{"n":"Indiana","s":6.23,"rp":43,"G":1,"res":6.23,"pal":0.0,"hi":12.0,"sg":[[1,"north-texas","North Texas","home",52,16,36,0.0,32.8,3.2]],"rg":[[1,"north-texas","North Texas","W",0.0,130]]},"mississippi-state":{"n":"Mississippi State","s":6.23,"rp":44,"G":1,"res":6.23,"pal":0.0,"hi":12.0,"sg":[[1,"ul-monroe","UL Monroe","home",62,13,49,0.0,32.8,16.2]],"rg":[[1,"ul-monroe","UL Monroe","W",0.0,131]]},"south-carolina":{"n":"South Carolina","s":6.23,"rp":45,"G":1,"res":6.23,"pal":0.0,"hi":12.0,"sg":[[1,"kent-state","Kent State","home",57,0,57,0.0,32.8,24.2]],"rg":[[1,"kent-state","Kent State","W",0.0,128]]},"texas-a-m":{"n":"Texas A&M","s":6.23,"rp":46,"G":1,"res":6.23,"pal":0.0,"hi":12.0,"sg":[[1,"missouri-state","Missouri State","home",50,0,50,0.0,32.8,17.2]],"rg":[[1,"missouri-state","Missouri State","W",0.0,129]]},"florida-state":{"n":"Florida State","s":8.07,"rp":47,"G":2,"res":6.12,"pal":0.0,"hi":12.0,"sg":[[1,"new-mexico-state","New Mexico State","home",34,17,17,3.09,26.5,-9.5],[1,"smu","SMU","home",24,27,-3,10.38,-6.7,3.7]],"rg":[[1,"new-mexico-state","New Mexico State","W",3.09,94],[1,"smu","SMU","L",10.38,3]]},"stanford":{"n":"Stanford","s":3.83,"rp":48,"G":2,"res":5.33,"pal":0.0,"hi":12.0,"sg":[[1,"hawai-i","Hawai'i","home",37,27,10,2.19,12.0,-2.0],[1,"miami","Miami","home",6,45,-39,10.23,-24.8,-14.2]],"rg":[[1,"hawai-i","Hawai'i","W",2.19,138],[1,"miami","Miami","L",10.23,12]]},"eastern-michigan":{"n":"Eastern Michigan","s":4.18,"rp":49,"G":2,"res":4.04,"pal":0.0,"hi":11.02,"sg":[[1,"sacramento-state","Sacramento State","home",28,17,11,3.03,9.8,1.2],[1,"san-jose-state","San José State","home",21,27,-6,6.54,-7.0,1.0]],"rg":[[1,"sacramento-state","Sacramento State","W",3.03,137],[1,"san-jose-state","San José State","L",6.54,18]]},"clemson":{"n":"Clemson","s":3.46,"rp":50,"G":1,"res":3.2,"pal":0.0,"hi":12.0,"sg":[[1,"lsu","LSU","away",10,51,-41,9.54,-32.0,-9.0]],"rg":[[1,"lsu","LSU","L",9.54,36]]},"utep":{"n":"UTEP","s":3.6,"rp":51,"G":1,"res":3.2,"pal":0.0,"hi":12.0,"sg":[[1,"oklahoma","Oklahoma","away",0,51,-51,9.54,-31.3,-19.7]],"rg":[[1,"oklahoma","Oklahoma","L",9.54,33]]},"ball-state":{"n":"Ball State","s":3.44,"rp":52,"G":1,"res":3.1,"pal":0.0,"hi":12.0,"sg":[[1,"ohio-state","Ohio State","away",3,56,-53,9.57,-32.3,-20.7]],"rg":[[1,"ohio-state","Ohio State","L",9.57,32]]},"akron":{"n":"Akron","s":3.85,"rp":53,"G":1,"res":2.5,"pal":0.0,"hi":12.0,"sg":[[1,"wake-forest","Wake Forest","away",16,38,-22,9.24,-28.5,6.5]],"rg":[[1,"wake-forest","Wake Forest","L",9.24,30]]},"wyoming":{"n":"Wyoming","s":3.85,"rp":54,"G":1,"res":2.5,"pal":0.0,"hi":12.0,"sg":[[1,"colorado-state","Colorado State","away",13,35,-22,9.24,-28.5,6.5]],"rg":[[1,"colorado-state","Colorado State","L",9.24,29]]},"boston-college":{"n":"Boston College","s":4.34,"rp":55,"G":1,"res":2.3,"pal":0.0,"hi":12.0,"sg":[[1,"cincinnati","Cincinnati","away",15,34,-19,8.8,-24.2,5.2]],"rg":[[1,"cincinnati","Cincinnati","L",8.8,26]]},"ohio":{"n":"Ohio","s":4.34,"rp":56,"G":1,"res":2.3,"pal":0.0,"hi":12.0,"sg":[[1,"nebraska","Nebraska","away",21,49,-28,8.8,-24.2,-3.8]],"rg":[[1,"nebraska","Nebraska","L",8.8,28]]},"uab":{"n":"UAB","s":4.34,"rp":57,"G":1,"res":2.3,"pal":0.0,"hi":12.0,"sg":[[1,"illinois","Illinois","away",23,42,-19,8.8,-24.2,5.2]],"rg":[[1,"illinois","Illinois","L",8.8,27]]},"air-force":{"n":"Air Force","s":6.0,"rp":58,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","Duquesne (FCS)","W",-12.0,null]]},"app-state":{"n":"App State","s":6.0,"rp":59,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","Maine (FCS)","W",-12.0,null]]},"arizona":{"n":"Arizona","s":6.0,"rp":60,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","Northern Arizona (FCS)","W",-12.0,null]]},"arizona-state":{"n":"Arizona State","s":6.0,"rp":61,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","Morgan State (FCS)","W",-12.0,null]]},"arkansas":{"n":"Arkansas","s":6.0,"rp":62,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","North Alabama (FCS)","W",-12.0,null]]},"arkansas-state":{"n":"Arkansas State","s":7.4,"rp":63,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[[1,"memphis","Memphis","away",24,42,-18,10.42,-18.4,0.4]],"rg":[[1,"memphis","Memphis","L",10.42,1]]},"army":{"n":"Army","s":6.0,"rp":64,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","Bryant (FCS)","W",-12.0,null]]},"boise-state":{"n":"Boise State","s":5.87,"rp":65,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[[1,"oregon","Oregon","away",27,34,-7,7.28,-11.0,4.0]],"rg":[[1,"oregon","Oregon","L",7.28,14]]},"bowling-green":{"n":"Bowling Green","s":6.0,"rp":66,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","Tarleton State (FCS)","L",-12.0,null]]},"buffalo":{"n":"Buffalo","s":6.0,"rp":67,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","UAlbany (FCS)","W",-12.0,null]]},"byu":{"n":"BYU","s":6.0,"rp":68,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","Utah Tech (FCS)","W",-12.0,null]]},"central-michigan":{"n":"Central Michigan","s":3.96,"rp":69,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[[1,"new-mexico","New Mexico","away",7,38,-31,9.15,-27.4,-3.6]],"rg":[[1,"new-mexico","New Mexico","L",9.15,25]]},"charlotte":{"n":"Charlotte","s":6.0,"rp":70,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","The Citadel (FCS)","OT L",-12.0,null]]},"coastal-carolina":{"n":"Coastal Carolina","s":5.87,"rp":71,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[[1,"west-virginia","West Virginia","away",24,31,-7,7.28,-11.0,4.0]],"rg":[[1,"west-virginia","West Virginia","L",7.28,15]]},"delaware":{"n":"Delaware","s":6.0,"rp":72,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","Merrimack (FCS)","W",-12.0,null]]},"east-carolina":{"n":"East Carolina","s":3.77,"rp":73,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[[1,"alabama","Alabama","away",10,48,-38,9.32,-29.3,-8.7]],"rg":[[1,"alabama","Alabama","L",9.32,31]]},"florida-international":{"n":"Florida International","s":5.62,"rp":74,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[[1,"south-florida","South Florida","away",9,19,-10,7.26,-12.0,2.0]],"rg":[[1,"south-florida","South Florida","L",7.26,17]]},"fresno-state":{"n":"Fresno State","s":7.43,"rp":75,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[[1,"usc","USC","away",0,39,-39,10.72,-19.5,-19.5]],"rg":[[1,"usc","USC","L",10.72,2]]},"georgia":{"n":"Georgia","s":6.0,"rp":76,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","Tennessee State (FCS)","W",-12.0,null]]},"georgia-southern":{"n":"Georgia Southern","s":6.0,"rp":77,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","Charleston Southern (FCS)","W",-12.0,null]]},"georgia-state":{"n":"Georgia State","s":6.0,"rp":78,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","North Carolina A&T (FCS)","W",-12.0,null]]},"iowa-state":{"n":"Iowa State","s":6.0,"rp":79,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","Southeast Missouri State (FCS)","W",-12.0,null]]},"jacksonville-state":{"n":"Jacksonville State","s":3.57,"rp":80,"G":2,"res":0.0,"pal":0.0,"hi":12.0,"sg":[[1,"north-dakota-state","North Dakota State","away",7,33,-26,9.59,-31.7,5.7]],"rg":[[1,"north-dakota-state","North Dakota State","L",9.59,34],[1,"","Eastern Kentucky (FCS)","W",-12.0,null]]},"kansas":{"n":"Kansas","s":6.0,"rp":81,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","Long Island University (FCS)","W",-12.0,null]]},"kansas-state":{"n":"Kansas State","s":6.0,"rp":82,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","Nicholls (FCS)","W",-12.0,null]]},"kennesaw-state":{"n":"Kennesaw State","s":6.0,"rp":83,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","West Georgia (FCS)","W",-12.0,null]]},"kentucky":{"n":"Kentucky","s":6.0,"rp":84,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","Youngstown State (FCS)","W",-12.0,null]]},"liberty":{"n":"Liberty","s":5.87,"rp":85,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[[1,"james-madison","James Madison","away",13,20,-7,7.28,-11.0,4.0]],"rg":[[1,"james-madison","James Madison","L",7.28,13]]},"louisiana":{"n":"Louisiana","s":6.0,"rp":86,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","Lamar (FCS)","W",-12.0,null]]},"louisiana-tech":{"n":"Louisiana Tech","s":6.0,"rp":87,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","Northwestern State (FCS)","W",-12.0,null]]},"maryland":{"n":"Maryland","s":6.0,"rp":88,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","Hampton (FCS)","W",-12.0,null]]},"middle-tennessee":{"n":"Middle Tennessee","s":6.0,"rp":89,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","Murray State (FCS)","W",-12.0,null]]},"minnesota":{"n":"Minnesota","s":6.0,"rp":90,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","Eastern Illinois (FCS)","W",-12.0,null]]},"missouri":{"n":"Missouri","s":6.0,"rp":91,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","Arkansas-Pine Bluff (FCS)","W",-12.0,null]]},"navy":{"n":"Navy","s":6.0,"rp":92,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","Towson (FCS)","W",-12.0,null]]},"nc-state":{"n":"NC State","s":3.57,"rp":93,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[[1,"virginia","Virginia","away",8,34,-26,9.59,-31.7,5.7]],"rg":[[1,"virginia","Virginia","L",9.59,35]]},"new-mexico-state":{"n":"New Mexico State","s":3.09,"rp":94,"G":2,"res":0.0,"pal":0.0,"hi":12.0,"sg":[[1,"florida-state","Florida State","away",17,34,-17,8.07,-26.5,9.5]],"rg":[[1,"florida-state","Florida State","L",8.07,47],[1,"","Mercyhurst (FCS)","W",-12.0,null]]},"northern-illinois":{"n":"Northern Illinois","s":4.06,"rp":95,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[[1,"iowa","Iowa","away",0,40,-40,9.08,-26.6,-13.4]],"rg":[[1,"iowa","Iowa","L",9.08,23]]},"northwestern":{"n":"Northwestern","s":6.0,"rp":96,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","South Dakota State (FCS)","W",-12.0,null]]},"oklahoma-state":{"n":"Oklahoma State","s":4.84,"rp":97,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[[1,"tulsa","Tulsa","away",10,24,-14,8.29,-20.2,6.2]],"rg":[[1,"tulsa","Tulsa","L",8.29,20]]},"old-dominion":{"n":"Old Dominion","s":6.0,"rp":98,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","Norfolk State (FCS)","W",-12.0,null]]},"oregon-state":{"n":"Oregon State","s":4.77,"rp":99,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[[1,"houston","Houston","away",20,33,-13,8.11,-19.7,6.7]],"rg":[[1,"houston","Houston","L",8.11,22]]},"purdue":{"n":"Purdue","s":6.0,"rp":100,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","Indiana State (FCS)","W",-12.0,null]]},"rice":{"n":"Rice","s":6.0,"rp":101,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","Houston Christian (FCS)","W",-12.0,null]]},"san-diego-state":{"n":"San Diego State","s":6.0,"rp":102,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","Portland State (FCS)","W",-12.0,null]]},"south-alabama":{"n":"South Alabama","s":6.0,"rp":103,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","SE Louisiana (FCS)","W",-12.0,null]]},"southern-miss":{"n":"Southern Miss","s":6.0,"rp":104,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","Alcorn State (FCS)","W",-12.0,null]]},"syracuse":{"n":"Syracuse","s":6.0,"rp":105,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","New Hampshire (FCS)","W",-12.0,null]]},"temple":{"n":"Temple","s":6.0,"rp":106,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","Rhode Island (FCS)","W",-12.0,null]]},"tennessee":{"n":"Tennessee","s":6.0,"rp":107,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","Furman (FCS)","W",-12.0,null]]},"texas-state":{"n":"Texas State","s":3.39,"rp":108,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[[1,"texas","Texas","away",7,59,-52,9.5,-32.2,-19.8]],"rg":[[1,"texas","Texas","L",9.5,37]]},"texas-tech":{"n":"Texas Tech","s":6.0,"rp":109,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","Abilene Christian (FCS)","W",-12.0,null]]},"toledo":{"n":"Toledo","s":5.62,"rp":110,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[[1,"michigan-state","Michigan State","away",20,30,-10,7.26,-12.0,2.0]],"rg":[[1,"michigan-state","Michigan State","L",7.26,16]]},"tulane":{"n":"Tulane","s":4.84,"rp":111,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[[1,"duke","Duke","away",3,17,-14,8.29,-20.2,6.2]],"rg":[[1,"duke","Duke","L",8.29,19]]},"ucf":{"n":"UCF","s":6.0,"rp":112,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","Bethune-Cookman (FCS)","W",-12.0,null]]},"uconn":{"n":"UConn","s":6.0,"rp":113,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","Lafayette (FCS)","W",-12.0,null]]},"utah":{"n":"Utah","s":6.0,"rp":114,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","Idaho (FCS)","W",-12.0,null]]},"utah-state":{"n":"Utah State","s":6.0,"rp":115,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","Idaho State (FCS)","L",-12.0,null]]},"utsa":{"n":"UTSA","s":6.0,"rp":116,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","UT Rio Grande Valley (FCS)","W",-12.0,null]]},"vanderbilt":{"n":"Vanderbilt","s":6.0,"rp":117,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","Austin Peay (FCS)","W",-12.0,null]]},"virginia-tech":{"n":"Virginia Tech","s":6.0,"rp":118,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","VMI (FCS)","W",-12.0,null]]},"washington-state":{"n":"Washington State","s":4.84,"rp":119,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[[1,"washington","Washington","away",10,24,-14,8.29,-20.2,6.2]],"rg":[[1,"washington","Washington","L",8.29,21]]},"western-kentucky":{"n":"Western Kentucky","s":4.49,"rp":120,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[[1,"nevada","Nevada","away",14,49,-35,8.66,-23.0,-12.0]],"rg":[[1,"nevada","Nevada","L",8.66,24]]},"california":{"n":"California","s":4.1,"rp":121,"G":1,"res":0.0,"pal":0.0,"hi":11.91,"sg":[[1,"ucla","UCLA","home",24,45,-21,8.97,-17.9,-3.1]],"rg":[[1,"ucla","UCLA","L",8.97,11]]},"sam-houston":{"n":"Sam Houston","s":6.5,"rp":122,"G":1,"res":0.0,"pal":0.0,"hi":11.49,"sg":[[1,"troy","Troy","away",21,24,-3,6.47,-4.3,1.3]],"rg":[[1,"troy","Troy","L",6.47,10]]},"tcu":{"n":"TCU","s":5.67,"rp":123,"G":1,"res":0.0,"pal":0.0,"hi":11.45,"sg":[[1,"north-carolina","North Carolina","neutral",10,15,-5,7.46,-8.5,3.5]],"rg":[[1,"north-carolina","North Carolina","L",7.46,8]]},"rutgers":{"n":"Rutgers","s":4.48,"rp":124,"G":1,"res":0.0,"pal":0.0,"hi":11.43,"sg":[[1,"massachusetts","Massachusetts","home",21,37,-16,8.49,-14.5,-1.5]],"rg":[[1,"massachusetts","Massachusetts","L",8.49,9]]},"florida-atlantic":{"n":"Florida Atlantic","s":0.02,"rp":125,"G":1,"res":0.0,"pal":0.0,"hi":11.27,"sg":[[1,"florida","Florida","away",21,66,-45,6.24,-32.8,-12.2]],"rg":[[1,"florida","Florida","L",6.24,40]]},"marshall":{"n":"Marshall","s":0.02,"rp":126,"G":1,"res":0.0,"pal":0.0,"hi":11.27,"sg":[[1,"penn-state","Penn State","away",0,45,-45,6.24,-32.8,-12.2]],"rg":[[1,"penn-state","Penn State","L",6.24,41]]},"miami-oh":{"n":"Miami (OH)","s":0.02,"rp":127,"G":1,"res":0.0,"pal":0.0,"hi":11.27,"sg":[[1,"pittsburgh","Pittsburgh","away",14,59,-45,6.24,-32.8,-12.2]],"rg":[[1,"pittsburgh","Pittsburgh","L",6.24,42]]},"kent-state":{"n":"Kent State","s":0.0,"rp":128,"G":1,"res":0.0,"pal":0.0,"hi":11.25,"sg":[[1,"south-carolina","South Carolina","away",0,57,-57,6.23,-32.8,-24.2]],"rg":[[1,"south-carolina","South Carolina","L",6.23,45]]},"missouri-state":{"n":"Missouri State","s":0.0,"rp":129,"G":1,"res":0.0,"pal":0.0,"hi":11.25,"sg":[[1,"texas-a-m","Texas A&M","away",0,50,-50,6.23,-32.8,-17.2]],"rg":[[1,"texas-a-m","Texas A&M","L",6.23,46]]},"north-texas":{"n":"North Texas","s":0.0,"rp":130,"G":1,"res":0.0,"pal":0.0,"hi":11.25,"sg":[[1,"indiana","Indiana","away",16,52,-36,6.23,-32.8,-3.2]],"rg":[[1,"indiana","Indiana","L",6.23,43]]},"ul-monroe":{"n":"UL Monroe","s":0.0,"rp":131,"G":1,"res":0.0,"pal":0.0,"hi":11.25,"sg":[[1,"mississippi-state","Mississippi State","away",13,62,-49,6.23,-32.8,-16.2]],"rg":[[1,"mississippi-state","Mississippi State","L",6.23,44]]},"western-michigan":{"n":"Western Michigan","s":6.87,"rp":132,"G":1,"res":0.0,"pal":0.0,"hi":11.15,"sg":[[1,"michigan","Michigan","away",12,13,-1,6.12,-0.8,-0.2]],"rg":[[1,"michigan","Michigan","L",6.12,7]]},"louisville":{"n":"Louisville","s":6.49,"rp":133,"G":1,"res":0.0,"pal":0.0,"hi":10.48,"sg":[[1,"ole-miss","Ole Miss","neutral",38,41,-3,6.49,-0.0,-3.0]],"rg":[[1,"ole-miss","Ole Miss","L",6.49,5]]},"wisconsin":{"n":"Wisconsin","s":0.02,"rp":134,"G":1,"res":0.0,"pal":0.0,"hi":10.42,"sg":[[1,"notre-dame","Notre Dame","neutral",13,41,-28,6.43,-28.8,0.8]],"rg":[[1,"notre-dame","Notre Dame","L",6.43,38]]},"baylor":{"n":"Baylor","s":6.45,"rp":135,"G":1,"res":0.0,"pal":0.0,"hi":10.41,"sg":[[1,"auburn","Auburn","neutral",16,17,-1,6.42,0.1,-1.1]],"rg":[[1,"auburn","Auburn","L",6.42,6]]},"georgia-tech":{"n":"Georgia Tech","s":6.17,"rp":136,"G":1,"res":0.0,"pal":0.0,"hi":9.91,"sg":[[1,"colorado","Colorado","home",13,14,-1,6.97,0.6,-1.6]],"rg":[[1,"colorado","Colorado","L",6.97,4]]},"sacramento-state":{"n":"Sacramento State","s":3.03,"rp":137,"G":2,"res":0.0,"pal":0.0,"hi":9.38,"sg":[[1,"eastern-michigan","Eastern Michigan","away",17,28,-11,4.18,-9.8,-1.2]],"rg":[[1,"eastern-michigan","Eastern Michigan","L",4.18,49],[1,"","Mississippi Valley State (FCS)","W",-12.0,null]]},"hawai-i":{"n":"Hawai'i","s":2.19,"rp":138,"G":2,"res":0.0,"pal":0.0,"hi":7.05,"sg":[[1,"stanford","Stanford","away",27,37,-10,3.83,-12.0,2.0],[1,"unlv","UNLV","home",6,21,-15,8.06,-22.4,7.4]],"rg":[[1,"stanford","Stanford","L",3.83,48],[1,"unlv","UNLV","L",8.06,39]]}}</script>
+<script id="data" type="application/json">{"memphis":{"n":"Memphis","s":10.42,"rp":1,"rr":1,"rs":2,"G":2,"res":12.0,"pal":6.37,"hi":12.0,"sg":[[1,"unlv","UNLV","away",27,21,6,8.06,6.9,-0.9],[1,"arkansas-state","Arkansas State","home",42,24,18,7.4,18.4,-0.4]],"rg":[[1,"unlv","UNLV","W",8.06,39],[1,"arkansas-state","Arkansas State","W",7.4,63]]},"usc":{"n":"USC","s":10.72,"rp":2,"rr":2,"rs":1,"G":2,"res":12.0,"pal":4.98,"hi":12.0,"sg":[[1,"san-jose-state","San José State","home",42,26,16,6.54,23.0,-7.0],[1,"fresno-state","Fresno State","home",39,0,39,7.43,19.5,19.5]],"rg":[[1,"san-jose-state","San José State","W",6.54,18],[1,"fresno-state","Fresno State","W",7.43,75]]},"smu":{"n":"SMU","s":10.38,"rp":3,"rr":3,"rs":3,"G":1,"res":12.0,"pal":4.74,"hi":12.0,"sg":[[1,"florida-state","Florida State","away",27,24,3,8.07,6.7,-3.7]],"rg":[[1,"florida-state","Florida State","W",8.07,47]]},"colorado":{"n":"Colorado","s":6.97,"rp":4,"rr":4,"rs":36,"G":1,"res":12.0,"pal":3.15,"hi":12.0,"sg":[[1,"georgia-tech","Georgia Tech","away",14,13,1,6.17,-0.6,1.6]],"rg":[[1,"georgia-tech","Georgia Tech","W",6.17,136]]},"ole-miss":{"n":"Ole Miss","s":6.49,"rp":5,"rr":5,"rs":40,"G":1,"res":12.0,"pal":2.39,"hi":12.0,"sg":[[1,"louisville","Louisville","neutral",41,38,3,6.49,0.0,3.0]],"rg":[[1,"louisville","Louisville","W",6.49,133]]},"auburn":{"n":"Auburn","s":6.42,"rp":6,"rr":6,"rs":45,"G":1,"res":12.0,"pal":2.36,"hi":12.0,"sg":[[1,"baylor","Baylor","neutral",17,16,1,6.45,-0.1,1.1]],"rg":[[1,"baylor","Baylor","W",6.45,135]]},"michigan":{"n":"Michigan","s":6.12,"rp":7,"rr":7,"rs":54,"G":1,"res":12.0,"pal":1.76,"hi":12.0,"sg":[[1,"western-michigan","Western Michigan","home",13,12,1,6.87,0.8,0.2]],"rg":[[1,"western-michigan","Western Michigan","W",6.87,132]]},"north-carolina":{"n":"North Carolina","s":7.46,"rp":8,"rr":8,"rs":28,"G":1,"res":12.0,"pal":1.69,"hi":12.0,"sg":[[1,"tcu","TCU","neutral",15,10,5,5.67,8.5,-3.5]],"rg":[[1,"tcu","TCU","W",5.67,123]]},"massachusetts":{"n":"Massachusetts","s":8.49,"rp":9,"rr":19,"rs":21,"G":1,"res":10.82,"pal":1.54,"hi":12.0,"sg":[[1,"rutgers","Rutgers","away",37,21,16,4.48,14.5,1.5]],"rg":[[1,"rutgers","Rutgers","W",4.48,124]]},"troy":{"n":"Troy","s":6.47,"rp":10,"rr":9,"rs":42,"G":1,"res":12.0,"pal":1.42,"hi":12.0,"sg":[[1,"sam-houston","Sam Houston","home",24,21,3,6.5,4.3,-1.3]],"rg":[[1,"sam-houston","Sam Houston","W",6.5,122]]},"ucla":{"n":"UCLA","s":8.97,"rp":11,"rr":26,"rs":16,"G":1,"res":10.44,"pal":1.16,"hi":12.0,"sg":[[1,"california","California","away",45,24,21,4.1,17.9,3.1]],"rg":[[1,"california","California","W",4.1,121]]},"miami":{"n":"Miami","s":10.23,"rp":12,"rr":27,"rs":4,"G":1,"res":10.17,"pal":0.89,"hi":12.0,"sg":[[1,"stanford","Stanford","away",45,6,39,3.83,24.8,14.2]],"rg":[[1,"stanford","Stanford","W",3.83,48]]},"james-madison":{"n":"James Madison","s":7.28,"rp":13,"rr":10,"rs":31,"G":1,"res":12.0,"pal":0.84,"hi":12.0,"sg":[[1,"liberty","Liberty","home",20,13,7,5.87,11.0,-4.0]],"rg":[[1,"liberty","Liberty","W",5.87,85]]},"oregon":{"n":"Oregon","s":7.28,"rp":14,"rr":11,"rs":32,"G":1,"res":12.0,"pal":0.84,"hi":12.0,"sg":[[1,"boise-state","Boise State","home",34,27,7,5.87,11.0,-4.0]],"rg":[[1,"boise-state","Boise State","W",5.87,65]]},"west-virginia":{"n":"West Virginia","s":7.28,"rp":15,"rr":12,"rs":33,"G":1,"res":12.0,"pal":0.84,"hi":12.0,"sg":[[1,"coastal-carolina","Coastal Carolina","home",31,24,7,5.87,11.0,-4.0]],"rg":[[1,"coastal-carolina","Coastal Carolina","W",5.87,71]]},"michigan-state":{"n":"Michigan State","s":7.26,"rp":16,"rr":13,"rs":34,"G":1,"res":11.87,"pal":0.6,"hi":12.0,"sg":[[1,"toledo","Toledo","home",30,20,10,5.62,12.0,-2.0]],"rg":[[1,"toledo","Toledo","W",5.62,110]]},"south-florida":{"n":"South Florida","s":7.26,"rp":17,"rr":14,"rs":35,"G":1,"res":11.87,"pal":0.6,"hi":12.0,"sg":[[1,"florida-international","Florida International","home",19,9,10,5.62,12.0,-2.0]],"rg":[[1,"florida-international","Florida International","W",5.62,74]]},"san-jose-state":{"n":"San José State","s":6.54,"rp":18,"rr":37,"rs":38,"G":2,"res":8.01,"pal":0.5,"hi":12.0,"sg":[[1,"usc","USC","away",26,42,-16,10.72,-23.0,7.0],[1,"eastern-michigan","Eastern Michigan","away",27,21,6,4.18,7.0,-1.0]],"rg":[[1,"usc","USC","L",10.72,2],[1,"eastern-michigan","Eastern Michigan","W",4.18,49]]},"duke":{"n":"Duke","s":8.29,"rp":19,"rr":15,"rs":22,"G":1,"res":11.2,"pal":0.0,"hi":12.0,"sg":[[1,"tulane","Tulane","home",17,3,14,4.84,20.2,-6.2]],"rg":[[1,"tulane","Tulane","W",4.84,111]]},"tulsa":{"n":"Tulsa","s":8.29,"rp":20,"rr":16,"rs":23,"G":1,"res":11.2,"pal":0.0,"hi":12.0,"sg":[[1,"oklahoma-state","Oklahoma State","home",24,10,14,4.84,20.2,-6.2]],"rg":[[1,"oklahoma-state","Oklahoma State","W",4.84,97]]},"washington":{"n":"Washington","s":8.29,"rp":21,"rr":17,"rs":24,"G":1,"res":11.2,"pal":0.0,"hi":12.0,"sg":[[1,"washington-state","Washington State","home",24,10,14,4.84,20.2,-6.2]],"rg":[[1,"washington-state","Washington State","W",4.84,119]]},"houston":{"n":"Houston","s":8.11,"rp":22,"rr":18,"rs":25,"G":1,"res":11.0,"pal":0.0,"hi":12.0,"sg":[[1,"oregon-state","Oregon State","home",33,20,13,4.77,19.7,-6.7]],"rg":[[1,"oregon-state","Oregon State","W",4.77,99]]},"iowa":{"n":"Iowa","s":9.08,"rp":23,"rr":20,"rs":15,"G":1,"res":10.8,"pal":0.0,"hi":12.0,"sg":[[1,"northern-illinois","Northern Illinois","home",40,0,40,4.06,26.6,13.4]],"rg":[[1,"northern-illinois","Northern Illinois","W",4.06,95]]},"nevada":{"n":"Nevada","s":8.66,"rp":24,"rr":21,"rs":20,"G":1,"res":10.8,"pal":0.0,"hi":12.0,"sg":[[1,"western-kentucky","Western Kentucky","home",49,14,35,4.49,23.0,12.0]],"rg":[[1,"western-kentucky","Western Kentucky","W",4.49,120]]},"new-mexico":{"n":"New Mexico","s":9.15,"rp":25,"rr":22,"rs":14,"G":1,"res":10.7,"pal":0.0,"hi":12.0,"sg":[[1,"central-michigan","Central Michigan","home",38,7,31,3.96,27.4,3.6]],"rg":[[1,"central-michigan","Central Michigan","W",3.96,69]]},"cincinnati":{"n":"Cincinnati","s":8.8,"rp":26,"rr":23,"rs":18,"G":1,"res":10.57,"pal":0.0,"hi":12.0,"sg":[[1,"boston-college","Boston College","home",34,15,19,4.34,24.2,-5.2]],"rg":[[1,"boston-college","Boston College","W",4.34,55]]},"illinois":{"n":"Illinois","s":8.8,"rp":27,"rr":24,"rs":19,"G":1,"res":10.57,"pal":0.0,"hi":12.0,"sg":[[1,"uab","UAB","home",42,23,19,4.34,24.2,-5.2]],"rg":[[1,"uab","UAB","W",4.34,57]]},"nebraska":{"n":"Nebraska","s":8.8,"rp":28,"rr":25,"rs":17,"G":1,"res":10.57,"pal":0.0,"hi":12.0,"sg":[[1,"ohio","Ohio","home",49,21,28,4.34,24.2,3.8]],"rg":[[1,"ohio","Ohio","W",4.34,56]]},"colorado-state":{"n":"Colorado State","s":9.24,"rp":29,"rr":28,"rs":12,"G":1,"res":10.08,"pal":0.0,"hi":12.0,"sg":[[1,"wyoming","Wyoming","home",35,13,22,3.85,28.5,-6.5]],"rg":[[1,"wyoming","Wyoming","W",3.85,54]]},"wake-forest":{"n":"Wake Forest","s":9.24,"rp":30,"rr":29,"rs":13,"G":1,"res":10.08,"pal":0.0,"hi":12.0,"sg":[[1,"akron","Akron","home",38,16,22,3.85,28.5,-6.5]],"rg":[[1,"akron","Akron","W",3.85,53]]},"alabama":{"n":"Alabama","s":9.32,"rp":31,"rr":30,"rs":11,"G":1,"res":10.07,"pal":0.0,"hi":12.0,"sg":[[1,"east-carolina","East Carolina","home",48,10,38,3.77,29.3,8.7]],"rg":[[1,"east-carolina","East Carolina","W",3.77,73]]},"ohio-state":{"n":"Ohio State","s":9.57,"rp":32,"rr":31,"rs":7,"G":1,"res":9.86,"pal":0.0,"hi":12.0,"sg":[[1,"ball-state","Ball State","home",56,3,53,3.44,32.3,20.7]],"rg":[[1,"ball-state","Ball State","W",3.44,52]]},"oklahoma":{"n":"Oklahoma","s":9.54,"rp":33,"rr":32,"rs":9,"G":1,"res":9.83,"pal":0.0,"hi":12.0,"sg":[[1,"utep","UTEP","home",51,0,51,3.6,31.3,19.7]],"rg":[[1,"utep","UTEP","W",3.6,51]]},"north-dakota-state":{"n":"North Dakota State","s":9.59,"rp":34,"rr":33,"rs":5,"G":2,"res":9.8,"pal":0.0,"hi":12.0,"sg":[[1,"jacksonville-state","Jacksonville State","home",33,7,26,3.57,31.7,-5.7]],"rg":[[1,"jacksonville-state","Jacksonville State","W",3.57,80],[1,"","Fordham (FCS)","W",-12.0,null]]},"virginia":{"n":"Virginia","s":9.59,"rp":35,"rr":34,"rs":6,"G":1,"res":9.8,"pal":0.0,"hi":12.0,"sg":[[1,"nc-state","NC State","home",34,8,26,3.57,31.7,-5.7]],"rg":[[1,"nc-state","NC State","W",3.57,93]]},"lsu":{"n":"LSU","s":9.54,"rp":36,"rr":35,"rs":8,"G":1,"res":9.69,"pal":0.0,"hi":12.0,"sg":[[1,"clemson","Clemson","home",51,10,41,3.46,32.0,9.0]],"rg":[[1,"clemson","Clemson","W",3.46,50]]},"texas":{"n":"Texas","s":9.5,"rp":37,"rr":36,"rs":10,"G":1,"res":9.62,"pal":0.0,"hi":12.0,"sg":[[1,"texas-state","Texas State","home",59,7,52,3.39,32.2,19.8]],"rg":[[1,"texas-state","Texas State","W",3.39,108]]},"notre-dame":{"n":"Notre Dame","s":6.43,"rp":38,"rr":38,"rs":44,"G":1,"res":6.36,"pal":0.0,"hi":12.0,"sg":[[1,"wisconsin","Wisconsin","neutral",41,13,28,0.02,28.8,-0.8]],"rg":[[1,"wisconsin","Wisconsin","W",0.02,134]]},"unlv":{"n":"UNLV","s":8.06,"rp":39,"rr":39,"rs":27,"G":2,"res":6.31,"pal":0.0,"hi":12.0,"sg":[[1,"memphis","Memphis","home",21,27,-6,10.42,-6.9,0.9],[1,"hawai-i","Hawai'i","away",21,6,15,2.19,22.4,-7.4]],"rg":[[1,"memphis","Memphis","L",10.42,1],[1,"hawai-i","Hawai'i","W",2.19,138]]},"florida":{"n":"Florida","s":6.24,"rp":40,"rr":40,"rs":46,"G":1,"res":6.25,"pal":0.0,"hi":12.0,"sg":[[1,"florida-atlantic","Florida Atlantic","home",66,21,45,0.02,32.8,12.2]],"rg":[[1,"florida-atlantic","Florida Atlantic","W",0.02,125]]},"penn-state":{"n":"Penn State","s":6.24,"rp":41,"rr":41,"rs":47,"G":1,"res":6.25,"pal":0.0,"hi":12.0,"sg":[[1,"marshall","Marshall","home",45,0,45,0.02,32.8,12.2]],"rg":[[1,"marshall","Marshall","W",0.02,126]]},"pittsburgh":{"n":"Pittsburgh","s":6.24,"rp":42,"rr":42,"rs":48,"G":1,"res":6.25,"pal":0.0,"hi":12.0,"sg":[[1,"miami-oh","Miami (OH)","home",59,14,45,0.02,32.8,12.2]],"rg":[[1,"miami-oh","Miami (OH)","W",0.02,127]]},"indiana":{"n":"Indiana","s":6.23,"rp":43,"rr":43,"rs":52,"G":1,"res":6.23,"pal":0.0,"hi":12.0,"sg":[[1,"north-texas","North Texas","home",52,16,36,0.0,32.8,3.2]],"rg":[[1,"north-texas","North Texas","W",0.0,130]]},"mississippi-state":{"n":"Mississippi State","s":6.23,"rp":44,"rr":44,"rs":50,"G":1,"res":6.23,"pal":0.0,"hi":12.0,"sg":[[1,"ul-monroe","UL Monroe","home",62,13,49,0.0,32.8,16.2]],"rg":[[1,"ul-monroe","UL Monroe","W",0.0,131]]},"south-carolina":{"n":"South Carolina","s":6.23,"rp":45,"rr":45,"rs":49,"G":1,"res":6.23,"pal":0.0,"hi":12.0,"sg":[[1,"kent-state","Kent State","home",57,0,57,0.0,32.8,24.2]],"rg":[[1,"kent-state","Kent State","W",0.0,128]]},"texas-a-m":{"n":"Texas A&M","s":6.23,"rp":46,"rr":46,"rs":51,"G":1,"res":6.23,"pal":0.0,"hi":12.0,"sg":[[1,"missouri-state","Missouri State","home",50,0,50,0.0,32.8,17.2]],"rg":[[1,"missouri-state","Missouri State","W",0.0,129]]},"florida-state":{"n":"Florida State","s":8.07,"rp":47,"rr":47,"rs":26,"G":2,"res":6.12,"pal":0.0,"hi":12.0,"sg":[[1,"new-mexico-state","New Mexico State","home",34,17,17,3.09,26.5,-9.5],[1,"smu","SMU","home",24,27,-3,10.38,-6.7,3.7]],"rg":[[1,"new-mexico-state","New Mexico State","W",3.09,94],[1,"smu","SMU","L",10.38,3]]},"stanford":{"n":"Stanford","s":3.83,"rp":48,"rr":48,"rs":120,"G":2,"res":5.33,"pal":0.0,"hi":12.0,"sg":[[1,"hawai-i","Hawai'i","home",37,27,10,2.19,12.0,-2.0],[1,"miami","Miami","home",6,45,-39,10.23,-24.8,-14.2]],"rg":[[1,"hawai-i","Hawai'i","W",2.19,138],[1,"miami","Miami","L",10.23,12]]},"eastern-michigan":{"n":"Eastern Michigan","s":4.18,"rp":49,"rr":49,"rs":114,"G":2,"res":4.04,"pal":0.0,"hi":11.02,"sg":[[1,"sacramento-state","Sacramento State","home",28,17,11,3.03,9.8,1.2],[1,"san-jose-state","San José State","home",21,27,-6,6.54,-7.0,1.0]],"rg":[[1,"sacramento-state","Sacramento State","W",3.03,137],[1,"san-jose-state","San José State","L",6.54,18]]},"clemson":{"n":"Clemson","s":3.46,"rp":50,"rr":50,"rs":125,"G":1,"res":3.2,"pal":0.0,"hi":12.0,"sg":[[1,"lsu","LSU","away",10,51,-41,9.54,-32.0,-9.0]],"rg":[[1,"lsu","LSU","L",9.54,36]]},"utep":{"n":"UTEP","s":3.6,"rp":51,"rr":51,"rs":122,"G":1,"res":3.2,"pal":0.0,"hi":12.0,"sg":[[1,"oklahoma","Oklahoma","away",0,51,-51,9.54,-31.3,-19.7]],"rg":[[1,"oklahoma","Oklahoma","L",9.54,33]]},"ball-state":{"n":"Ball State","s":3.44,"rp":52,"rr":52,"rs":126,"G":1,"res":3.1,"pal":0.0,"hi":12.0,"sg":[[1,"ohio-state","Ohio State","away",3,56,-53,9.57,-32.3,-20.7]],"rg":[[1,"ohio-state","Ohio State","L",9.57,32]]},"akron":{"n":"Akron","s":3.85,"rp":53,"rr":53,"rs":118,"G":1,"res":2.5,"pal":0.0,"hi":12.0,"sg":[[1,"wake-forest","Wake Forest","away",16,38,-22,9.24,-28.5,6.5]],"rg":[[1,"wake-forest","Wake Forest","L",9.24,30]]},"wyoming":{"n":"Wyoming","s":3.85,"rp":54,"rr":54,"rs":119,"G":1,"res":2.5,"pal":0.0,"hi":12.0,"sg":[[1,"colorado-state","Colorado State","away",13,35,-22,9.24,-28.5,6.5]],"rg":[[1,"colorado-state","Colorado State","L",9.24,29]]},"boston-college":{"n":"Boston College","s":4.34,"rp":55,"rr":55,"rs":111,"G":1,"res":2.3,"pal":0.0,"hi":12.0,"sg":[[1,"cincinnati","Cincinnati","away",15,34,-19,8.8,-24.2,5.2]],"rg":[[1,"cincinnati","Cincinnati","L",8.8,26]]},"ohio":{"n":"Ohio","s":4.34,"rp":56,"rr":56,"rs":113,"G":1,"res":2.3,"pal":0.0,"hi":12.0,"sg":[[1,"nebraska","Nebraska","away",21,49,-28,8.8,-24.2,-3.8]],"rg":[[1,"nebraska","Nebraska","L",8.8,28]]},"uab":{"n":"UAB","s":4.34,"rp":57,"rr":57,"rs":112,"G":1,"res":2.3,"pal":0.0,"hi":12.0,"sg":[[1,"illinois","Illinois","away",23,42,-19,8.8,-24.2,5.2]],"rg":[[1,"illinois","Illinois","L",8.8,27]]},"air-force":{"n":"Air Force","s":6.0,"rp":58,"rr":58,"rs":55,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","Duquesne (FCS)","W",-12.0,null]]},"app-state":{"n":"App State","s":6.0,"rp":59,"rr":59,"rs":56,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","Maine (FCS)","W",-12.0,null]]},"arizona":{"n":"Arizona","s":6.0,"rp":60,"rr":60,"rs":57,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","Northern Arizona (FCS)","W",-12.0,null]]},"arizona-state":{"n":"Arizona State","s":6.0,"rp":61,"rr":61,"rs":58,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","Morgan State (FCS)","W",-12.0,null]]},"arkansas":{"n":"Arkansas","s":6.0,"rp":62,"rr":62,"rs":59,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","North Alabama (FCS)","W",-12.0,null]]},"arkansas-state":{"n":"Arkansas State","s":7.4,"rp":63,"rr":63,"rs":30,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[[1,"memphis","Memphis","away",24,42,-18,10.42,-18.4,0.4]],"rg":[[1,"memphis","Memphis","L",10.42,1]]},"army":{"n":"Army","s":6.0,"rp":64,"rr":64,"rs":60,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","Bryant (FCS)","W",-12.0,null]]},"boise-state":{"n":"Boise State","s":5.87,"rp":65,"rr":65,"rs":99,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[[1,"oregon","Oregon","away",27,34,-7,7.28,-11.0,4.0]],"rg":[[1,"oregon","Oregon","L",7.28,14]]},"bowling-green":{"n":"Bowling Green","s":6.0,"rp":66,"rr":66,"rs":61,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","Tarleton State (FCS)","L",-12.0,null]]},"buffalo":{"n":"Buffalo","s":6.0,"rp":67,"rr":67,"rs":62,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","UAlbany (FCS)","W",-12.0,null]]},"byu":{"n":"BYU","s":6.0,"rp":68,"rr":68,"rs":63,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","Utah Tech (FCS)","W",-12.0,null]]},"central-michigan":{"n":"Central Michigan","s":3.96,"rp":69,"rr":69,"rs":117,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[[1,"new-mexico","New Mexico","away",7,38,-31,9.15,-27.4,-3.6]],"rg":[[1,"new-mexico","New Mexico","L",9.15,25]]},"charlotte":{"n":"Charlotte","s":6.0,"rp":70,"rr":70,"rs":64,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","The Citadel (FCS)","OT L",-12.0,null]]},"coastal-carolina":{"n":"Coastal Carolina","s":5.87,"rp":71,"rr":71,"rs":100,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[[1,"west-virginia","West Virginia","away",24,31,-7,7.28,-11.0,4.0]],"rg":[[1,"west-virginia","West Virginia","L",7.28,15]]},"delaware":{"n":"Delaware","s":6.0,"rp":72,"rr":72,"rs":65,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","Merrimack (FCS)","W",-12.0,null]]},"east-carolina":{"n":"East Carolina","s":3.77,"rp":73,"rr":73,"rs":121,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[[1,"alabama","Alabama","away",10,48,-38,9.32,-29.3,-8.7]],"rg":[[1,"alabama","Alabama","L",9.32,31]]},"florida-international":{"n":"Florida International","s":5.62,"rp":74,"rr":74,"rs":103,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[[1,"south-florida","South Florida","away",9,19,-10,7.26,-12.0,2.0]],"rg":[[1,"south-florida","South Florida","L",7.26,17]]},"fresno-state":{"n":"Fresno State","s":7.43,"rp":75,"rr":75,"rs":29,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[[1,"usc","USC","away",0,39,-39,10.72,-19.5,-19.5]],"rg":[[1,"usc","USC","L",10.72,2]]},"georgia":{"n":"Georgia","s":6.0,"rp":76,"rr":76,"rs":66,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","Tennessee State (FCS)","W",-12.0,null]]},"georgia-southern":{"n":"Georgia Southern","s":6.0,"rp":77,"rr":77,"rs":67,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","Charleston Southern (FCS)","W",-12.0,null]]},"georgia-state":{"n":"Georgia State","s":6.0,"rp":78,"rr":78,"rs":68,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","North Carolina A&T (FCS)","W",-12.0,null]]},"iowa-state":{"n":"Iowa State","s":6.0,"rp":79,"rr":79,"rs":69,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","Southeast Missouri State (FCS)","W",-12.0,null]]},"jacksonville-state":{"n":"Jacksonville State","s":3.57,"rp":80,"rr":80,"rs":123,"G":2,"res":0.0,"pal":0.0,"hi":12.0,"sg":[[1,"north-dakota-state","North Dakota State","away",7,33,-26,9.59,-31.7,5.7]],"rg":[[1,"north-dakota-state","North Dakota State","L",9.59,34],[1,"","Eastern Kentucky (FCS)","W",-12.0,null]]},"kansas":{"n":"Kansas","s":6.0,"rp":81,"rr":81,"rs":70,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","Long Island University (FCS)","W",-12.0,null]]},"kansas-state":{"n":"Kansas State","s":6.0,"rp":82,"rr":82,"rs":71,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","Nicholls (FCS)","W",-12.0,null]]},"kennesaw-state":{"n":"Kennesaw State","s":6.0,"rp":83,"rr":83,"rs":72,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","West Georgia (FCS)","W",-12.0,null]]},"kentucky":{"n":"Kentucky","s":6.0,"rp":84,"rr":84,"rs":73,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","Youngstown State (FCS)","W",-12.0,null]]},"liberty":{"n":"Liberty","s":5.87,"rp":85,"rr":85,"rs":101,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[[1,"james-madison","James Madison","away",13,20,-7,7.28,-11.0,4.0]],"rg":[[1,"james-madison","James Madison","L",7.28,13]]},"louisiana":{"n":"Louisiana","s":6.0,"rp":86,"rr":86,"rs":74,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","Lamar (FCS)","W",-12.0,null]]},"louisiana-tech":{"n":"Louisiana Tech","s":6.0,"rp":87,"rr":87,"rs":75,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","Northwestern State (FCS)","W",-12.0,null]]},"maryland":{"n":"Maryland","s":6.0,"rp":88,"rr":88,"rs":76,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","Hampton (FCS)","W",-12.0,null]]},"middle-tennessee":{"n":"Middle Tennessee","s":6.0,"rp":89,"rr":89,"rs":77,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","Murray State (FCS)","W",-12.0,null]]},"minnesota":{"n":"Minnesota","s":6.0,"rp":90,"rr":90,"rs":78,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","Eastern Illinois (FCS)","W",-12.0,null]]},"missouri":{"n":"Missouri","s":6.0,"rp":91,"rr":91,"rs":79,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","Arkansas-Pine Bluff (FCS)","W",-12.0,null]]},"navy":{"n":"Navy","s":6.0,"rp":92,"rr":92,"rs":80,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","Towson (FCS)","W",-12.0,null]]},"nc-state":{"n":"NC State","s":3.57,"rp":93,"rr":93,"rs":124,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[[1,"virginia","Virginia","away",8,34,-26,9.59,-31.7,5.7]],"rg":[[1,"virginia","Virginia","L",9.59,35]]},"new-mexico-state":{"n":"New Mexico State","s":3.09,"rp":94,"rr":94,"rs":128,"G":2,"res":0.0,"pal":0.0,"hi":12.0,"sg":[[1,"florida-state","Florida State","away",17,34,-17,8.07,-26.5,9.5]],"rg":[[1,"florida-state","Florida State","L",8.07,47],[1,"","Mercyhurst (FCS)","W",-12.0,null]]},"northern-illinois":{"n":"Northern Illinois","s":4.06,"rp":95,"rr":95,"rs":116,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[[1,"iowa","Iowa","away",0,40,-40,9.08,-26.6,-13.4]],"rg":[[1,"iowa","Iowa","L",9.08,23]]},"northwestern":{"n":"Northwestern","s":6.0,"rp":96,"rr":96,"rs":81,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","South Dakota State (FCS)","W",-12.0,null]]},"oklahoma-state":{"n":"Oklahoma State","s":4.84,"rp":97,"rr":97,"rs":105,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[[1,"tulsa","Tulsa","away",10,24,-14,8.29,-20.2,6.2]],"rg":[[1,"tulsa","Tulsa","L",8.29,20]]},"old-dominion":{"n":"Old Dominion","s":6.0,"rp":98,"rr":98,"rs":82,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","Norfolk State (FCS)","W",-12.0,null]]},"oregon-state":{"n":"Oregon State","s":4.77,"rp":99,"rr":99,"rs":108,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[[1,"houston","Houston","away",20,33,-13,8.11,-19.7,6.7]],"rg":[[1,"houston","Houston","L",8.11,22]]},"purdue":{"n":"Purdue","s":6.0,"rp":100,"rr":100,"rs":83,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","Indiana State (FCS)","W",-12.0,null]]},"rice":{"n":"Rice","s":6.0,"rp":101,"rr":101,"rs":84,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","Houston Christian (FCS)","W",-12.0,null]]},"san-diego-state":{"n":"San Diego State","s":6.0,"rp":102,"rr":102,"rs":85,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","Portland State (FCS)","W",-12.0,null]]},"south-alabama":{"n":"South Alabama","s":6.0,"rp":103,"rr":103,"rs":86,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","SE Louisiana (FCS)","W",-12.0,null]]},"southern-miss":{"n":"Southern Miss","s":6.0,"rp":104,"rr":104,"rs":87,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","Alcorn State (FCS)","W",-12.0,null]]},"syracuse":{"n":"Syracuse","s":6.0,"rp":105,"rr":105,"rs":88,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","New Hampshire (FCS)","W",-12.0,null]]},"temple":{"n":"Temple","s":6.0,"rp":106,"rr":106,"rs":89,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","Rhode Island (FCS)","W",-12.0,null]]},"tennessee":{"n":"Tennessee","s":6.0,"rp":107,"rr":107,"rs":90,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","Furman (FCS)","W",-12.0,null]]},"texas-state":{"n":"Texas State","s":3.39,"rp":108,"rr":108,"rs":127,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[[1,"texas","Texas","away",7,59,-52,9.5,-32.2,-19.8]],"rg":[[1,"texas","Texas","L",9.5,37]]},"texas-tech":{"n":"Texas Tech","s":6.0,"rp":109,"rr":109,"rs":91,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","Abilene Christian (FCS)","W",-12.0,null]]},"toledo":{"n":"Toledo","s":5.62,"rp":110,"rr":110,"rs":104,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[[1,"michigan-state","Michigan State","away",20,30,-10,7.26,-12.0,2.0]],"rg":[[1,"michigan-state","Michigan State","L",7.26,16]]},"tulane":{"n":"Tulane","s":4.84,"rp":111,"rr":111,"rs":106,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[[1,"duke","Duke","away",3,17,-14,8.29,-20.2,6.2]],"rg":[[1,"duke","Duke","L",8.29,19]]},"ucf":{"n":"UCF","s":6.0,"rp":112,"rr":112,"rs":92,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","Bethune-Cookman (FCS)","W",-12.0,null]]},"uconn":{"n":"UConn","s":6.0,"rp":113,"rr":113,"rs":93,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","Lafayette (FCS)","W",-12.0,null]]},"utah":{"n":"Utah","s":6.0,"rp":114,"rr":114,"rs":94,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","Idaho (FCS)","W",-12.0,null]]},"utah-state":{"n":"Utah State","s":6.0,"rp":115,"rr":115,"rs":95,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","Idaho State (FCS)","L",-12.0,null]]},"utsa":{"n":"UTSA","s":6.0,"rp":116,"rr":116,"rs":96,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","UT Rio Grande Valley (FCS)","W",-12.0,null]]},"vanderbilt":{"n":"Vanderbilt","s":6.0,"rp":117,"rr":117,"rs":97,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","Austin Peay (FCS)","W",-12.0,null]]},"virginia-tech":{"n":"Virginia Tech","s":6.0,"rp":118,"rr":118,"rs":98,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[],"rg":[[1,"","VMI (FCS)","W",-12.0,null]]},"washington-state":{"n":"Washington State","s":4.84,"rp":119,"rr":119,"rs":107,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[[1,"washington","Washington","away",10,24,-14,8.29,-20.2,6.2]],"rg":[[1,"washington","Washington","L",8.29,21]]},"western-kentucky":{"n":"Western Kentucky","s":4.49,"rp":120,"rr":120,"rs":109,"G":1,"res":0.0,"pal":0.0,"hi":12.0,"sg":[[1,"nevada","Nevada","away",14,49,-35,8.66,-23.0,-12.0]],"rg":[[1,"nevada","Nevada","L",8.66,24]]},"california":{"n":"California","s":4.1,"rp":121,"rr":121,"rs":115,"G":1,"res":0.0,"pal":0.0,"hi":11.91,"sg":[[1,"ucla","UCLA","home",24,45,-21,8.97,-17.9,-3.1]],"rg":[[1,"ucla","UCLA","L",8.97,11]]},"sam-houston":{"n":"Sam Houston","s":6.5,"rp":122,"rr":122,"rs":39,"G":1,"res":0.0,"pal":0.0,"hi":11.49,"sg":[[1,"troy","Troy","away",21,24,-3,6.47,-4.3,1.3]],"rg":[[1,"troy","Troy","L",6.47,10]]},"tcu":{"n":"TCU","s":5.67,"rp":123,"rr":123,"rs":102,"G":1,"res":0.0,"pal":0.0,"hi":11.45,"sg":[[1,"north-carolina","North Carolina","neutral",10,15,-5,7.46,-8.5,3.5]],"rg":[[1,"north-carolina","North Carolina","L",7.46,8]]},"rutgers":{"n":"Rutgers","s":4.48,"rp":124,"rr":124,"rs":110,"G":1,"res":0.0,"pal":0.0,"hi":11.43,"sg":[[1,"massachusetts","Massachusetts","home",21,37,-16,8.49,-14.5,-1.5]],"rg":[[1,"massachusetts","Massachusetts","L",8.49,9]]},"florida-atlantic":{"n":"Florida Atlantic","s":0.02,"rp":125,"rr":125,"rs":131,"G":1,"res":0.0,"pal":0.0,"hi":11.27,"sg":[[1,"florida","Florida","away",21,66,-45,6.24,-32.8,-12.2]],"rg":[[1,"florida","Florida","L",6.24,40]]},"marshall":{"n":"Marshall","s":0.02,"rp":126,"rr":126,"rs":132,"G":1,"res":0.0,"pal":0.0,"hi":11.27,"sg":[[1,"penn-state","Penn State","away",0,45,-45,6.24,-32.8,-12.2]],"rg":[[1,"penn-state","Penn State","L",6.24,41]]},"miami-oh":{"n":"Miami (OH)","s":0.02,"rp":127,"rr":127,"rs":133,"G":1,"res":0.0,"pal":0.0,"hi":11.27,"sg":[[1,"pittsburgh","Pittsburgh","away",14,59,-45,6.24,-32.8,-12.2]],"rg":[[1,"pittsburgh","Pittsburgh","L",6.24,42]]},"kent-state":{"n":"Kent State","s":0.0,"rp":128,"rr":128,"rs":138,"G":1,"res":0.0,"pal":0.0,"hi":11.25,"sg":[[1,"south-carolina","South Carolina","away",0,57,-57,6.23,-32.8,-24.2]],"rg":[[1,"south-carolina","South Carolina","L",6.23,45]]},"missouri-state":{"n":"Missouri State","s":0.0,"rp":129,"rr":129,"rs":136,"G":1,"res":0.0,"pal":0.0,"hi":11.25,"sg":[[1,"texas-a-m","Texas A&M","away",0,50,-50,6.23,-32.8,-17.2]],"rg":[[1,"texas-a-m","Texas A&M","L",6.23,46]]},"north-texas":{"n":"North Texas","s":0.0,"rp":130,"rr":130,"rs":135,"G":1,"res":0.0,"pal":0.0,"hi":11.25,"sg":[[1,"indiana","Indiana","away",16,52,-36,6.23,-32.8,-3.2]],"rg":[[1,"indiana","Indiana","L",6.23,43]]},"ul-monroe":{"n":"UL Monroe","s":0.0,"rp":131,"rr":131,"rs":137,"G":1,"res":0.0,"pal":0.0,"hi":11.25,"sg":[[1,"mississippi-state","Mississippi State","away",13,62,-49,6.23,-32.8,-16.2]],"rg":[[1,"mississippi-state","Mississippi State","L",6.23,44]]},"western-michigan":{"n":"Western Michigan","s":6.87,"rp":132,"rr":132,"rs":37,"G":1,"res":0.0,"pal":0.0,"hi":11.15,"sg":[[1,"michigan","Michigan","away",12,13,-1,6.12,-0.8,-0.2]],"rg":[[1,"michigan","Michigan","L",6.12,7]]},"louisville":{"n":"Louisville","s":6.49,"rp":133,"rr":133,"rs":41,"G":1,"res":0.0,"pal":0.0,"hi":10.48,"sg":[[1,"ole-miss","Ole Miss","neutral",38,41,-3,6.49,-0.0,-3.0]],"rg":[[1,"ole-miss","Ole Miss","L",6.49,5]]},"wisconsin":{"n":"Wisconsin","s":0.02,"rp":134,"rr":134,"rs":134,"G":1,"res":0.0,"pal":0.0,"hi":10.42,"sg":[[1,"notre-dame","Notre Dame","neutral",13,41,-28,6.43,-28.8,0.8]],"rg":[[1,"notre-dame","Notre Dame","L",6.43,38]]},"baylor":{"n":"Baylor","s":6.45,"rp":135,"rr":135,"rs":43,"G":1,"res":0.0,"pal":0.0,"hi":10.41,"sg":[[1,"auburn","Auburn","neutral",16,17,-1,6.42,0.1,-1.1]],"rg":[[1,"auburn","Auburn","L",6.42,6]]},"georgia-tech":{"n":"Georgia Tech","s":6.17,"rp":136,"rr":136,"rs":53,"G":1,"res":0.0,"pal":0.0,"hi":9.91,"sg":[[1,"colorado","Colorado","home",13,14,-1,6.97,0.6,-1.6]],"rg":[[1,"colorado","Colorado","L",6.97,4]]},"sacramento-state":{"n":"Sacramento State","s":3.03,"rp":137,"rr":137,"rs":129,"G":2,"res":0.0,"pal":0.0,"hi":9.38,"sg":[[1,"eastern-michigan","Eastern Michigan","away",17,28,-11,4.18,-9.8,-1.2]],"rg":[[1,"eastern-michigan","Eastern Michigan","L",4.18,49],[1,"","Mississippi Valley State (FCS)","W",-12.0,null]]},"hawai-i":{"n":"Hawai'i","s":2.19,"rp":138,"rr":138,"rs":130,"G":2,"res":0.0,"pal":0.0,"hi":7.05,"sg":[[1,"stanford","Stanford","away",27,37,-10,3.83,-12.0,2.0],[1,"unlv","UNLV","home",6,21,-15,8.06,-22.4,7.4]],"rg":[[1,"stanford","Stanford","L",3.83,48],[1,"unlv","UNLV","L",8.06,39]]}}</script>
 <script>
 document.querySelectorAll("#conftable tr.conf").forEach(function(r){
   r.addEventListener("click", function(){
@@ -1445,10 +1435,21 @@ document.querySelectorAll("#conftable tr.conf").forEach(function(r){
 var tbody = document.querySelector("#main tbody");
 var heads = document.querySelectorAll("th.sortable");
 var cur = "pal", dir = 1;     // dir 1 = best to worst, -1 = worst to best
-var lastKey = {pal:"lpal", res:"lres", avg:"lavg", str:"lstr", rec:"lrec"};
+var byChg = false;            // true = sorted by Change (movement in the `cur` ranking)
+var lastKey = {pal:"lpal", res:"lres", str:"lstr", rec:"lrec"};
+function moved(r){            // places gained since last week (null in the first week)
+  var lw = r.dataset[lastKey[cur]];
+  return lw === "" ? null : parseInt(lw) - parseInt(r.dataset[cur]);
+}
+function byRank(a, c){ return parseInt(a.dataset[cur]) - parseInt(c.dataset[cur]); }
+function byMove(a, c){        // biggest riser first (dir 1); teams with no last week go last
+  var ma = moved(a), mc = moved(c);
+  if(ma === null || mc === null){ return (ma === null) - (mc === null) || byRank(a, c); }
+  return dir * (mc - ma) || byRank(a, c);
+}
 function resort(){
   var rows = Array.from(tbody.querySelectorAll("tr.team"));
-  rows.sort(function(a, c){ return dir * (parseInt(a.dataset[cur]) - parseInt(c.dataset[cur])); });
+  rows.sort(byChg ? byMove : function(a, c){ return dir * byRank(a, c); });
   rows.forEach(function(r){
     tbody.appendChild(r); if(r._d){ tbody.appendChild(r._d); }
     var now = parseInt(r.dataset[cur]), lw = r.dataset[lastKey[cur]];
@@ -1462,18 +1463,25 @@ function resort(){
     m.textContent = t; m.className = "mv " + k;
   });
   heads.forEach(function(h){
-    var on = h.dataset.f === cur;
-    h.classList.toggle("active", on);
-    h.querySelector(".arr").textContent = on ? (dir === 1 ? " ▼" : " ▲") : "";
+    var f = h.dataset.f, sorted = byChg ? f === "chg" : f === cur;
+    h.classList.toggle("active", f === cur || sorted);   // the ranking in use stays highlighted
+    h.querySelector(".arr").textContent = sorted ? (dir === 1 ? " ▼" : " ▲") : "";
   });
 }
 heads.forEach(function(h){
   h.addEventListener("click", function(){
-    if(h.dataset.f === cur){ dir = -dir; } else { cur = h.dataset.f; dir = 1; }
+    var f = h.dataset.f;
+    if(f === "chg"){
+      if(byChg){ dir = -dir; } else { byChg = true; dir = 1; }
+    } else if(f === cur && !byChg){ dir = -dir; }
+    else { cur = f; dir = 1; byChg = false; }
     resort();
   });
 });
-document.getElementById("rkh").addEventListener("click", function(){ dir = -dir; resort(); });
+document.getElementById("rkh").addEventListener("click", function(){
+  if(byChg){ byChg = false; dir = 1; } else { dir = -dir; }
+  resort();
+});
 document.getElementById("rkh").style.cursor = "pointer";
 resort();
 // Conference filter.
@@ -1501,7 +1509,6 @@ function align(pct){ return pct < 22 ? "l" : (pct > 78 ? "r" : "c"); }
 function rangeBar(t){
   var G = t.G;
   if(!G){ return "<p class='muted'>No games yet, so every record is still possible.</p>"; }
-  var capHi = t.hi >= 11.995, zeroPal = t.pal <= 0.0005;
   var pp = t.pal / 12 * 100, pr = t.res / 12 * 100, ph = t.hi / 12 * 100;
   function lab(cls, pct, text){
     return '<span class="rb-l ' + cls + ' ' + align(pct) + '" style="left:' + pct.toFixed(1) + '%">' + text + '</span>';
@@ -1512,23 +1519,14 @@ function rangeBar(t){
     '<div class="rb-rng" style="left:' + pp.toFixed(1) + '%;width:' + Math.max(ph - pp, 0.6).toFixed(1) + '%"></div>' +
     '<div class="rb-mk pal" style="left:' + pp.toFixed(1) + '%"></div>' +
     '<div class="rb-mk" style="left:' + pr.toFixed(1) + '%"></div>' +
-    lab("res", pr, "Résumé " + resT) + lab("pal", pp, zeroPal ? "PAL: no lower limit yet" : "PAL " + palT) + lab("hi", ph, capHi ? "Proven at most: no upper limit" : "Proven at most " + hiT) +
+    lab("res", pr, "Résumé " + resT) + lab("pal", pp, "PAL " + palT) + lab("hi", ph, "Proven at most " + hiT) +
     '<span class="rb-end" style="left:0">0-' + G + '</span><span class="rb-end" style="right:0">' + G + '-0</span></div>';
-  var txt;
-  if(capHi && zeroPal){
-    txt = "Not enough games yet to narrow it down.";
-  } else {
-    txt = "95% range: " + (zeroPal ? "any record up to " + hiT : capHi ? palT + " and up" : palT + " to " + hiT) + ". ";
-    txt += zeroPal ? "PAL (the low end of the 95% range): no lower limit yet. "
-                   : "PAL (the low end of the 95% range): the team is probably not worse than " + palT + ". ";
-    txt += capHi ? "Proven at most: no upper limit (an unbeaten-level team fits)."
-                 : "Proven at most: it is probably not better than " + hiT + ".";
-  }
+  var txt = "95% range: " + esc(t.n) + " is probably not worse than " + palT + " and probably not better than " + hiT + ".";
   return h + '<p class="muted">' + txt + '</p>';
 }
 function panelHtml(t){
-  var h = '<div class="panel"><b>' + esc(t.n) + '</b> <span class="muted">PAL rank ' + t.rp + ' · Strength ' + t.s.toFixed(1) + ' / 12</span>';
-  h += '<h3>1. Résumé (only wins and losses count)</h3><p class="muted">Here only win or loss and who the opponent was count, not the margin. FCS opponents are treated as one pooled “FCS” team.</p>';
+  var h = '<div class="panel"><b>' + esc(t.n) + '</b> <span class="muted">PAL rank ' + t.rp + ' | Résumé rank ' + t.rr + ' | Strength rank ' + t.rs + '</span>';
+  h += '<h3>1. Résumé</h3>';
   if(!t.rg.length){ h += "<p class='muted'>No games yet.</p>"; }
   else {
     h += '<div class="wrap"><table><thead><tr><th>Wk</th><th>Opponent</th><th>Result</th><th class="num">Opp Strength</th><th class="num">Opp PAL rank</th></tr></thead><tbody>';
@@ -1538,18 +1536,19 @@ function panelHtml(t){
     });
     h += '</tbody></table></div>';
   }
-  h += '<h3>2. PAL: how far could the theoretical record be?</h3>' + rangeBar(t);
-  h += '<h3>3. Strength (uses margins)</h3><p class="muted">Strength is the 0-12 rating that makes this team’s actual margins most likely, given each opponent’s own Strength and where the game was played. “Expected” is the typical margin for a team of this Strength against that opponent at that site. Games against FCS teams are not part of Strength.</p>';
+  h += '<h3>2. PAL</h3>' + rangeBar(t);
+  h += '<h3>3. Strength</h3>';
   if(!t.sg.length){ h += "<p class='muted'>No FBS games yet.</p>"; }
   else {
-    h += '<div class="wrap"><table><thead><tr><th>Wk</th><th>Opponent</th><th>Site</th><th>Score</th><th class="num">Margin</th><th class="num">Opp Str.</th><th class="num">Expected</th><th class="num">Better / worse</th></tr></thead><tbody>';
+    h += '<div class="wrap"><table><thead><tr><th>Wk</th><th>Opponent</th><th>Site</th><th class="num">Opp Str.</th><th>Score</th><th class="num">Margin</th><th class="num">Expected</th><th class="num">Difference</th></tr></thead><tbody>';
     t.sg.forEach(function(g){
-      h += '<tr><td>' + g[0] + '</td><td>' + link(g[1], g[2]) + '</td><td>' + g[3] + '</td><td>' + g[4] + '-' + g[5] +
-        '</td><td class="num">' + (g[6] === 0 ? "OT (0)" : signed(g[6]).replace(".0", "")) + '</td><td class="num">' + g[7].toFixed(1) +
+      h += '<tr><td>' + g[0] + '</td><td>' + link(g[1], g[2]) + '</td><td>' + g[3] + '</td><td class="num">' + g[7].toFixed(1) +
+        '</td><td>' + g[4] + '-' + g[5] + '</td><td class="num">' + (g[6] === 0 ? "OT (0)" : signed(g[6]).replace(".0", "")) +
         '</td><td class="num">' + signed(g[8]) + '</td><td class="num ' + cls(g[9]) + '">' + signed(g[9]) + '</td></tr>';
     });
     h += '</tbody></table></div>';
   }
+  h += '<p class="muted"><small>Games against FCS teams are not included in the Strength metric.</small></p>';
   return h + '</div>';
 }
 function openTeam(slug, scroll){
@@ -1591,6 +1590,13 @@ tbody.addEventListener("click", function(e){
 function fromHash(){
   if(location.hash.indexOf("#team-") === 0){ openTeam(location.hash.slice(6), true); }
 }
+// "Collapse all teams" button: close every open team panel.
+document.getElementById("collapse").addEventListener("click", function(){
+  tbody.querySelectorAll("tr.team").forEach(function(r){
+    if(r._d){ r._d.remove(); r._d = null; }
+  });
+  history.replaceState(null, "", location.pathname + location.search);
+});
 window.addEventListener("hashchange", fromHash);
 fromHash();
 </script>
